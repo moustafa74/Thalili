@@ -61,13 +61,11 @@ html {
     .navbar #arrowBtn {
         background-color: transparent;
         border: none;
-        padding-bottom: 0.5vh;
+        padding: 0.5vh 1vw;
     }
-
-    .navbar #arrow {
-        margin-right: 1vw;
-    }
-
+    /* .navbar #arrow{
+    margin-right: 1vw;
+} */
     .navbar .arrowMenu {
         font-family: "Janna LT";
         display: none;
@@ -96,12 +94,16 @@ html {
                 transition: 0.5s;
             }
 
+        .navbar .arrowMenu p {
+            font-size: 0.7rem;
+        }
+
         .navbar .arrowMenu .list-group-item {
             border: none;
             font-size: 1rem;
         }
 
-        .navbar .arrowMenu h3, .navbar .arrowMenu .list-group, .navbar .arrowMenu hr {
+        .navbar .arrowMenu h3, .navbar .arrowMenu .list-group, .navbar .arrowMenu p, .navbar .arrowMenu hr {
             animation-name: slide;
             animation-duration: 3s;
         }
@@ -590,7 +592,7 @@ footer {
 /* End Footer */
 /* ---------------------------------------------------------------------------------------------------------------------------------- */
 /* Start Login & Register Page */
-.aLoginPage {
+.FormPage {
     min-height: 100vh;
     background-size: cover;
     background-repeat: round;
@@ -628,7 +630,7 @@ footer {
     border-radius: 20px 0 0 0;
 }
 
-.aLoginPage .layer {
+.FormPage .layer {
     min-height: 100%;
     width: 100%;
     background-image: url(../imgs/woman-working-laborator-bulr.svg);
@@ -644,7 +646,7 @@ footer {
     color: white !important;
 }
 
-.loginPageForm {
+.TheForm {
     background-color: white;
     height: fit-content;
     padding-bottom: 8vh;
@@ -652,29 +654,29 @@ footer {
     border-radius: 0 0 20px 20px;
 }
 
-    .loginPageForm small {
+    .TheForm small {
         visibility: hidden;
     }
 
-.aLoginPage .loginPageForm form h3, .aLoginPage .loginPageForm form p {
+.FormPage .TheForm form h3, .FormPage .TheForm form p {
     color: #707070;
 }
 
-.aLoginPage .loginPageForm form h3 {
+.FormPage .TheForm form h3 {
     font-family: "Hanimation";
     font-size: 1.7rem;
     font-weight: 600;
 }
 
-.aLoginPage .loginPageForm form p {
+.FormPage .TheForm form p {
     font-family: "Janna LT";
     font-size: 0.8rem;
     font-weight: bold;
 }
 
-.aLoginPage .loginPageForm form input[type="text"],
-.aLoginPage .loginPageForm form input[type="email"],
-.aLoginPage .loginPageForm form input[type="password"] {
+.FormPage .TheForm form input[type="text"],
+.FormPage .TheForm form input[type="email"],
+.FormPage .TheForm form input[type="password"] {
     height: 53px;
     font-family: "Janna LT";
     font-size: 1rem;
@@ -691,15 +693,15 @@ footer {
     visibility: visible !important;
 }
 
-.aLoginPage .loginPageForm form input::placeholder {
+.FormPage .TheForm form input::placeholder {
     color: #D2D2D2;
 }
 
-.aLoginPage .loginPageForm form input:focus {
+.FormPage .TheForm form input:focus {
     outline: 1px solid #5B79CC;
 }
 
-.aLoginPage .loginPageForm form input[type ="submit"] {
+.FormPage .TheForm form input[type ="submit"] {
     font-family: "Janna LT";
     font-size: 18px;
     padding-top: 7px;
@@ -711,7 +713,7 @@ footer {
     transition: 0.7s;
 }
 
-    .aLoginPage .loginPageForm form input[type ="submit"]:hover {
+    .FormPage .TheForm form input[type ="submit"]:hover {
         background-color: #e97b0d;
     }
 
@@ -751,7 +753,7 @@ footer {
     }
 
 @media(max-width: 768px) {
-    .loginPageForm, .aLoginPage .btn-group {
+    .TheForm, .FormPage .btn-group, .form-headline {
         margin: auto !important;
     }
 
@@ -761,16 +763,14 @@ footer {
 }
 
 @media(min-width: 1600px) {
-    .loginPageForm, .aLoginPage .btn-group {
-        margin: auto !important;
-    }
-    .form-headline {
+    .TheForm, .FormPage .btn-group, .form-headline {
         margin: auto !important;
     }
 }
 /* End Login & Register Page */
-/* Start Success Page */
-.successPage {
+
+/* Start Success Page & Email Page */
+.successPage, .emailSent {
     height: 100vh;
     background-color: #80808012;
 }
@@ -780,7 +780,7 @@ footer {
         width: 10rem !important;
         height: 10rem;
     }
-/* End Success Page */
+
 .emailSent {
     height: 100vh;
     background-color: #80808012;
@@ -789,6 +789,7 @@ footer {
     .emailSent svg {
         color: greenyellow;
     }
+/* End Success Page & Email Page*/
 .emailresetpassPage .linktoreset {
     background-color: #5b79cc;
     font-family: "Hanimation";
@@ -801,4 +802,12 @@ footer {
 
     .emailresetpassPage .linktoreset p {
         font-size: 1.5rem;
+    }
+
+.partnerPage {
+    background-image: url(../imgs/businessmen-making-handshake-city.png);
+}
+
+    .partnerPage .TheForm {
+        border-radius: 20px;
     }

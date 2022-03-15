@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Thalili.Models;
 
 namespace Thalili.Controllers
 {
-
-    public class HomeController : Controller
+    public class JoinAsPartnerController : Controller
     {
-        thaliliEntities1 Context = new thaliliEntities1();
-        
+        // GET: JoinAsPartner
         public ActionResult Index()
         {
             return View();
         }
-       
     }
 }
