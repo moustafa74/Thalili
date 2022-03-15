@@ -80,6 +80,17 @@
           <Property Name="date" Type="date" Nullable="false" />
           <Property Name="response_time" Type="varchar" MaxLength="45" />
         </EntityType>
+        <EntityType Name="requests">
+          <Key>
+            <PropertyRef Name="requst_ID" />
+          </Key>
+          <Property Name="requst_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="45" />
+          <Property Name="phone number" Type="varchar" MaxLength="45" />
+          <Property Name="owner name" Type="varchar" MaxLength="45" />
+          <Property Name="email" Type="varchar" MaxLength="45" />
+        </EntityType>
         <EntityType Name="result">
           <Key>
             <PropertyRef Name="medical_analysis_id" />
@@ -352,6 +363,7 @@
           <EntitySet Name="lab_owner" EntityType="Self.lab_owner" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="medical_analysis" EntityType="Self.medical_analysis" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="order" EntityType="Self.order" Schema="thalili" store:Type="Tables" />
+          <EntitySet Name="requests" EntityType="Self.requests" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="result" EntityType="Self.result" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="review" EntityType="Self.review" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="sample" EntityType="Self.sample" Schema="thalili" store:Type="Tables" />
@@ -485,6 +497,17 @@
           <Property Name="response_time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_analysis_in_lab_has_user_analysis_in_lab1" FromRole="order" ToRole="analysis_in_lab" />
           <NavigationProperty Name="user" Relationship="Self.fk_analysis_in_lab_has_user_user1" FromRole="order" ToRole="user" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="requst_ID" />
+          </Key>
+          <Property Name="requst_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="phone_number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="owner_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="result">
           <Key>
@@ -691,6 +714,7 @@
           <EntitySet Name="lab_owner" EntityType="Self.lab_owner" />
           <EntitySet Name="medical_analysis" EntityType="Self.medical_analysis" />
           <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="requests" EntityType="Self.request" />
           <EntitySet Name="results" EntityType="Self.result" />
           <EntitySet Name="reviews" EntityType="Self.review" />
           <EntitySet Name="samples" EntityType="Self.sample" />
@@ -799,6 +823,18 @@
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="response_time" ColumnName="response_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="requests">
+            <EntityTypeMapping TypeName="thaliliModel.request">
+              <MappingFragment StoreEntitySet="requests">
+                <ScalarProperty Name="requst_ID" ColumnName="requst_ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="phone_number" ColumnName="phone number" />
+                <ScalarProperty Name="owner_name" ColumnName="owner name" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

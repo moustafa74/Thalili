@@ -30,6 +30,7 @@ namespace Thalili.Models
         public virtual DbSet<lab_owner> lab_owner { get; set; }
         public virtual DbSet<medical_analysis> medical_analysis { get; set; }
         public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<request> requests { get; set; }
         public virtual DbSet<result> results { get; set; }
         public virtual DbSet<review> reviews { get; set; }
         public virtual DbSet<sample> samples { get; set; }

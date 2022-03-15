@@ -3,32 +3,32 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
 
 <main>
     <div class="FormPage partnerPage">
         <div class="container-xl">
             <div class="row w-100 m-0 pt-5">
                 <div class="col-lg-6 col-md-8 col-sm-10 TheForm">
-                    <form id="LoginForm" class="align-middle" action="userLogin.php" method="post" style="width:90%;margin:auto;">
+                    <form id="LoginForm" class="align-middle" action="\JoinAsPartner\SaveData" method="post" style="width:90%;margin:auto;">
                         <h3 class="h3 pt-3">انضم كشريك</h3>
                         <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى</p>
                         <div class="row justify-content-between m-0 mt-5" style="position: relative;">
-                            <input class="col-7 rounded-2" type="text" name="labname" id="labName" placeholder="اسم المعمل" required>
-                            <input class="col-4 rounded-2" type="text" name="numoflabs" id="numOfLabs" placeholder="عدد الفروع" required>
+                            <input class="col-7 rounded-2" type="text" name="name" id="labName" placeholder="اسم المعمل" required>
+                     
                         </div>
                         <div class="row justify-content-between m-0 mt-4" style="position: relative;">
-                            <input class="col rounded-2" type="text" name="labsite" id="labSite" placeholder="موقع المعمل / وسائل التوصل الجتماعي" required>
+                            <input class="col rounded-2" type="text" name="location" id="labSite" placeholder="موقع المعمل " required>
                         </div>
                         <div class="row justify-content-between m-0 mt-4" style="position: relative;">
-                            <input class="col-6 rounded-2" type="text" name="partnernamef" id="partnerNameF" placeholder="الاسم الاول" required>
-                            <input class="col-5 rounded-2" type="text" name="partnernamel" id="partnerNameL" placeholder="اسم العائلة" required>
+                            <input class="col-6 rounded-2" type="text" name="owner_name" id="partnerNameF" placeholder="الاسم " required>
+                         
                         </div>
                         <div class="row justify-content-between m-0 mt-4" style="position: relative;">
-                            <input class="col rounded-2" type="email" name="labmail" id="labMail" placeholder="البريد الاكتروني" required>
+                            <input class="col rounded-2" type="email" name="email" id="labMail" placeholder="البريد الاكتروني" required>
                         </div>
                         <div class="row justify-content-between m-0 mt-4" style="position: relative;">
-                            <input class="col rounded-2" type="text" name="labphone" id="labPhone" placeholder="رقم الهاتف الخاص" required>
+                            <input class="col rounded-2" type="text" name="phone_number" id="labPhone" placeholder="رقم الهاتف الخاص" required>
                         </div>
                         <div class="row m-0 mt-5">
                             <input class="col-10 m-auto rounded-2 px-0" type="submit" value="ارسال الطلب" name="" id="submitBtn">
