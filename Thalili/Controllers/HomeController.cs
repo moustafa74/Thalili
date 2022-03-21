@@ -16,6 +16,9 @@ namespace Thalili.Controllers
         {
             return View();
         }
-       
+       public ActionResult serc()
+        {
+            return View();
+        }
     }
 }

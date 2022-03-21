@@ -264,6 +264,7 @@
     <Content Include="Content\Assets\css\loginPage.css" />
     <Content Include="Content\Assets\css\master.css" />
     <Content Include="Content\Assets\css\normalize.css" />
+    <Content Include="Content\Assets\imgs\businessmen-making-handshake-city.png" />
     <Content Include="Content\Assets\imgs\doctor-show-plese-contact-us-line-contact.png" />
     <Content Include="Content\Assets\imgs\Exclusion 10.png" />
     <Content Include="Content\Assets\imgs\Group 625.png" />
@@ -2000,6 +2001,7 @@
     <None Include="Properties\PublishProfiles\Thalili - Web Deploy.pubxml" />
     <Content Include="Views\JoinAsPartner\Index.cshtml" />
     <Content Include="Views\JoinAsPartner\SaveData.cshtml" />
+    <Content Include="Views\Home\serc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
