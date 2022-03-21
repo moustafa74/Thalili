@@ -1992,7 +1992,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\Home\SearchResult.cshtml" />
     <Content Include="Views\Login\ResetPassword.cshtml" />
     <Content Include="Views\Register\VerifyAccount.cshtml" />
     <Content Include="Views\Register\RegisterConfirm.cshtml" />
@@ -2001,7 +2000,6 @@
     <None Include="Properties\PublishProfiles\Thalili - Web Deploy.pubxml" />
     <Content Include="Views\JoinAsPartner\Index.cshtml" />
     <Content Include="Views\JoinAsPartner\SaveData.cshtml" />
-    <Content Include="Views\Home\serc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
