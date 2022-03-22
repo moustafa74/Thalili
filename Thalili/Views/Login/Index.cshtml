@@ -4,7 +4,7 @@
 }
 
 <main>
-    <div class="aLoginPage aLoginPageForUser">
+    <div class="FormPage aLoginPageForUser">
         <div class="container-xl">
             <div class="row w-100 p-0 m-0 pt-5">
                 <div class="col-lg-6 col-md-8 col-sm-10 p-0 btn-group" id="login-change-btns">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="row w-100 m-0">
-                <div class="col-lg-6 col-md-8 col-sm-10 loginPageForm">
+                <div class="col-lg-6 col-md-8 col-sm-10 TheForm">
                     <form class="align-middle" action="/Login/LoginConfirm" method="post" style="width:90%;margin:auto;">
                         <h3 class="h3 pt-3">مستخدم عادي</h3>
                         <p>تسجيل الدخول كمستخدم عادي يتيح لك إمكانيات اختيار التحاليل والمعامل وطلب عميل لاخذ العينات اللازمة</p>
@@ -26,7 +26,7 @@
                             <input class="col m-auto mt-4 rounded-2" type="password" name="pass" id="passwordField" placeholder="الرقم السري" value="@ViewBag.Password" required>
                             <label for="passwordField"><img src="~/Content/Assets/imgs/icons8_key.png" alt="" style="position: absolute; top:43px;"></label>
                         </div>
-                        <div class="row m-0 mt-5 loginpageSubmitDiv">
+                        <div class="row m-0 mt-5">
                             <input class="col-md-5 m-auto mt-3 rounded-2 px-0" type="submit" value="تسجيل دخول" name="" id="submitBtn">
                             <a href="/Register" id="createAccountbtn" class="col-md-5 m-auto mt-3 rounded-2 px-0" type="button">تسجيل حساب</a>
                         </div>
