@@ -165,3 +165,16 @@ if (formofpage != null) {
     }
 }
 // End check Password on Forms
+
+// Start Lab Owner Pages Functions
+function onsentrepres(TheElement) {
+    let parentId = TheElement.getAttribute('data-of-parent');
+    let element = document.getElementById(parentId);
+    element.querySelector('button').innerHTML = "رفع نتيجة التحليل&nbsp;<i class='fa-solid fa-angle-left'></i>";
+    element.querySelector('button').setAttribute('onclick', '');
+    element.setAttribute('id', 'OK-' + parentId);
+    element.querySelector('button').setAttribute('data-of-parent', 'OK-' + parentId);
+    document.getElementById('oKOredered').firstChild.nextElementSibling.insertAdjacentElement("afterend", element);
+    document.getElementById('smallofItem').classList.remove('d-none');
+}
+// End Lab Owner Pages Functions

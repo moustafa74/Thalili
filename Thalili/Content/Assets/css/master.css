@@ -808,6 +808,87 @@ footer {
     background-image: url(../imgs/businessmen-making-handshake-city.png);
 }
 
-    .partnerPage .TheForm {
-        border-radius: 20px;
-    }
+.partnerPage .TheForm {
+     border-radius: 20px;
+}
+/* Start Lab Owner Page */
+.labOwnerPage .rightCont {
+    height: 100vh;
+    background-color: #313C55;
+    color: white;
+}
+
+.labOwnerPage .rightCont ul li {
+    background-color: transparent;
+}
+
+.labOwnerPage .rightCont ul li span, .labOwnerPage .rightCont ul li svg {
+    color: white;
+}
+
+.labOwnerPage .rightCont ul li svg {
+    margin-left: 10px;
+}
+
+.labOwnerPage .leftCont .leftsvg {
+    color: #5B79CC;
+    font-size: 2.13rem;
+}
+
+.labOwnerPage .leftCont .lefth3 {
+    color: #5B79CC;
+    font-size: 2.13rem;
+}
+
+.labOwnerPage .leftCont .lefth3 ~ small {
+    color: #C3C3C3;
+}
+
+.labOwnerPage .leftCont {
+    background-color: #7070701a;
+}
+
+.labOwnerPage .leftCont .leftCont-all .container {
+    background-color: white;
+}
+
+.labOwnerPage .leftCont .leftCont-all .section-address {
+    font-family: "Hanimation";
+    font-size: 1.667rem;
+    font-weight: 600;
+    color: #A9A9A9;
+    padding-top: 2rem;
+}
+
+.labOwnerPage .leftCont .leftCont-all .table-head {
+    font-family: "Janna LT";
+    font-size: 1rem;
+    color: #A9A9A9;
+    padding-bottom: 2rem;
+}
+
+.talabt-item {
+    display: flex;
+    align-items: center;
+    background-color: #F2F2F2;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+}
+
+.talabt-item div, .talabt-item div button {
+    font-family: "Janna LT";
+    font-size: 0.8rem;
+}
+
+.talabt-item ul {
+    padding: 0;
+    list-style: none;
+}
+
+.representativeHasSent {
+    background-color: transparent;
+    color: #5B79CC;
+    border: none;
+}
+
+/* End Lab Owner Page */

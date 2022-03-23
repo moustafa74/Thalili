@@ -3,5 +3,89 @@
     ViewBag.Title = "Index";
 }
 
+<div class="labOwnerPage container-flud">
+    <div class="row m-0">
+        <div class="col-2 rightCont">
+            <div class="container-flud">
+                <h3 class="h3 pt-3">اسم المعمل</h3>
+                <small>القاهرة</small>
+                <hr>
+                <ul class="list-group p-0 d-flex">
+                    <li class="list-group-item px-0 border-0">
+                        <button type="button" class="btn ps-0 w-100 text-end">
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>الطلبات</span>
+                        </button>
+                    </li>
+                    <li class="list-group-item px-0 border-0">
+                        <button type="button" class="btn ps-0 w-100 text-end">
+                            <i class="fa-solid fa-flask"></i>
+
+                            <span>التحاليل</span>
+                        </button>
+                    </li>
+                    <li class="list-group-item px-0 border-0">
+                        <button type="button" class="btn ps-0 w-100 text-end">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>اعدادات المعمل</span>
+                        </button>
+                    </li>
+                    <li class="list-group-item px-0 border-0">
+                        <button type="button" class="btn ps-0 w-100 text-end">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>تسجيل الخروج</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-10 leftCont pt-3 pe-3">
+            <i class="fa-solid fa-list-check leftsvg"></i>
+            <h3 class="h3 d-inline lefth3">الطلبــــات</h3>
+            <small class="d-block pb-3">مرحبا بك مجددا</small>
+            <div class="leftCont-all">
+                <div class="container pt-2 pb-5">
+                    <div id="modernOrderes">
+                        <p class="section-address">الطلبات الحديثة</p>
+                        <div class="row table-head">
+                            <div class="col">اسم العميل</div>
+                            <div class="col">تاريخ الطلب</div>
+                            <div class="col">العينات المطلوبة</div>
+                            <div class="col">اسم التحليل</div>
+                            <div class="col">العنوان</div>
+                            <div class="col">رقم المحمول</div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="row talabt-item" id="talabat-item1">
+                            <div class="col">مولر مجدي</div>
+                            <div class="col">12, october, 2021</div>
+                            <div class="col">covid -19</div>
+                            <div class="col">
+                                <ul class="p-0">
+                                    <li>عينة بول</li>
+                                    <li>عينة دم</li>
+                                </ul>
+                            </div>
+                            <div class="col">شارع الضحك حي الضحك والضحكاوية عمارة 12</div>
+                            <div class="col">01277735198</div>
+                            <div class="col">
+                                <small class="d-none" style="color: #5B79CC;" id="smallofItem">تم ارسال المندوب</small>
+                                <button type="submit" name="" formaction="" data-of-parent="talabat-item1" class="btn btn-primary px-2" onclick="onsentrepres(this)">ارسال المندوب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="oKOredered">
+                        <p class="section-address">الطلبات الملباة</p>
+                    </div>
+                    <div class="text-center pt-5">
+                        <a href=""><i class="fa-solid fa-circle-right"></i></a>
+                        <span>page <span class="currentpage">1</span> of <span class="allpages">3</span></span>
+                        <a href=""><i class="fa-solid fa-circle-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
