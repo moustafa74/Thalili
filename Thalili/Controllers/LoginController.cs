@@ -12,8 +12,7 @@ namespace Thalili.Controllers
     public class LoginController : Controller
     {
         thaliliEntities Context = new thaliliEntities();
-        // GET: Login
-        
+        // GET: Login     
         public ActionResult Index()
         {
             return View();
@@ -61,7 +60,7 @@ namespace Thalili.Controllers
             var acc = Context.users.Where(x => x.email == emailField).FirstOrDefault();
             if(acc==null)
             {
-                ViewBag.ERooor = "البريد الالكترونى  غير صحيح";
+                ViewBag.ERooor = "البريد الالكترونى  غير مستخدم";
                 ViewBag.Emaill = emailField;
                 return View("ResetPassword");
 

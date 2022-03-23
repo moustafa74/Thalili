@@ -17,8 +17,7 @@ namespace Thalili.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public analysis_in_lab()
         {
-            this.orders = new HashSet<order>();
-            this.results = new HashSet<result>();
+            this.sub_order = new HashSet<sub_order>();
             this.carts = new HashSet<cart>();
         }
     
@@ -26,12 +25,10 @@ namespace Thalili.Models
         public int Labs_id { get; set; }
         public Nullable<decimal> price { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<result> results { get; set; }
         public virtual lab lab { get; set; }
         public virtual medical_analysis medical_analysis { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<sub_order> sub_order { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart> carts { get; set; }
     }

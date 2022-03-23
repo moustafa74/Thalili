@@ -12,14 +12,18 @@ namespace Thalili.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class result
+    public partial class sub_order
     {
-        public int medical_analysis_id { get; set; }
-        public int Labs_id { get; set; }
         public int user_id { get; set; }
+        public int medical_analysis_id { get; set; }
+        public int analysis_in_lab_Labs_id { get; set; }
+        public Nullable<int> count { get; set; }
+        public Nullable<sbyte> is_finshed { get; set; }
         public string pdf { get; set; }
+        public int order_id { get; set; }
     
         public virtual analysis_in_lab analysis_in_lab { get; set; }
+        public virtual order order { get; set; }
         public virtual user user { get; set; }
     }
 }

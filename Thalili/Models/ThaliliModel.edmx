@@ -21,7 +21,7 @@
           </Key>
           <Property Name="medical_analysis_id" Type="int" Nullable="false" />
           <Property Name="Labs_id" Type="int" Nullable="false" />
-          <Property Name="price" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="analysis_samples">
           <Key>
@@ -74,14 +74,10 @@
         </EntityType>
         <EntityType Name="order">
           <Key>
-            <PropertyRef Name="medical_analysis_id" />
-            <PropertyRef Name="Lab_id" />
-            <PropertyRef Name="user_id" />
+            <PropertyRef Name="order_id" />
           </Key>
-          <Property Name="medical_analysis_id" Type="int" Nullable="false" />
-          <Property Name="Lab_id" Type="int" Nullable="false" />
-          <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" />
           <Property Name="response_time" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="requests">
@@ -94,17 +90,6 @@
           <Property Name="phone number" Type="varchar" MaxLength="45" />
           <Property Name="owner name" Type="varchar" MaxLength="45" />
           <Property Name="email" Type="varchar" MaxLength="45" />
-        </EntityType>
-        <EntityType Name="result">
-          <Key>
-            <PropertyRef Name="medical_analysis_id" />
-            <PropertyRef Name="Labs_id" />
-            <PropertyRef Name="user_id" />
-          </Key>
-          <Property Name="medical_analysis_id" Type="int" Nullable="false" />
-          <Property Name="Labs_id" Type="int" Nullable="false" />
-          <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="pdf" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="review">
           <Key>
@@ -123,6 +108,20 @@
           <Property Name="sample_ id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sample name" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
+        <EntityType Name="sub_order">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="medical_analysis_id" />
+            <PropertyRef Name="analysis_in_lab_Labs_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="medical_analysis_id" Type="int" Nullable="false" />
+          <Property Name="analysis_in_lab_Labs_id" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" />
+          <Property Name="is_finshed" Type="tinyint" />
+          <Property Name="pdf" Type="varchar" MaxLength="50" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="user_id" />
@@ -135,66 +134,6 @@
           <Property Name="activation_code" Type="varchar" MaxLength="38" />
           <Property Name="reset_pass_ac" Type="varchar" MaxLength="38" />
         </EntityType>
-        <Association Name="fk_analysis_in_lab_has_user_analysis_in_lab1">
-          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="order" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="analysis_in_lab">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Labs_id" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Lab_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_analysis_in_lab_has_user_analysis_in_lab2">
-          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="result" Type="Self.result" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="analysis_in_lab">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Labs_id" />
-            </Principal>
-            <Dependent Role="result">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Labs_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_analysis_in_lab_has_user_user1">
-          <End Role="user" Type="Self.user" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="order" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="user_id" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_analysis_in_lab_has_user_user2">
-          <End Role="user" Type="Self.user" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="result" Type="Self.result" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="user_id" />
-            </Principal>
-            <Dependent Role="result">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Labs_lab_owner1">
           <End Role="lab_owner" Type="Self.lab_owner" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -262,6 +201,50 @@
             </Principal>
             <Dependent Role="analysis_samples">
               <PropertyRef Name="Samples_ id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sub_order_analysis_in_lab1">
+          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analysis_in_lab">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="Labs_id" />
+            </Principal>
+            <Dependent Role="sub_order">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="analysis_in_lab_Labs_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sub_order_order1">
+          <End Role="order" Type="Self.order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="sub_order">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sub_order_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="sub_order">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -333,26 +316,10 @@
           <EntitySet Name="medical_analysis" EntityType="Self.medical_analysis" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="order" EntityType="Self.order" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="requests" EntityType="Self.requests" Schema="thalili" store:Type="Tables" />
-          <EntitySet Name="result" EntityType="Self.result" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="review" EntityType="Self.review" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="sample" EntityType="Self.sample" Schema="thalili" store:Type="Tables" />
+          <EntitySet Name="sub_order" EntityType="Self.sub_order" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="thalili" store:Type="Tables" />
-          <AssociationSet Name="fk_analysis_in_lab_has_user_analysis_in_lab1" Association="Self.fk_analysis_in_lab_has_user_analysis_in_lab1">
-            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
-            <End Role="order" EntitySet="order" />
-          </AssociationSet>
-          <AssociationSet Name="fk_analysis_in_lab_has_user_analysis_in_lab2" Association="Self.fk_analysis_in_lab_has_user_analysis_in_lab2">
-            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
-            <End Role="result" EntitySet="result" />
-          </AssociationSet>
-          <AssociationSet Name="fk_analysis_in_lab_has_user_user1" Association="Self.fk_analysis_in_lab_has_user_user1">
-            <End Role="user" EntitySet="user" />
-            <End Role="order" EntitySet="order" />
-          </AssociationSet>
-          <AssociationSet Name="fk_analysis_in_lab_has_user_user2" Association="Self.fk_analysis_in_lab_has_user_user2">
-            <End Role="user" EntitySet="user" />
-            <End Role="result" EntitySet="result" />
-          </AssociationSet>
           <AssociationSet Name="fk_Labs_lab_owner1" Association="Self.fk_Labs_lab_owner1">
             <End Role="lab_owner" EntitySet="lab_owner" />
             <End Role="lab" EntitySet="lab" />
@@ -372,6 +339,18 @@
           <AssociationSet Name="fk_medical_analysis_has_Samples_Samples1" Association="Self.fk_medical_analysis_has_Samples_Samples1">
             <End Role="sample" EntitySet="sample" />
             <End Role="analysis_samples" EntitySet="analysis_samples" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sub_order_analysis_in_lab1" Association="Self.fk_sub_order_analysis_in_lab1">
+            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
+            <End Role="sub_order" EntitySet="sub_order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sub_order_order1" Association="Self.fk_sub_order_order1">
+            <End Role="order" EntitySet="order" />
+            <End Role="sub_order" EntitySet="sub_order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sub_order_user1" Association="Self.fk_sub_order_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="sub_order" EntitySet="sub_order" />
           </AssociationSet>
           <AssociationSet Name="fk_user_has_analysis_in_lab_analysis_in_lab1" Association="Self.fk_user_has_analysis_in_lab_analysis_in_lab1">
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
@@ -412,10 +391,9 @@
           <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
           <Property Name="Labs_id" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Decimal" />
-          <NavigationProperty Name="orders" Relationship="Self.fk_analysis_in_lab_has_user_analysis_in_lab1" FromRole="analysis_in_lab" ToRole="order" />
-          <NavigationProperty Name="results" Relationship="Self.fk_analysis_in_lab_has_user_analysis_in_lab2" FromRole="analysis_in_lab" ToRole="result" />
           <NavigationProperty Name="lab" Relationship="Self.fk_medical_analysis_has_Labs_Labs1" FromRole="analysis_in_lab" ToRole="lab" />
           <NavigationProperty Name="medical_analysis" Relationship="Self.fk_medical_analysis_has_Labs_medical_analysis1" FromRole="analysis_in_lab" ToRole="medical_analysis" />
+          <NavigationProperty Name="sub_order" Relationship="Self.fk_sub_order_analysis_in_lab1" FromRole="analysis_in_lab" ToRole="sub_order" />
           <NavigationProperty Name="carts" Relationship="Self.fk_user_has_analysis_in_lab_analysis_in_lab1" FromRole="analysis_in_lab" ToRole="cart" />
         </EntityType>
         <EntityType Name="cart">
@@ -469,17 +447,12 @@
         </EntityType>
         <EntityType Name="order">
           <Key>
-            <PropertyRef Name="medical_analysis_id" />
-            <PropertyRef Name="Lab_id" />
-            <PropertyRef Name="user_id" />
+            <PropertyRef Name="order_id" />
           </Key>
-          <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
-          <Property Name="Lab_id" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" />
           <Property Name="response_time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_analysis_in_lab_has_user_analysis_in_lab1" FromRole="order" ToRole="analysis_in_lab" />
-          <NavigationProperty Name="user" Relationship="Self.fk_analysis_in_lab_has_user_user1" FromRole="order" ToRole="user" />
+          <NavigationProperty Name="sub_order" Relationship="Self.fk_sub_order_order1" FromRole="order" ToRole="sub_order" />
         </EntityType>
         <EntityType Name="request">
           <Key>
@@ -491,19 +464,6 @@
           <Property Name="phone_number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="owner_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="result">
-          <Key>
-            <PropertyRef Name="medical_analysis_id" />
-            <PropertyRef Name="Labs_id" />
-            <PropertyRef Name="user_id" />
-          </Key>
-          <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
-          <Property Name="Labs_id" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="pdf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_analysis_in_lab_has_user_analysis_in_lab2" FromRole="result" ToRole="analysis_in_lab" />
-          <NavigationProperty Name="user" Relationship="Self.fk_analysis_in_lab_has_user_user2" FromRole="result" ToRole="user" />
         </EntityType>
         <EntityType Name="review">
           <Key>
@@ -525,6 +485,23 @@
           <Property Name="sample_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="medical_analysis" Relationship="Self.analysis_samples" FromRole="sample" ToRole="medical_analysis" />
         </EntityType>
+        <EntityType Name="sub_order">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="medical_analysis_id" />
+            <PropertyRef Name="analysis_in_lab_Labs_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
+          <Property Name="analysis_in_lab_Labs_id" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="is_finshed" Type="SByte" />
+          <Property Name="pdf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_sub_order_analysis_in_lab1" FromRole="sub_order" ToRole="analysis_in_lab" />
+          <NavigationProperty Name="order" Relationship="Self.fk_sub_order_order1" FromRole="sub_order" ToRole="order" />
+          <NavigationProperty Name="user" Relationship="Self.fk_sub_order_user1" FromRole="sub_order" ToRole="user" />
+        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="user_id" />
@@ -537,42 +514,9 @@
           <Property Name="activation_code" Type="String" MaxLength="38" FixedLength="false" Unicode="false" />
           <Property Name="reset_pass_ac" Type="String" MaxLength="38" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="carts" Relationship="Self.fk_user_has_analysis_in_lab_user1" FromRole="user" ToRole="cart" />
-          <NavigationProperty Name="orders" Relationship="Self.fk_analysis_in_lab_has_user_user1" FromRole="user" ToRole="order" />
-          <NavigationProperty Name="results" Relationship="Self.fk_analysis_in_lab_has_user_user2" FromRole="user" ToRole="result" />
           <NavigationProperty Name="reviews" Relationship="Self.fk_user_has_Labs_user1" FromRole="user" ToRole="review" />
+          <NavigationProperty Name="sub_order" Relationship="Self.fk_sub_order_user1" FromRole="user" ToRole="sub_order" />
         </EntityType>
-        <Association Name="fk_analysis_in_lab_has_user_analysis_in_lab1">
-          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="order" Type="Self.order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="analysis_in_lab">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Labs_id" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Lab_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_analysis_in_lab_has_user_analysis_in_lab2">
-          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="result" Type="Self.result" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="analysis_in_lab">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Labs_id" />
-            </Principal>
-            <Dependent Role="result">
-              <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="Labs_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_medical_analysis_has_Labs_Labs1">
           <End Role="lab" Type="Self.lab" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -598,6 +542,22 @@
             </Principal>
             <Dependent Role="analysis_in_lab">
               <PropertyRef Name="medical_analysis_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sub_order_analysis_in_lab1">
+          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analysis_in_lab">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="Labs_id" />
+            </Principal>
+            <Dependent Role="sub_order">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="analysis_in_lab_Labs_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -659,31 +619,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_analysis_in_lab_has_user_user1">
-          <End Role="user" Type="Self.user" Multiplicity="1">
+        <Association Name="fk_sub_order_order1">
+          <End Role="order" Type="Self.order" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="user_id" />
+            <Principal Role="order">
+              <PropertyRef Name="order_id" />
             </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_analysis_in_lab_has_user_user2">
-          <End Role="user" Type="Self.user" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="result" Type="Self.result" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="user_id" />
-            </Principal>
-            <Dependent Role="result">
-              <PropertyRef Name="user_id" />
+            <Dependent Role="sub_order">
+              <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -701,6 +647,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_sub_order_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="sub_order">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="analysis_samples">
           <End Role="medical_analysis" Type="Self.medical_analysis" Multiplicity="*" />
           <End Role="sample" Type="Self.sample" Multiplicity="*" />
@@ -714,18 +674,10 @@
           <EntitySet Name="medical_analysis" EntityType="Self.medical_analysis" />
           <EntitySet Name="orders" EntityType="Self.order" />
           <EntitySet Name="requests" EntityType="Self.request" />
-          <EntitySet Name="results" EntityType="Self.result" />
           <EntitySet Name="reviews" EntityType="Self.review" />
           <EntitySet Name="samples" EntityType="Self.sample" />
+          <EntitySet Name="sub_order" EntityType="Self.sub_order" />
           <EntitySet Name="users" EntityType="Self.user" />
-          <AssociationSet Name="fk_analysis_in_lab_has_user_analysis_in_lab1" Association="Self.fk_analysis_in_lab_has_user_analysis_in_lab1">
-            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
-            <End Role="order" EntitySet="orders" />
-          </AssociationSet>
-          <AssociationSet Name="fk_analysis_in_lab_has_user_analysis_in_lab2" Association="Self.fk_analysis_in_lab_has_user_analysis_in_lab2">
-            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
-            <End Role="result" EntitySet="results" />
-          </AssociationSet>
           <AssociationSet Name="fk_medical_analysis_has_Labs_Labs1" Association="Self.fk_medical_analysis_has_Labs_Labs1">
             <End Role="lab" EntitySet="labs" />
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
@@ -733,6 +685,10 @@
           <AssociationSet Name="fk_medical_analysis_has_Labs_medical_analysis1" Association="Self.fk_medical_analysis_has_Labs_medical_analysis1">
             <End Role="medical_analysis" EntitySet="medical_analysis" />
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sub_order_analysis_in_lab1" Association="Self.fk_sub_order_analysis_in_lab1">
+            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
+            <End Role="sub_order" EntitySet="sub_order" />
           </AssociationSet>
           <AssociationSet Name="fk_user_has_analysis_in_lab_analysis_in_lab1" Association="Self.fk_user_has_analysis_in_lab_analysis_in_lab1">
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
@@ -750,17 +706,17 @@
             <End Role="lab" EntitySet="labs" />
             <End Role="review" EntitySet="reviews" />
           </AssociationSet>
-          <AssociationSet Name="fk_analysis_in_lab_has_user_user1" Association="Self.fk_analysis_in_lab_has_user_user1">
-            <End Role="user" EntitySet="users" />
+          <AssociationSet Name="fk_sub_order_order1" Association="Self.fk_sub_order_order1">
             <End Role="order" EntitySet="orders" />
-          </AssociationSet>
-          <AssociationSet Name="fk_analysis_in_lab_has_user_user2" Association="Self.fk_analysis_in_lab_has_user_user2">
-            <End Role="user" EntitySet="users" />
-            <End Role="result" EntitySet="results" />
+            <End Role="sub_order" EntitySet="sub_order" />
           </AssociationSet>
           <AssociationSet Name="fk_user_has_Labs_user1" Association="Self.fk_user_has_Labs_user1">
             <End Role="user" EntitySet="users" />
             <End Role="review" EntitySet="reviews" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sub_order_user1" Association="Self.fk_sub_order_user1">
+            <End Role="user" EntitySet="users" />
+            <End Role="sub_order" EntitySet="sub_order" />
           </AssociationSet>
           <AssociationSet Name="analysis_samples" Association="Self.analysis_samples">
             <End Role="medical_analysis" EntitySet="medical_analysis" />
@@ -838,9 +794,7 @@
           <EntitySetMapping Name="orders">
             <EntityTypeMapping TypeName="thaliliModel.order">
               <MappingFragment StoreEntitySet="order">
-                <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
-                <ScalarProperty Name="Lab_id" ColumnName="Lab_id" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="response_time" ColumnName="response_time" />
               </MappingFragment>
@@ -855,16 +809,6 @@
                 <ScalarProperty Name="phone_number" ColumnName="phone number" />
                 <ScalarProperty Name="owner_name" ColumnName="owner name" />
                 <ScalarProperty Name="email" ColumnName="email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="results">
-            <EntityTypeMapping TypeName="thaliliModel.result">
-              <MappingFragment StoreEntitySet="result">
-                <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
-                <ScalarProperty Name="Labs_id" ColumnName="Labs_id" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="pdf" ColumnName="pdf" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -883,6 +827,19 @@
               <MappingFragment StoreEntitySet="sample">
                 <ScalarProperty Name="sample__id" ColumnName="sample_ id" />
                 <ScalarProperty Name="sample_name" ColumnName="sample name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sub_order">
+            <EntityTypeMapping TypeName="thaliliModel.sub_order">
+              <MappingFragment StoreEntitySet="sub_order">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
+                <ScalarProperty Name="analysis_in_lab_Labs_id" ColumnName="analysis_in_lab_Labs_id" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="is_finshed" ColumnName="is_finshed" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

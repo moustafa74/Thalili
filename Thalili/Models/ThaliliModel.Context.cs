@@ -33,9 +33,9 @@ namespace Thalili.Models
         public virtual DbSet<medical_analysis> medical_analysis { get; set; }
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<request> requests { get; set; }
-        public virtual DbSet<result> results { get; set; }
         public virtual DbSet<review> reviews { get; set; }
         public virtual DbSet<sample> samples { get; set; }
+        public virtual DbSet<sub_order> sub_order { get; set; }
         public virtual DbSet<user> users { get; set; }
     }
 }

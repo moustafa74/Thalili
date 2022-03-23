@@ -102,15 +102,15 @@ function arrow_clicked() {
 
 //Start Functions of Login Page 
 function changeLogin(h3text, formaction, idofbutton, idofanother, backgroundclass, removeoldbackgroundclass) {
-    let element = document.querySelector(".loginPageForm");
+    let element = document.querySelector(".FormPage");
     let h3InElement = element.querySelector('h3');
     let forminElement = element.querySelector('form');
     h3InElement.textContent = h3text;
     forminElement.setAttribute('action', formaction);
     document.querySelector(idofbutton).classList.add("loginChangeBtnsActive");
     document.querySelector(idofanother).classList.remove("loginChangeBtnsActive");
-    document.querySelector(".aLoginPage").classList.add(backgroundclass);
-    document.querySelector(".aLoginPage").classList.remove(removeoldbackgroundclass);
+    document.querySelector(".FormPage").classList.add(backgroundclass);
+    document.querySelector(".FormPage").classList.remove(removeoldbackgroundclass);
 }
 function changeLoginUserButton() {
     changeLogin("مستخدم عادي", "userLogin.php", "#user-btn", "#lab-owner-btn", "aLoginPageForUser", "aLoginPageForLabOwner");
