@@ -12,18 +12,11 @@ namespace Thalili.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tag
+    public partial class admin
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tag()
-        {
-            this.medical_analysis = new HashSet<medical_analysis>();
-        }
-    
-        public int tag_id { get; set; }
+        public int admin1 { get; set; }
         public string name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<medical_analysis> medical_analysis { get; set; }
+        public string email { get; set; }
+        public string pass { get; set; }
     }
 }

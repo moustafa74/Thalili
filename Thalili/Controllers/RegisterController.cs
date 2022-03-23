@@ -6,13 +6,14 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Thalili.Models;
+using Thalili.Helpers;
 
 namespace Thalili.Controllers
 {
     public class RegisterController : Controller
     {
-
-        thaliliEntities1 Context = new thaliliEntities1();
+        
+        thaliliEntities Context = new thaliliEntities();
         
         public ActionResult Index()
         {

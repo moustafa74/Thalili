@@ -19,7 +19,7 @@ namespace Thalili.Models
         {
             this.orders = new HashSet<order>();
             this.results = new HashSet<result>();
-            this.users = new HashSet<user>();
+            this.carts = new HashSet<cart>();
         }
     
         public int medical_analysis_id { get; set; }
@@ -33,6 +33,6 @@ namespace Thalili.Models
         public virtual lab lab { get; set; }
         public virtual medical_analysis medical_analysis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> users { get; set; }
+        public virtual ICollection<cart> carts { get; set; }
     }
 }

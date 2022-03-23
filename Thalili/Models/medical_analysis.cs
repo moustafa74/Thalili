@@ -19,18 +19,16 @@ namespace Thalili.Models
         {
             this.analysis_in_lab = new HashSet<analysis_in_lab>();
             this.samples = new HashSet<sample>();
-            this.tags = new HashSet<tag>();
         }
     
         public int medical_analysis_id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
+        public string img { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analysis_in_lab> analysis_in_lab { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sample> samples { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tag> tags { get; set; }
     }
 }

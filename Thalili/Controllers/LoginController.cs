@@ -6,11 +6,12 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Thalili.Models;
+using Thalili.Helpers;
 namespace Thalili.Controllers
 {
     public class LoginController : Controller
     {
-        thaliliEntities1 Context = new thaliliEntities1();
+        thaliliEntities Context = new thaliliEntities();
         // GET: Login
         
         public ActionResult Index()

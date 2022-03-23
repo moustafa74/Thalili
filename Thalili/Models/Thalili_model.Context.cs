@@ -13,10 +13,10 @@ namespace Thalili.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class thaliliEntities1 : DbContext
+    public partial class thaliliEntities : DbContext
     {
-        public thaliliEntities1()
-            : base("name=thaliliEntities1")
+        public thaliliEntities()
+            : base("name=thaliliEntities")
         {
         }
     
@@ -25,7 +25,9 @@ namespace Thalili.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<admin> admins { get; set; }
         public virtual DbSet<analysis_in_lab> analysis_in_lab { get; set; }
+        public virtual DbSet<cart> carts { get; set; }
         public virtual DbSet<lab> labs { get; set; }
         public virtual DbSet<lab_owner> lab_owner { get; set; }
         public virtual DbSet<medical_analysis> medical_analysis { get; set; }
@@ -34,7 +36,6 @@ namespace Thalili.Models
         public virtual DbSet<result> results { get; set; }
         public virtual DbSet<review> reviews { get; set; }
         public virtual DbSet<sample> samples { get; set; }
-        public virtual DbSet<tag> tags { get; set; }
         public virtual DbSet<user> users { get; set; }
     }
 }

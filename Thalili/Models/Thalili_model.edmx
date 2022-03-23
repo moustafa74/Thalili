@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="thaliliModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin" />
+          </Key>
+          <Property Name="admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
         <EntityType Name="analysis_in_lab">
           <Key>
             <PropertyRef Name="medical_analysis_id" />
@@ -22,14 +31,6 @@
           <Property Name="medical_analysis_id" Type="int" Nullable="false" />
           <Property Name="Samples_ id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="analysis_tags">
-          <Key>
-            <PropertyRef Name="medical_analysis_id" />
-            <PropertyRef Name="Tags_id" />
-          </Key>
-          <Property Name="medical_analysis_id" Type="int" Nullable="false" />
-          <Property Name="Tags_id" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="cart">
           <Key>
             <PropertyRef Name="user_id" />
@@ -39,6 +40,7 @@
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="analysis_id" Type="int" Nullable="false" />
           <Property Name="Lab_id" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" />
         </EntityType>
         <EntityType Name="lab">
           <Key>
@@ -49,6 +51,7 @@
           <Property Name="location" Type="varchar" MaxLength="45" />
           <Property Name="description" Type="varchar" MaxLength="1000" />
           <Property Name="lab_rating" Type="decimal" Precision="1" Scale="1" />
+          <Property Name="img" Type="varchar" MaxLength="50" />
           <Property Name="lab_owner_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="lab_owner">
@@ -67,6 +70,7 @@
           <Property Name="medical_analysis_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="1000" />
+          <Property Name="img" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="order">
           <Key>
@@ -100,7 +104,7 @@
           <Property Name="medical_analysis_id" Type="int" Nullable="false" />
           <Property Name="Labs_id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="pdf" Type="varchar" MaxLength="45" />
+          <Property Name="pdf" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="review">
           <Key>
@@ -118,13 +122,6 @@
           </Key>
           <Property Name="sample_ id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sample name" Type="varchar" MaxLength="45" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tags">
-          <Key>
-            <PropertyRef Name="tag_id" />
-          </Key>
-          <Property Name="tag_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -268,34 +265,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_medical_analysis_has_Tags_medical_analysis1">
-          <End Role="medical_analysis" Type="Self.medical_analysis" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="analysis_tags" Type="Self.analysis_tags" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="medical_analysis">
-              <PropertyRef Name="medical_analysis_id" />
-            </Principal>
-            <Dependent Role="analysis_tags">
-              <PropertyRef Name="medical_analysis_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_medical_analysis_has_Tags_Tags1">
-          <End Role="tags" Type="Self.tags" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="analysis_tags" Type="Self.analysis_tags" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tags">
-              <PropertyRef Name="tag_id" />
-            </Principal>
-            <Dependent Role="analysis_tags">
-              <PropertyRef Name="Tags_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_user_has_analysis_in_lab_analysis_in_lab1">
           <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -355,9 +324,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="thaliliModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="analysis_in_lab" EntityType="Self.analysis_in_lab" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="analysis_samples" EntityType="Self.analysis_samples" Schema="thalili" store:Type="Tables" />
-          <EntitySet Name="analysis_tags" EntityType="Self.analysis_tags" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="cart" EntityType="Self.cart" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="lab" EntityType="Self.lab" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="lab_owner" EntityType="Self.lab_owner" Schema="thalili" store:Type="Tables" />
@@ -367,7 +336,6 @@
           <EntitySet Name="result" EntityType="Self.result" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="review" EntityType="Self.review" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="sample" EntityType="Self.sample" Schema="thalili" store:Type="Tables" />
-          <EntitySet Name="tags" EntityType="Self.tags" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="thalili" store:Type="Tables" />
           <AssociationSet Name="fk_analysis_in_lab_has_user_analysis_in_lab1" Association="Self.fk_analysis_in_lab_has_user_analysis_in_lab1">
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
@@ -405,14 +373,6 @@
             <End Role="sample" EntitySet="sample" />
             <End Role="analysis_samples" EntitySet="analysis_samples" />
           </AssociationSet>
-          <AssociationSet Name="fk_medical_analysis_has_Tags_medical_analysis1" Association="Self.fk_medical_analysis_has_Tags_medical_analysis1">
-            <End Role="medical_analysis" EntitySet="medical_analysis" />
-            <End Role="analysis_tags" EntitySet="analysis_tags" />
-          </AssociationSet>
-          <AssociationSet Name="fk_medical_analysis_has_Tags_Tags1" Association="Self.fk_medical_analysis_has_Tags_Tags1">
-            <End Role="tags" EntitySet="tags" />
-            <End Role="analysis_tags" EntitySet="analysis_tags" />
-          </AssociationSet>
           <AssociationSet Name="fk_user_has_analysis_in_lab_analysis_in_lab1" Association="Self.fk_user_has_analysis_in_lab_analysis_in_lab1">
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
             <End Role="cart" EntitySet="cart" />
@@ -435,6 +395,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="thaliliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin1" />
+          </Key>
+          <Property Name="admin1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="analysis_in_lab">
           <Key>
             <PropertyRef Name="medical_analysis_id" />
@@ -447,7 +416,20 @@
           <NavigationProperty Name="results" Relationship="Self.fk_analysis_in_lab_has_user_analysis_in_lab2" FromRole="analysis_in_lab" ToRole="result" />
           <NavigationProperty Name="lab" Relationship="Self.fk_medical_analysis_has_Labs_Labs1" FromRole="analysis_in_lab" ToRole="lab" />
           <NavigationProperty Name="medical_analysis" Relationship="Self.fk_medical_analysis_has_Labs_medical_analysis1" FromRole="analysis_in_lab" ToRole="medical_analysis" />
-          <NavigationProperty Name="users" Relationship="Self.cart" FromRole="analysis_in_lab" ToRole="user" />
+          <NavigationProperty Name="carts" Relationship="Self.fk_user_has_analysis_in_lab_analysis_in_lab1" FromRole="analysis_in_lab" ToRole="cart" />
+        </EntityType>
+        <EntityType Name="cart">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="analysis_id" />
+            <PropertyRef Name="Lab_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="analysis_id" Type="Int32" Nullable="false" />
+          <Property Name="Lab_id" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" />
+          <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_user_has_analysis_in_lab_analysis_in_lab1" FromRole="cart" ToRole="analysis_in_lab" />
+          <NavigationProperty Name="user" Relationship="Self.fk_user_has_analysis_in_lab_user1" FromRole="cart" ToRole="user" />
         </EntityType>
         <EntityType Name="lab">
           <Key>
@@ -458,6 +440,7 @@
           <Property Name="location" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="lab_rating" Type="Decimal" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="lab_owner_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_medical_analysis_has_Labs_Labs1" FromRole="lab" ToRole="analysis_in_lab" />
           <NavigationProperty Name="lab_owner" Relationship="Self.fk_Labs_lab_owner1" FromRole="lab" ToRole="lab_owner" />
@@ -480,9 +463,9 @@
           <Property Name="medical_analysis_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_medical_analysis_has_Labs_medical_analysis1" FromRole="medical_analysis" ToRole="analysis_in_lab" />
           <NavigationProperty Name="samples" Relationship="Self.analysis_samples" FromRole="medical_analysis" ToRole="sample" />
-          <NavigationProperty Name="tags" Relationship="Self.analysis_tags" FromRole="medical_analysis" ToRole="tags" />
         </EntityType>
         <EntityType Name="order">
           <Key>
@@ -518,7 +501,7 @@
           <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
           <Property Name="Labs_id" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="pdf" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pdf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_analysis_in_lab_has_user_analysis_in_lab2" FromRole="result" ToRole="analysis_in_lab" />
           <NavigationProperty Name="user" Relationship="Self.fk_analysis_in_lab_has_user_user2" FromRole="result" ToRole="user" />
         </EntityType>
@@ -542,14 +525,6 @@
           <Property Name="sample_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="medical_analysis" Relationship="Self.analysis_samples" FromRole="sample" ToRole="medical_analysis" />
         </EntityType>
-        <EntityType Name="tag">
-          <Key>
-            <PropertyRef Name="tag_id" />
-          </Key>
-          <Property Name="tag_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="medical_analysis" Relationship="Self.analysis_tags" FromRole="tags" ToRole="medical_analysis" />
-        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="user_id" />
@@ -561,10 +536,10 @@
           <Property Name="Email_confirmed" Type="Boolean" Nullable="false" />
           <Property Name="activation_code" Type="String" MaxLength="38" FixedLength="false" Unicode="false" />
           <Property Name="reset_pass_ac" Type="String" MaxLength="38" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="carts" Relationship="Self.fk_user_has_analysis_in_lab_user1" FromRole="user" ToRole="cart" />
           <NavigationProperty Name="orders" Relationship="Self.fk_analysis_in_lab_has_user_user1" FromRole="user" ToRole="order" />
           <NavigationProperty Name="results" Relationship="Self.fk_analysis_in_lab_has_user_user2" FromRole="user" ToRole="result" />
           <NavigationProperty Name="reviews" Relationship="Self.fk_user_has_Labs_user1" FromRole="user" ToRole="review" />
-          <NavigationProperty Name="analysis_in_lab" Relationship="Self.cart" FromRole="user" ToRole="analysis_in_lab" />
         </EntityType>
         <Association Name="fk_analysis_in_lab_has_user_analysis_in_lab1">
           <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
@@ -623,6 +598,36 @@
             </Principal>
             <Dependent Role="analysis_in_lab">
               <PropertyRef Name="medical_analysis_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_has_analysis_in_lab_analysis_in_lab1">
+          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cart" Type="Self.cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analysis_in_lab">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="Labs_id" />
+            </Principal>
+            <Dependent Role="cart">
+              <PropertyRef Name="analysis_id" />
+              <PropertyRef Name="Lab_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_has_analysis_in_lab_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cart" Type="Self.cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="cart">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -700,16 +705,10 @@
           <End Role="medical_analysis" Type="Self.medical_analysis" Multiplicity="*" />
           <End Role="sample" Type="Self.sample" Multiplicity="*" />
         </Association>
-        <Association Name="analysis_tags">
-          <End Role="medical_analysis" Type="Self.medical_analysis" Multiplicity="*" />
-          <End Role="tags" Type="Self.tag" Multiplicity="*" />
-        </Association>
-        <Association Name="cart">
-          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="*" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="thaliliEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="thaliliEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
           <EntitySet Name="analysis_in_lab" EntityType="Self.analysis_in_lab" />
+          <EntitySet Name="carts" EntityType="Self.cart" />
           <EntitySet Name="labs" EntityType="Self.lab" />
           <EntitySet Name="lab_owner" EntityType="Self.lab_owner" />
           <EntitySet Name="medical_analysis" EntityType="Self.medical_analysis" />
@@ -718,7 +717,6 @@
           <EntitySet Name="results" EntityType="Self.result" />
           <EntitySet Name="reviews" EntityType="Self.review" />
           <EntitySet Name="samples" EntityType="Self.sample" />
-          <EntitySet Name="tags" EntityType="Self.tag" />
           <EntitySet Name="users" EntityType="Self.user" />
           <AssociationSet Name="fk_analysis_in_lab_has_user_analysis_in_lab1" Association="Self.fk_analysis_in_lab_has_user_analysis_in_lab1">
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
@@ -735,6 +733,14 @@
           <AssociationSet Name="fk_medical_analysis_has_Labs_medical_analysis1" Association="Self.fk_medical_analysis_has_Labs_medical_analysis1">
             <End Role="medical_analysis" EntitySet="medical_analysis" />
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_has_analysis_in_lab_analysis_in_lab1" Association="Self.fk_user_has_analysis_in_lab_analysis_in_lab1">
+            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
+            <End Role="cart" EntitySet="carts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_has_analysis_in_lab_user1" Association="Self.fk_user_has_analysis_in_lab_user1">
+            <End Role="user" EntitySet="users" />
+            <End Role="cart" EntitySet="carts" />
           </AssociationSet>
           <AssociationSet Name="fk_Labs_lab_owner1" Association="Self.fk_Labs_lab_owner1">
             <End Role="lab_owner" EntitySet="lab_owner" />
@@ -760,27 +766,39 @@
             <End Role="medical_analysis" EntitySet="medical_analysis" />
             <End Role="sample" EntitySet="samples" />
           </AssociationSet>
-          <AssociationSet Name="analysis_tags" Association="Self.analysis_tags">
-            <End Role="medical_analysis" EntitySet="medical_analysis" />
-            <End Role="tags" EntitySet="tags" />
-          </AssociationSet>
-          <AssociationSet Name="cart" Association="Self.cart">
-            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
-            <End Role="user" EntitySet="users" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="thaliliModelStoreContainer" CdmEntityContainer="thaliliEntities1">
+        <EntityContainerMapping StorageEntityContainer="thaliliModelStoreContainer" CdmEntityContainer="thaliliEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="thaliliModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="admin1" ColumnName="admin" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="analysis_in_lab">
             <EntityTypeMapping TypeName="thaliliModel.analysis_in_lab">
               <MappingFragment StoreEntitySet="analysis_in_lab">
                 <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
                 <ScalarProperty Name="Labs_id" ColumnName="Labs_id" />
                 <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carts">
+            <EntityTypeMapping TypeName="thaliliModel.cart">
+              <MappingFragment StoreEntitySet="cart">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="analysis_id" ColumnName="analysis_id" />
+                <ScalarProperty Name="Lab_id" ColumnName="Lab_id" />
+                <ScalarProperty Name="count" ColumnName="count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -792,6 +810,7 @@
                 <ScalarProperty Name="location" ColumnName="location" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="lab_rating" ColumnName="lab_rating" />
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="lab_owner_id" ColumnName="lab_owner_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -812,6 +831,7 @@
                 <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="img" ColumnName="img" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -866,14 +886,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tags">
-            <EntityTypeMapping TypeName="thaliliModel.tag">
-              <MappingFragment StoreEntitySet="tags">
-                <ScalarProperty Name="tag_id" ColumnName="tag_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="thaliliModel.user">
               <MappingFragment StoreEntitySet="user">
@@ -893,23 +905,6 @@
             </EndProperty>
             <EndProperty Name="sample">
               <ScalarProperty Name="sample__id" ColumnName="Samples_ id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="analysis_tags" TypeName="thaliliModel.analysis_tags" StoreEntitySet="analysis_tags">
-            <EndProperty Name="medical_analysis">
-              <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
-            </EndProperty>
-            <EndProperty Name="tags">
-              <ScalarProperty Name="tag_id" ColumnName="Tags_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="cart" TypeName="thaliliModel.cart" StoreEntitySet="cart">
-            <EndProperty Name="analysis_in_lab">
-              <ScalarProperty Name="medical_analysis_id" ColumnName="analysis_id" />
-              <ScalarProperty Name="Labs_id" ColumnName="Lab_id" />
-            </EndProperty>
-            <EndProperty Name="user">
-              <ScalarProperty Name="user_id" ColumnName="user_id" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
