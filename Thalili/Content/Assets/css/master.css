@@ -248,62 +248,62 @@ html {
         width: 22.8rem;
     }
 
-    .mainPage-searchSection .row form input[type='search'] {
-        width: 95%;
-        padding: 1vh;
-        padding-left: 1vw;
-        padding-right: 5rem;
-        font-family: "Janna LT";
-        font-size: 1.5rem;
-        border-radius: 10px;
-        border: none;
-        box-shadow: 0px 0px 5px 1px #5b79cc;
+.mySearchField {
+    width: 95%;
+    padding: 1vh;
+    padding-left: 1vw;
+    padding-right: 5rem;
+    font-family: "Janna LT";
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 5px 1px #5b79cc;
+}
+
+.mainPage-searchSection .row form input::placeholder {
+    color: #D2D2D2;
+}
+
+.mainPage-searchSection .row form div {
+    position: relative;
+}
+
+.mainPage-searchSection .row form #searchList {
+    direction: ltr;
+    width: fit-content;
+    font-family: "Janna LT";
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    position: absolute;
+    left: 7vw;
+    color: #D2D2D2;
+    background-color: transparent;
+}
+
+    .mainPage-searchSection .row form #searchList:focus {
+        color: black;
     }
 
-    .mainPage-searchSection .row form input::placeholder {
-        color: #D2D2D2;
-    }
-
-    .mainPage-searchSection .row form div {
-        position: relative;
-    }
-
-    .mainPage-searchSection .row form #searchList {
-        direction: ltr;
-        width: fit-content;
-        font-family: "Janna LT";
-        font-size: 1.5rem;
-        border: none;
-        outline: none;
-        position: absolute;
-        left: 7vw;
-        color: #D2D2D2;
-        background-color: transparent;
-    }
-
-        .mainPage-searchSection .row form #searchList:focus {
-            color: black;
-        }
-
-    .mainPage-searchSection .row form #mainPage-submitBtn {
-        background-color: #F79A3D;
-        background-image: url(../imgs/Group\ 625.png);
-        background-size: 50%;
-        background-repeat: no-repeat;
-        background-position: center;
-        padding: 1vh;
-        font-size: 1.5rem;
-        height: 100%;
-        width: 4rem;
-        position: absolute;
-        right: 2.5%;
-        border: none;
-        border: 1px solid #F79A3D;
-        border-radius: 0 10px 10px 0;
-    }
+.mySubmit-btn {
+    background-color: #F79A3D;
+    background-image: url(../imgs/Group\ 625.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1vh;
+    font-size: 1.5rem;
+    height: 100%;
+    width: 4rem;
+    position: absolute;
+    right: 0;
+    border: none;
+    border: 1px solid #F79A3D;
+    border-radius: 0 10px 10px 0;
+}
 
 @media(max-width: 480px) {
-    .mainPage-searchSection .row form input[type='search'] {
+    .mySearchField {
         padding-right: 1rem;
         border-radius: 5px;
         outline-color: #5B79CC;
@@ -318,7 +318,7 @@ html {
         color: #D2D2D2;
     }
 
-    .mainPage-searchSection .row form #mainPage-submitBtn {
+    .mySubmit-btn {
         display: block;
         position: static;
         background-size: 30%;
@@ -326,6 +326,7 @@ html {
         border-radius: 5px;
         margin: auto;
         margin-top: 2vh;
+        height: fit-content;
     }
 }
 
@@ -702,11 +703,11 @@ footer {
 }
 
 .FormPage .TheForm form input[type ="submit"] {
-    font-family: "Janna LT";
     font-size: 18px;
     padding-top: 7px;
     padding-bottom: 7px;
     border: none;
+    border-radius: 10px;
     background-color: #F79A3D;
     color: white;
     font-family: "Hanimation";
@@ -724,6 +725,7 @@ footer {
     font-family: "Hanimation";
     font-size: 18px;
     text-align: center;
+    border-radius: 10px;
     text-decoration: none;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -808,9 +810,162 @@ footer {
     background-image: url(../imgs/businessmen-making-handshake-city.png);
 }
 
-.partnerPage .TheForm {
-     border-radius: 20px;
+    .partnerPage .TheForm {
+        border-radius: 20px;
+    }
+/*-------------------------------------------*/
+/* Start Search Page */
+.searchPage {
+    background-color: #F1F3F3;
 }
+
+.mySearchResult .testResult > p, .mySearchResult .labResult > p {
+    font-family: "Hanimation";
+    font-size: 1.73333rem;
+    color: #C7C7C7;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.testSearchCard {
+    background-color: white;
+    /* min-height: 270px; */
+    height: fit-content;
+    border-radius: 1rem;
+    padding: 2px;
+    text-decoration: none;
+}
+
+    .testSearchCard p {
+        font-size: 1rem;
+        font-family: "Hanimation";
+        color: #5B79CC;
+        margin-bottom: 1px;
+        font-weight: 600;
+    }
+
+    .testSearchCard span {
+        font-size: 0.7rem;
+        color: #707070;
+        line-height: 100%;
+    }
+
+    .testSearchCard ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+        .testSearchCard ul li.tag {
+            font-family: "Hanimation";
+            font-size: 0.6rem;
+            color: white;
+            background-color: #5B79CC;
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+    .testSearchCard button {
+        background-color: #F79A3D;
+        color: white;
+        font-family: "Hanimation";
+        font-size: 0.6rem;
+        width: 80%;
+        text-align: center;
+    }
+
+#nextElementBtn {
+    right: 30%;
+}
+
+    #nextElementBtn svg {
+        font-size: 300%;
+        color: #9E9E9E;
+    }
+
+.filtterPart {
+    background-color: white;
+    border-radius: 10px;
+}
+
+    .filtterPart .container > p {
+        font-size: 1.6rem;
+        color: #707070;
+        font-weight: 600;
+        font-family: "Janna LT";
+        margin: 0;
+    }
+
+    .filtterPart .container hr {
+        margin-top: 0.4rem;
+    }
+
+    .filtterPart form a {
+        text-decoration: none;
+        font-size: 1rem;
+        font-family: "Janna LT";
+        color: #707070;
+        margin-top: 1rem;
+    }
+
+    .filtterPart .filtterOptions label, .filtterPart .filtterOptionsstar #allEval ~ label {
+        font-family: "Janna LT";
+        font-size: 1rem;
+        color: #9E9E9E;
+    }
+
+    .filtterPart .filtterOptionsstar svg {
+        font-size: 0.8rem;
+        color: #F0D738;
+    }
+
+.searchPage #filtterForm input[type ="submit"] {
+    font-size: 18px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: none;
+    border-radius: 10px;
+    background-color: #F79A3D;
+    color: white;
+    font-family: "Hanimation";
+    transition: 0.7s;
+}
+
+    .searchPage #filtterForm input[type ="submit"]:hover {
+        background-color: #e97b0d;
+    }
+
+.labSearchCard {
+    text-decoration: none;
+    background-color: white;
+    border-radius: 10px;
+}
+
+    .labSearchCard p {
+        font-size: 1.73333rem;
+        color: #5B79CC;
+        font-family: "Hanimation";
+        font-weight: 600;
+    }
+
+    .labSearchCard .evaluation svg {
+        font-size: 0.8rem;
+        color: #F0D738;
+    }
+
+    .labSearchCard .location img {
+        width: 0.8rem;
+    }
+
+    .labSearchCard .location small {
+        color: #707070;
+        font-size: 0.93rem;
+    }
+/* End Search Page */
+
+
 /* Start Lab Owner Page */
 .labOwnerPage .rightCont {
     height: 100vh;
@@ -818,17 +973,17 @@ footer {
     color: white;
 }
 
-.labOwnerPage .rightCont ul li {
-    background-color: transparent;
-}
+    .labOwnerPage .rightCont ul li {
+        background-color: transparent;
+    }
 
-.labOwnerPage .rightCont ul li span, .labOwnerPage .rightCont ul li svg {
-    color: white;
-}
+        .labOwnerPage .rightCont ul li span, .labOwnerPage .rightCont ul li svg {
+            color: white;
+        }
 
-.labOwnerPage .rightCont ul li svg {
-    margin-left: 10px;
-}
+        .labOwnerPage .rightCont ul li svg {
+            margin-left: 10px;
+        }
 
 .labOwnerPage .leftCont .leftsvg {
     color: #5B79CC;
@@ -840,32 +995,32 @@ footer {
     font-size: 2.13rem;
 }
 
-.labOwnerPage .leftCont .lefth3 ~ small {
-    color: #C3C3C3;
-}
+    .labOwnerPage .leftCont .lefth3 ~ small {
+        color: #C3C3C3;
+    }
 
 .labOwnerPage .leftCont {
     background-color: #7070701a;
 }
 
-.labOwnerPage .leftCont .leftCont-all .container {
-    background-color: white;
-}
+    .labOwnerPage .leftCont .leftCont-all .container {
+        background-color: white;
+    }
 
-.labOwnerPage .leftCont .leftCont-all .section-address {
-    font-family: "Hanimation";
-    font-size: 1.667rem;
-    font-weight: 600;
-    color: #A9A9A9;
-    padding-top: 2rem;
-}
+    .labOwnerPage .leftCont .leftCont-all .section-address {
+        font-family: "Hanimation";
+        font-size: 1.667rem;
+        font-weight: 600;
+        color: #A9A9A9;
+        padding-top: 2rem;
+    }
 
-.labOwnerPage .leftCont .leftCont-all .table-head {
-    font-family: "Janna LT";
-    font-size: 1rem;
-    color: #A9A9A9;
-    padding-bottom: 2rem;
-}
+    .labOwnerPage .leftCont .leftCont-all .table-head {
+        font-family: "Janna LT";
+        font-size: 1rem;
+        color: #A9A9A9;
+        padding-bottom: 2rem;
+    }
 
 .talabt-item {
     display: flex;
@@ -875,15 +1030,15 @@ footer {
     padding: 1rem 0;
 }
 
-.talabt-item div, .talabt-item div button {
-    font-family: "Janna LT";
-    font-size: 0.8rem;
-}
+    .talabt-item div, .talabt-item div button {
+        font-family: "Janna LT";
+        font-size: 0.8rem;
+    }
 
-.talabt-item ul {
-    padding: 0;
-    list-style: none;
-}
+    .talabt-item ul {
+        padding: 0;
+        list-style: none;
+    }
 
 .representativeHasSent {
     background-color: transparent;
