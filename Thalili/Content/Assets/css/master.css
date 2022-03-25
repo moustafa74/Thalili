@@ -886,6 +886,7 @@ footer {
     }
 
 .filtterPart {
+    height: fit-content;
     background-color: white;
     border-radius: 10px;
 }
