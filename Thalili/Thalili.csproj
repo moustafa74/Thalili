@@ -182,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Analysis_and_LabsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JoinAsPartnerController.cs" />
     <Compile Include="Controllers\LabDashboardController.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Models\sample.cs">
       <DependentUpon>ThaliliModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\search_view.cs" />
     <Compile Include="Models\sub_order.cs">
       <DependentUpon>ThaliliModel.tt</DependentUpon>
     </Compile>
@@ -1948,6 +1950,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Content\Results\" />
+    <Folder Include="Views\Analysis_and_Labs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Assets\css\bootstrap-5.1.3-dist\bootstrap-grid.css.map" />
@@ -2009,7 +2012,7 @@
     <Content Include="Views\JoinAsPartner\SaveData.cshtml" />
     <Content Include="Views\LabDashboard\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Shared\lab_analysis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

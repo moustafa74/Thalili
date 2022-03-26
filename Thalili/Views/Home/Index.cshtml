@@ -11,15 +11,15 @@
                 <div class="col-xxl-12 col-xl-10 col-lg-8 col-md-10 col-12">
                     <img src="~/Content/Assets/imgs/Group 640.png" alt="">
                     <p>صحة وامان لكل المرضى</p>
-                    <form action="" method="get">
+                    <form action="/search" method="get">
                         <div>
                             <input class="mySearchField" type="search" name="searchField" id="mainPage-searchField" placeholder="ابحث عن تحاليل او معامل">
-                            <select id="searchList" name="List">
-                                <option value="بحث في الكل"> بحث في الكل </option>
-                                <option value="معامل">معامل</option>
-                                <option value="تحاليل">تحاليل</option>
-                            </select>
-                            <input class="mySubmit-btn" type="submit" name="submitBtn" value="" id="mainPage-submitBtn">
+                            @*<select id="searchList" name="List">
+                                <option value="all"> بحث في الكل </option>
+                                <option value="labs">معامل</option>
+                                <option value="analysis">تحاليل</option>
+                            </select>*@
+                            <input class="mySubmit-btn" type="submit"  value="" id="mainPage-submitBtn">
                         </div>
                     </form>
                 </div>
