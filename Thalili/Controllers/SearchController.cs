@@ -26,9 +26,17 @@ namespace Thalili.Controllers
             ViewData["page"] = page;
             return View("lab_analysis",anal_lab);
         }
-        public ActionResult filters()
-        {
+        //public ActionResult filters(string searchField, int typeofsearch, int price, int rating)
+        //{
+        //    search_view result;
+        //    ViewData["searchField"] = searchField;
+        //    ViewData["page"] = 1;
+        //    if (typeofsearch == 1)
+        //    {
+        //        result =
+        //            }
 
-        }
+
+        //}
     }
 }

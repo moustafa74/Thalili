@@ -100,17 +100,18 @@
                     <p>التصفيات</p>
                     <hr>
                     <form action="/serach/filter" method="get" id="filtterForm">
+                        <input type="hidden" name="searchField" value="@ViewData["searchField"]">
                         <div>
                             <a class="collapsed d-flex flex-row justify-content-between" data-bs-toggle="collapse" href="#TypeofSearch">
                                 <p class="mb-1">بحث في</p>
                                 <i class="fa-solid fa-chevron-down"></i>
                             </a>
                             <div class="collapse show filtterOptions" id="TypeofSearch">
-                                <input type="radio" id="typeAll" name="typeofsearch" value="الكل" checked>
+                                <input type="radio" id="typeAll" name="typeofsearch" value="1" checked>
                                 <label for="typeAll"> الكل</label><br>
-                                <input type="radio" id="typeLabs" name="typeofsearch" value="المعامل">
+                                <input type="radio" id="typeLabs" name="typeofsearch" value="2">
                                 <label for="typeLabs"> المعامل</label><br>
-                                <input type="radio" id="typeTest" name="typeofsearch" value="التحاليل">
+                                <input type="radio" id="typeTest" name="typeofsearch" value="3">
                                 <label for="typeTest"> التحاليل</label>
                             </div>
                         </div>
@@ -120,15 +121,15 @@
                                 <i class="fa-solid fa-chevron-down"></i>
                             </a>
                             <div class="collapse show filtterOptions" id="TypeofTest">
-                                <input type="radio" id="TestAll" name="typeoftest" value="الكل" checked>
+                                <input type="radio" id="TestAll" name="price" value="1" checked>
                                 <label for="TestAll"> الكل</label><br>
-                                <input type="radio" id="bloodTest" name="typeoftest" value="اقل من 50">
+                                <input type="radio" id="bloodTest" name="price" value="2">
                                 <label for="bloodTest"> اقل من 50</label><br>
-                                <input type="radio" id="coronaTest" name="typeoftest" value="من 50 حتى 100">
+                                <input type="radio" id="coronaTest" name="price" value="3">
                                 <label for="coronaTest"> من 50 حتى 100</label><br>
-                                <input type="radio" id="urineTest" name="typeoftest" value="من 100 حتى 200">
+                                <input type="radio" id="urineTest" name="price" value="4">
                                 <label for="urineTest"> من 100 حتى 200</label><br>
-                                <input type="radio" id="urineTest" name="typeoftest" value="اكثر من 200">
+                                <input type="radio" id="urineTest" name="price" value="5">
                                 <label for="urineTest"> اكثر من 200</label>
                             </div>
                         </div>
@@ -138,9 +139,9 @@
                                 <i class="fa-solid fa-chevron-down"></i>
                             </a>
                             <div class="collapse show filtterOptionsstar" id="Evaluatin">
-                                <input type="radio" id="allEval" name="evaluatin" value="الكل" checked>
+                                <input type="radio" id="allEval" name="rating" value="6" checked>
                                 <label for="allEval"> الكل</label><br>
-                                <input type="radio" id="fiveEval" name="evaluatin" value="5">
+                                <input type="radio" id="fiveEval" name="rating" value="5">
                                 <label for="fiveEval" style="word-spacing: -10px;">
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
@@ -148,31 +149,30 @@
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
                                 </label><br>
-                                <input type="radio" id="fourEval" name="evaluatin" value="4">
+                                <input type="radio" id="fourEval" name="rating" value="4">
                                 <label for="fourEval" style="word-spacing: -10px;">
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
                                 </label><br>
-                                <input type="radio" id="threeEval" name="evaluatin" value="3">
+                                <input type="radio" id="threeEval" name="rating" value="3">
                                 <label for="threeEval" style="word-spacing: -10px;">
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
                                 </label><br>
-                                <input type="radio" id="twoEval" name="evaluatin" value="2">
+                                <input type="radio" id="twoEval" name="rating" value="2">
                                 <label for="twoEval" style="word-spacing: -10px;">
                                     <i class="fa fa-star col p-0"></i>
                                     <i class="fa fa-star col p-0"></i>
                                 </label><br>
-                                <input type="radio" id="oneEval" name="evaluatin" value="1">
+                                <input type="radio" id="oneEval" name="rating" value="1">
                                 <label for="oneEval" style="word-spacing: -10px;">
                                     <i class="fa fa-star col p-0"></i>
                                 </label><br>
                             </div>
                         </div>
-                        <input type="hidden" name="" value="">
                         <input class="my-3 w-100" type="submit" name="" value="تطبيــــق">
                     </form>
                 </div>
