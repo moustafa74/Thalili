@@ -8,28 +8,26 @@ namespace Thalili.Controllers
 {
     public class SearchController : Controller
     {
-       
+
         thaliliEntities context = new thaliliEntities();
-        public ActionResult Index(string searchField,int? page)
+        public ActionResult Index(string searchField, int? page)
         {
-           
+
             var labs = context.labs.Where(d => d.name.Contains(searchField)).ToList();
-            var analyss= context.medical_analysis.Where(d => d.name.Contains(searchField)).ToList();
-            search_view anal_lab = new search_view(labs,analyss);
+            var analyss = context.medical_analysis.Where(d => d.name.Contains(searchField)).ToList();
+            search_view anal_lab = new search_view(labs, analyss);
             ViewData["searchField"] = searchField;
             if (page == null)
                 page = 1;
-
             ViewData["page"] = page;
-            return View("lab_analysis",anal_lab);
+            return View("lab_analysis", anal_lab);
         }
-        public ActionResult filters(string searchField, int typeofsearch, int rating ,int? page )
+        public ActionResult filters(string searchField, int typeofsearch, int rating, int? page)
         {
             ViewData["isFilter"] = 1;
             search_view result = new search_view();
             if (page == null)
                 page = 1;
-         
             ViewData["searchField"] = searchField;
             ViewData["page"] = page;
             #region filters
@@ -40,18 +38,18 @@ namespace Thalili.Controllers
                 result.labList = labs;
                 result.analysisList = anlysis;
             }
-            else if (typeofsearch==2)
+            else if (typeofsearch == 2)
             {
                 var labs = context.labs.ToList();
                 result.labList = context.labs.ToList();
-              
+
             }
-            else if (typeofsearch==3)
+            else if (typeofsearch == 3)
             {
                 var anlysis = context.medical_analysis.ToList();
-                result.analysisList= context.medical_analysis.ToList();
+                result.analysisList = context.medical_analysis.ToList();
             }
-           
+
             if (rating == 1 && result.labList != null)
             {
                 result.labList = result.labList.Where(d => d.lab_rating >= 0 && d.lab_rating <= 1).ToList();

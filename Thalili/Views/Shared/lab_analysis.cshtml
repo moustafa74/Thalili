@@ -3,10 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <div class="searchPage">
     <div class="container">
-        <form action="" class="row pt-5 w-75">
+        <form action="/search" class="row pt-5 w-75">
             <div style="position: relative;">
                 <input class="mySearchField" type="search" name="searchField" placeholder="ابحث عن تحاليل او معامل" value="@ViewData["searchField"]">
                 <input class="mySubmit-btn" type="submit" value="">
@@ -16,127 +15,106 @@
             <div class="col-9">
                 @if (Model.analysisList != null)
                 {
-                    <div class="testResult">
-                        <p>نتائج التحاليل</p>
-                        @foreach (var analyss in Model.analysisList)
+                <div class="testResult">
+                    <p>نتائج التحاليل</p>
+                    @foreach (var analyss in Model.analysisList)
                         {
-                            <div class="row flex-column flex-md-row">
-                                <a class="col-9 col-sm-6 col-md m-auto mt-4 m-md-0 ms-md-3  px-2  testSearchCard" href="">
-                                    <img class="mt-2 d-flex mx-auto" src="@analyss.img" alt="" style="width:97%; height:104px">
-                                    <p class="pt-2 m-2 m-md-0">@analyss.name</p>
-                                    <span class="m-2 m-md-0">@analyss.description </span>
-                                    <ul class="m-0 mt-2">
-                                        @foreach (var sampl in analyss.samples)
+                    <div class="row flex-column flex-md-row">
+                        <a class="col-9 col-sm-6 col-md m-auto mt-4 m-md-0 ms-md-3  px-2  testSearchCard" href="">
+                            <img class="mt-2 d-flex mx-auto" src="@analyss.img" alt="" style="width:97%; height:104px">
+                            <p class="pt-2 m-2 m-md-0">@analyss.name</p>
+                            <span class="m-2 m-md-0">@analyss.description </span>
+                            <ul class="m-0 mt-2">
+                                @foreach (var sampl in analyss.samples)
                                         {
-                                            <li class="tag p-1 ms-1 mt-1">@sampl.sample_name</li>
+                                <li class="tag p-1 ms-1 mt-1">@sampl.sample_name</li>
                                         }
-                                    </ul>
-                                    <button type="button" class="btn d-flex mx-auto my-3 justify-content-center" onclick="">المزيد من التفاصيل</button>
-                                </a>
-                                <div class="col-1" style="position: relative;">
-                                    <button class="carousel-control-prev d-none d-md-flex" type="button" id="nextElementBtn">
-                                        <i class="fa-solid fa-chevron-left"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        }
+                            </ul>
+                            <button type="button" class="btn d-flex mx-auto my-3 justify-content-center" onclick="">المزيد من التفاصيل</button>
+                        </a>
+                        <div class="col-1" style="position: relative;">
+                            <button class="carousel-control-prev d-none d-md-flex" type="button" id="nextElementBtn">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                        </div>
                     </div>
+                        }
+                </div>
                 }
                 @if (Model.labList != null)
                 {
-                    <div class="labResult">
-                        <p>نتائج المعامل</p>
-                        @{int curent = Convert.ToInt32(ViewData["page"]);
-                        }
-                        @for (int i = curent - 1; i < Math.Min(Model.labList.Count(), curent); i++)
+                <div class="labResult">
+                    <p>نتائج المعامل</p>
+                    @{int curent = Convert.ToInt32(ViewData["page"]);
+                    }
+                    @for (int i = (curent-1)*4; i < Math.Min(Model.labList.Count(),4*curent); i++)
                         {
-                            <div class="row row flex-column flex-md-row my-3s">
-                                <a href="" class="col-9 col-sm-6 col-md m-auto mt-4  m-md-0 ms-md-3 labSearchCard py-3 row flex-column flex-md-row">
-                                    <div class="d-flex col-xl-3 col-md-4 col-12 m-auto m-md-0">
-                                        <img class="m-auto" src="@Model.labList[i].img" alt="" style="height: 136px; width:100%">
-                                    </div>
-                                    <div class="col-md">
-                                        <p class="m-2 m-md-0">@Model.labList[i].name</p>
-                                        <div class="evaluation m-2 m-md-0" style="word-spacing: -10px;">
-                                            @for (int j = 0; j < Model.labList[i].lab_rating; j++)
-                                            {
-                                                <i class="fa fa-star"></i>
-                                            }
-                                            <small>(@Model.labList[i].reviews.Count())</small>
-                                        </div>
-                                        <div class="location m-2 m-md-0">
-                                            <img src="~/Content/Assets/imgs/Exclusion 10.png" alt="">
-                                            <small>@Model.labList[i].location</small>
-                                        </div>
-                                    </div>
-                                </a>
+                    <div class="row row flex-column flex-md-row my-3s">
+                        <a href="" class="col-9 col-sm-6 col-md m-auto mt-4  m-md-0 ms-md-3 labSearchCard py-3 row flex-column flex-md-row">
+                            <div class="d-flex col-xl-3 col-md-4 col-12 m-auto m-md-0">
+                                <img class="m-auto" src="@Model.labList[i].img" alt="" style="height: 136px; width:100%">
                             </div>
-                        }
-
+                            <div class="col-md">
+                                <p class="m-2 m-md-0">@Model.labList[i].name</p>
+                                <div class="evaluation m-2 m-md-0" style="word-spacing: -10px;">
+                                    @for (int j = 0; j < Model.labList[i].lab_rating; j++)
+                                            {
+                                    <i class="fa fa-star"></i>
+                                            }
+                                    <small>(@Model.labList[i].reviews.Count())</small>
+                                </div>
+                                <div class="location m-2 m-md-0">
+                                    <img src="~/Content/Assets/imgs/Exclusion 10.png" alt="">
+                                    <small>@Model.labList[i].location</small>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-
-                    <nav class="paginat mt-3 mb-3">
-                        <ul class="d-flex justify-content-center" style="list-style:none;">
-                            <li class="page_item_arrow d-none"><i class="fa-solid fa-angle-right"></i></li>
-                            @for (int i = 1; i <= Model.labList.Count(); i++)
+                        }
+                </div>
+                <nav class="paginat mt-3 mb-3">
+                    <ul class="d-flex justify-content-center" style="list-style:none;">
+                        <li class="page_item_arrow d-none"><i class="fa-solid fa-angle-right"></i></li>
+                        @for (int i = 1; i <= Math.Ceiling((Model.labList.Count()*1.0)/4); i++)
+                        {
+                            if (i == curent)
                             {
-                                if (i == curent)
+                                <li class="page_item active" aria-current="page">
+                                    <span class="page_link">@i</span>
+                                </li>
+                            }
+                            else
+                            {
+                                string pagination = Request.QueryString["page"];
+                                string searchField = Request.QueryString["searchField"];
+                                if (pagination == null)
                                 {
-                                    <li class="page_item active" aria-current="page">
-                                        <span class="page_link">@i</span>
-                                    </li>
-                                }
-                                else
-                                {
-
-                                    if (Convert.ToInt32(ViewData["isFilter"]) == 0)
+                                    if (searchField == null)
                                     {
-                                        if (ViewData["searchField"] == null)
-                                        {
-                                            <li class="page_item"><a class="page_link" href="/Analysis_and_Labs/?page=@i">@i</a></li>
-                                        }
-                                        else
-                                        { 
-                                            <li class="page_item"><a class="page_link" href="/search/?searchField=@ViewData["searchField"]&page=@i">@i</a></li>
-                                        }
+                                    <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri?page=@i">@i</a></li>
                                     }
                                     else
                                     {
+                                    <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri&page=@i">@i</a></li>
 
-                                        if (ViewData["searchField"] != null)
-                                        {
-                                            string link = Request.QueryString["page"];
-                                            if (link == null)
-                                            {
-                                                <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri&page=@i">@i</a></li>
-
-                                            }
-                                            else
-                                            {
-                                                string linkk = Request.Url.AbsoluteUri;
-                                                string newLink = "";
-                                                for (int j = 0; j < linkk.Length - 1; j++)
-                                                {
-                                                    newLink += linkk[j];
-                                                }
-                                                newLink += i.ToString();
-
-
-
-                                                <li class="page_item"><a class="page_link" href="@newLink">@i</a></li>
-
-                                            }
-                                        }
-                                        else
-                                        {
-                                            <li class="page_item"><a class="page_link" href="/search/filters/?page=@i">@i</a></li>
-                                        }
                                     }
                                 }
+                                else
+                                {
+                                    string link = Request.Url.AbsoluteUri;
+                                    string newLink = "";
+                                    for (int j = 0; j < link.Length - 1; j++)
+                                    {
+                                        newLink += link[j];
+                                    }
+                                    newLink += i.ToString();
+                                    <li class="page_item"><a class="page_link" href="@newLink">@i</a></li>
+                                }
                             }
+                        }
                             <li class="page_item_arrow"><i class="fa-solid fa-angle-left"></i></li>
                         </ul>
-                    </nav>
+                </nav>
 
                 }
 
