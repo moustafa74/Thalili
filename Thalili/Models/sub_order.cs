@@ -18,7 +18,7 @@ namespace Thalili.Models
         public int medical_analysis_id { get; set; }
         public int analysis_in_lab_Labs_id { get; set; }
         public Nullable<int> count { get; set; }
-        public Nullable<sbyte> is_finshed { get; set; }
+        public Nullable<bool> is_finshed { get; set; }
         public string pdf { get; set; }
         public int order_id { get; set; }
     

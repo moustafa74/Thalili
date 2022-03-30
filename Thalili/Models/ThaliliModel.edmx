@@ -50,7 +50,7 @@
           <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="location" Type="varchar" MaxLength="45" />
           <Property Name="description" Type="varchar" MaxLength="1000" />
-          <Property Name="lab_rating" Type="decimal" Precision="1" Scale="1" />
+          <Property Name="lab_rating" Type="decimal" Precision="2" Scale="1" />
           <Property Name="img" Type="varchar" MaxLength="50" />
           <Property Name="lab_owner_id" Type="int" Nullable="false" />
         </EntityType>
@@ -118,7 +118,7 @@
           <Property Name="medical_analysis_id" Type="int" Nullable="false" />
           <Property Name="analysis_in_lab_Labs_id" Type="int" Nullable="false" />
           <Property Name="count" Type="int" />
-          <Property Name="is_finshed" Type="tinyint" />
+          <Property Name="is_finshed" Type="bool" />
           <Property Name="pdf" Type="varchar" MaxLength="50" />
           <Property Name="order_id" Type="int" Nullable="false" />
         </EntityType>
@@ -495,7 +495,7 @@
           <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
           <Property Name="analysis_in_lab_Labs_id" Type="Int32" Nullable="false" />
           <Property Name="count" Type="Int32" />
-          <Property Name="is_finshed" Type="SByte" />
+          <Property Name="is_finshed" Type="Boolean" />
           <Property Name="pdf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="order_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_sub_order_analysis_in_lab1" FromRole="sub_order" ToRole="analysis_in_lab" />
