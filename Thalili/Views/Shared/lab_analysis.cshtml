@@ -16,7 +16,6 @@
             <div class="col-9">
                 @if (Model.analysisList != null)
                 {
-
                     <div class="testResult">
                         <p>نتائج التحاليل</p>
                         @foreach (var analyss in Model.analysisList)
@@ -43,18 +42,12 @@
                         }
                     </div>
                 }
-
-
-
                 @if (Model.labList != null)
                 {
-
                     <div class="labResult">
                         <p>نتائج المعامل</p>
                         @{int curent = Convert.ToInt32(ViewData["page"]);
                         }
-
-
                         @for (int i = curent - 1; i < Math.Min(Model.labList.Count(), curent); i++)
                         {
                             <div class="row row flex-column flex-md-row my-3s">
