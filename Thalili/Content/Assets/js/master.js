@@ -178,3 +178,55 @@ function onsentrepres(TheElement) {
     document.getElementById('smallofItem').classList.remove('d-none');
 }
 // End Lab Owner Pages Functions
+
+// LabOwner Dashboard
+function active_Element(theLi) {
+    /*let ul = theLi.parentElement.parentElement;
+    let ul_childs = ul.children;
+    for (let i = 0; i < ul_childs.length - 1; i++) {
+        if (ul_childs[i] === theLi.parentElement) {
+            ul_childs[i].classList.add('active');
+        }
+        else {
+            ul_childs[i].classList.remove('active');
+        }
+    }*/
+}
+function addorEditForm(target, h3Text, formaction, submitValue) {
+    let section = document.getElementById(target);
+    let h3section = section.querySelector('h3');
+    h3section.textContent = h3Text;
+    section.classList.remove('d-none');
+    let form = section.querySelector('form');
+    form.setAttribute('action', formaction);
+    form.querySelector('input[type="submit"]').setAttribute('value', submitValue);
+}
+function addorEditThalil(theElement) {
+    let type = theElement.getAttribute('data-buttonType');
+    let target = theElement.getAttribute('data-parentTarget');
+    if (type === 'add') {
+        addorEditForm(target, "اضافة تحليل جديد", "addThalil", "إضافة");
+        document.getElementById(target).querySelector('#thalilName').removeAttribute('disabled');
+        document.getElementById(target).querySelector('#thalilName').setAttribute('value', '');
+        document.getElementById(target).querySelectorAll('input[type="text"]')[1].setAttribute('value', '');
+    }
+    else if (type === 'edit') {
+        addorEditForm(target, "تعديل التحليل الحالي", "editThalil", "تعديل");
+        document.getElementById(target).querySelector('#thalilName').setAttribute('disabled', '');
+        let nameofThalil = theElement.parentElement.parentElement.children[0].textContent;
+        let priceofThalil = theElement.parentElement.parentElement.children[1].textContent;
+        let newpriceofThalil = "";
+        for (let i = 0; i < priceofThalil.length; i++) {
+            if (isDigit(priceofThalil[i])) {
+                newpriceofThalil += priceofThalil[i];
+            }
+        }
+        document.getElementById(target).querySelector('#thalilName').setAttribute('value', nameofThalil);
+        document.getElementById(target).querySelectorAll('input[type="text"]')[1].setAttribute('value', newpriceofThalil);
+    }
+
+}
+function sendIdofDelete(TheParent) {
+    let val = TheParent.parentElement.parentElement.querySelector('input[type="hidden"]').value;
+    document.getElementById('YesDelete').setAttribute('value', val);
+}

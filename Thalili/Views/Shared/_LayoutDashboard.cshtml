@@ -20,6 +20,44 @@
     <script src="https://js.hcaptcha.com/1/api.js"></script>
 </head>
 <body>
+    <div class="labOwnerPage container-flud">
+        <div class="row m-0">
+            <div class="col-2 rightCont fixed-top">
+                <div class="container-flud">
+                    <h3 class="h3 pt-3">اسم المعمل</h3>
+                    <small>القاهرة</small>
+                    <hr>
+                    <ul class="list-group p-0 d-flex">
+                        <li class="list-group-item px-0 border-0">
+                            <a href="/LabDashboard/Orders" class="btn ps-0 w-100 text-end" onclick="active_Element(this)">
+                                <i class="fa-solid fa-list-check"></i>
+                                <span>الطلبات</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item px-0 border-0">
+                            <a href="/LabDashboard/Analysis" class="btn ps-0 w-100 text-end" onclick="active_Element(this)">
+                                <i class="fa-solid fa-flask"></i>
+
+                                <span>التحاليل</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item px-0 border-0">
+                            <a href="" class="btn ps-0 w-100 text-end" onclick="active_Element(this)">
+                                <i class="fa-solid fa-gear"></i>
+                                <span>اعدادات المعمل</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item px-0 border-0" style="position: absolute; bottom: 3vh;">
+                            <a href="" class="btn ps-0 w-100 text-end">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>تسجيل الخروج</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
         @RenderBody()
     </div>

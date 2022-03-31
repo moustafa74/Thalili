@@ -278,6 +278,8 @@
     <Content Include="Content\Assets\imgs\Group 625.png" />
     <Content Include="Content\Assets\imgs\Group 640.png" />
     <Content Include="Content\Assets\imgs\Group 656.png" />
+    <Content Include="Content\Assets\imgs\Group 854.png" />
+    <Content Include="Content\Assets\imgs\Group 855.png" />
     <Content Include="Content\Assets\imgs\Group_798.png" />
     <Content Include="Content\Assets\imgs\icons8_cardboard_box.png" />
     <Content Include="Content\Assets\imgs\icons8_egypt_1.png" />
@@ -2011,9 +2013,11 @@
     <None Include="Properties\PublishProfiles\Thalili - Web Deploy.pubxml" />
     <Content Include="Views\JoinAsPartner\Index.cshtml" />
     <Content Include="Views\JoinAsPartner\SaveData.cshtml" />
-    <Content Include="Views\LabDashboard\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
     <Content Include="Views\Shared\lab_analysis.cshtml" />
+    <Content Include="Views\LabDashboard\Orders.cshtml" />
+    <Content Include="Views\LabDashboard\Analysis.cshtml" />
+    <Content Include="Views\LabDashboard\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

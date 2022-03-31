@@ -8,8 +8,15 @@ namespace Thalili.Controllers
 {
     public class LabDashboardController : Controller
     {
-        // GET: LabDashboard
-        public ActionResult Index()
+        public ActionResult Orders()
+        {
+            return View();
+        }
+        public ActionResult Analysis()
+        {
+            return View();
+        }
+        public ActionResult Settings()
         {
             return View();
         }

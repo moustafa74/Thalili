@@ -2,9 +2,7 @@
     font-family: "Janna LT";
     src: url(../fonts/Janna-LT-Bold.ttf);
 }
-ul, li {
-    list-style: none!important;
-}
+
 @font-face {
     font-family: "Hanimation";
     src: url(../fonts/Hanimation.ttf);
@@ -978,29 +976,41 @@ footer {
 
     .labOwnerPage .rightCont ul li {
         background-color: transparent;
+        border-radius: 15px;
+        margin-top: 1rem;
     }
 
-        .labOwnerPage .rightCont ul li span, .labOwnerPage .rightCont ul li svg {
-            color: white;
-        }
-
-        .labOwnerPage .rightCont ul li svg {
-            margin-left: 10px;
-        }
-
-.labOwnerPage .leftCont .leftsvg {
-    color: #5B79CC;
-    font-size: 2.13rem;
-}
-
-.labOwnerPage .leftCont .lefth3 {
-    color: #5B79CC;
-    font-size: 2.13rem;
-}
-
-    .labOwnerPage .leftCont .lefth3 ~ small {
-        color: #C3C3C3;
+    .labOwnerPage .rightCont ul .active {
+        background-color: #222a3b;
+        margin-top: 1rem;
+        color: white;
     }
+
+    .labOwnerPage .rightCont ul li span, .labOwnerPage .rightCont ul li svg {
+        color: white;
+    }
+
+    .labOwnerPage .rightCont ul li svg {
+        margin-left: 10px;
+    }
+
+.labOwnerPage .leftCont {
+    min-height: 100vh;
+}
+
+    .labOwnerPage .leftCont .leftsvg {
+        color: #5B79CC;
+        font-size: 2.13rem;
+    }
+
+    .labOwnerPage .leftCont .lefth3 {
+        color: #5B79CC;
+        font-size: 2.13rem;
+    }
+
+        .labOwnerPage .leftCont .lefth3 ~ small {
+            color: #C3C3C3;
+        }
 
 .labOwnerPage .leftCont {
     background-color: #7070701a;
@@ -1050,49 +1060,3 @@ footer {
 }
 
 /* End Lab Owner Page */
-
-/* Start Pagination */
-.paginat {
-    display: block;
-    padding-left: 0;
-    list-style: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.page_item.active .page_link,
-.page_link:hover{
-    background-color: #5B79CC;
-    color: #fff;
-    border-color: #5B79CC;
-}
-.page_item_arrow {
-    display: flex;
-    color: #707070;
-    text-decoration: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    border-radius: 5px;
-    height: 50px;
-    width: 50px;
-    justify-content: center;
-    align-content: space-between;
-    align-items: center;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-.page_link {
-    display: flex;
-    color: #707070;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #707070;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    border-radius: 5px;
-    height: 50px;
-    width: 50px;
-    justify-content: center;
-    align-content: space-between;
-    align-items: center;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-/* End Pagination */

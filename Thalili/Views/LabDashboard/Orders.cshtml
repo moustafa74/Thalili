@@ -1,47 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Orders";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
 
 <div class="labOwnerPage container-flud">
     <div class="row m-0">
-        <div class="col-2 rightCont fixed-top">
-            <div class="container-flud">
-                <h3 class="h3 pt-3">اسم المعمل</h3>
-                <small>القاهرة</small>
-                <hr>
-                <ul class="list-group p-0 d-flex">
-                    <li class="list-group-item px-0 border-0">
-                        <button type="button" class="btn ps-0 w-100 text-end">
-                            <i class="fa-solid fa-list-check"></i>
-                            <span>الطلبات</span>
-                        </button>
-                    </li>
-                    <li class="list-group-item px-0 border-0">
-                        <button type="button" class="btn ps-0 w-100 text-end">
-                            <i class="fa-solid fa-flask"></i>
-
-                            <span>التحاليل</span>
-                        </button>
-                    </li>
-                    <li class="list-group-item px-0 border-0">
-                        <button type="button" class="btn ps-0 w-100 text-end">
-                            <i class="fa-solid fa-gear"></i>
-                            <span>اعدادات المعمل</span>
-                        </button>
-                    </li>
-                    <li class="list-group-item px-0 border-0" style="position: absolute; bottom: 3vh;">
-                        <button type="button" class="btn ps-0 w-100 text-end">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            <span>تسجيل الخروج</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <div class="col-2"></div>
-        <div class="col-10 leftCont pt-3 pe-3">
+        <div class="col-10 leftCont pt-3 pe-3" id="Talbat">
             <i class="fa-solid fa-list-check leftsvg"></i>
             <h3 class="h3 d-inline lefth3">الطلبــــات</h3>
             <small class="d-block pb-3">مرحبا بك مجددا</small>
