@@ -1059,4 +1059,64 @@ footer {
     border: none;
 }
 
+#AddorEditThalil h3 {
+    font-size: 2.1rem;
+    font-family: "Hanimation";
+    color: #5B79CC;
+}
+#AddorEditThalil label {
+    font-size: 1.2rem;
+    color: #D2D2D2;
+}
+#AddorEditThalil form {
+    font-family: "Janna LT";
+}
 /* End Lab Owner Page */
+/* Start Pagination */
+.paginat {
+    display: block;
+    padding-left: 0;
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.page_item.active .page_link,
+.page_link:hover {
+    background-color: #5B79CC;
+    color: #fff;
+    border-color: #5B79CC;
+}
+
+.page_item_arrow {
+    display: flex;
+    color: #707070;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.page_link {
+    display: flex;
+    color: #707070;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #707070;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+/* End Pagination */
