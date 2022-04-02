@@ -1,8 +1,9 @@
-﻿
-@{
-    ViewBag.Title = "Analysis";
-    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
-}
+﻿@using Thalili.Models
+@model List<analysis_in_lab>
+    @{
+        ViewBag.Title = "Analysis";
+        Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    }
 
 <div class="labOwnerPage container-flud">
     <div class="row m-0">
@@ -21,16 +22,19 @@
                                 <button class="btn" data-buttonType="add" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)" style="background-color: #5B79CC; color: white;">إضافة تحليل جديد</button>
                             </div>
                         </div>
+                        @foreach (var analysis in Model)
+                        {
                         <div class="row talabt-item justify-content-between" id="AddorEditThalil-item1">
-                            <div class="col">covid-19</div>
-                            <div class="col">215 ج.م</div>
+                            <div class="col">@analysis.medical_analysis.name</div>
+                            <div class="col">@analysis.price</div>
                             <div class="col d-flex justify-content-center">
                                 <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
                                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
                             </div>
-                            <input type="hidden" value="1">
+                            <input type="hidden" value="@analysis.medical_analysis_id">
                         </div>
-                        <div class="row talabt-item justify-content-between" id="AddorEditThalil-item2">
+                        }
+                        @*<div class="row talabt-item justify-content-between" id="AddorEditThalil-item2">
                             <div class="col">Blood</div>
                             <div class="col">220 ج.م</div>
                             <div class="col d-flex justify-content-center">
@@ -38,7 +42,7 @@
                                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
                             </div>
                             <input type="hidden" value="2">
-                        </div>
+                        </div>*@
                         <div class="modal" id="DeleteModal">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -67,12 +71,12 @@
                 <div class="col-3 d-none" id="AddorEditThalil">
                     <div class="container pt-2 pb-3 rounded-3">
                         <h3></h3>
-                        <form action="" method="post">
+                        <form action="/LabDashboard/EditThalil" method="post">
                             <div class="row"><label for="#thalilName">اسم التحليل</label></div>
-                            <div class="row"><input class="rounded-3" type="text" name="" id="thalilName"></div>
+                            <div class="row"><input class="rounded-3" type="text" name="tName" id="thalilName"></div>
                             <div class="row"><label for="">السعر</label></div>
                             <div class="row">
-                                <input class="col-10 rounded-3" type="text" name="">
+                                <input class="col-10 rounded-3" type="text" name="price">
                                 <div class="col-2">ج.م</div>
                             </div>
                             <div class="row mt-4">

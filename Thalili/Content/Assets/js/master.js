@@ -206,18 +206,18 @@ function addorEditThalil(theElement) {
     let target = theElement.getAttribute('data-parentTarget');
     if (type === 'add') {
         addorEditForm(target, "اضافة تحليل جديد", "addThalil", "إضافة");
-        document.getElementById(target).querySelector('#thalilName').removeAttribute('disabled');
+        document.getElementById(target).querySelector('#thalilName').removeAttribute('readonly');
         document.getElementById(target).querySelector('#thalilName').setAttribute('value', '');
         document.getElementById(target).querySelectorAll('input[type="text"]')[1].setAttribute('value', '');
     }
     else if (type === 'edit') {
         addorEditForm(target, "تعديل التحليل الحالي", "editThalil", "تعديل");
-        document.getElementById(target).querySelector('#thalilName').setAttribute('disabled', '');
+        document.getElementById(target).querySelector('#thalilName').setAttribute('readonly', '');
         let nameofThalil = theElement.parentElement.parentElement.children[0].textContent;
         let priceofThalil = theElement.parentElement.parentElement.children[1].textContent;
         let newpriceofThalil = "";
         for (let i = 0; i < priceofThalil.length; i++) {
-            if (isDigit(priceofThalil[i])) {
+            if (isDigit(priceofThalil[i]) || priceofThalil[i] == '.') {
                 newpriceofThalil += priceofThalil[i];
             }
         }
