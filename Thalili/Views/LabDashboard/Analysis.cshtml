@@ -29,7 +29,7 @@
                             <div class="col">@analysis.price</div>
                             <div class="col d-flex justify-content-center">
                                 <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal"  onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
                             </div>
                             <input type="hidden" value="@analysis.medical_analysis_id">
                         </div>
@@ -56,7 +56,9 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <a class="btn btn-danger" data-bs-dismiss="modal">لا</a>
-                                        <button id="YesDelete" type="submit" onclick="location.href='/LabDashboard/DeleteThalil'" name="id" class="btn btn-danger" value="">نعم</button>
+                                        <form action="/LabDashboard/DeleteThalil/" method="get">
+                                            <button id="YesDelete" type="submit"  name="id" class="btn btn-danger" value="">نعم</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

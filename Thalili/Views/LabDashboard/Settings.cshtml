@@ -3,6 +3,56 @@
     ViewBag.Title = "Settings";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
-
-<h2>Settings</h2>
-
+<div class="labOwnerPage container-flud">
+    <div class="row m-0">
+        <div class="col-2"></div>
+        <div class="col-10 leftCont pt-3 pe-3" id="Settings">
+            <i class="fa-solid fa-gear leftsvg me-5"></i>
+            <h3 class="h3 d-inline lefth3 ">اعدادات المعمل</h3>
+            <small class="d-block pb-3 me-5">مرحبا بك مجددا</small>
+            <div class="container pb-5 pt-3 leftCont-all" style="background-color:white;">
+                <form method="post" action="">
+                    <div class="row d-flex flex-row">
+                        <div class="col-2 d-flex flex-column">
+                            <label for="">صورة المعمل</label>
+                            <img class="img-fluid rounded-3" src="" alt="صورة المعمل" style="width:11rem; height:11rem" />
+                        </div>
+                        <div class="col d-flex flex-column justify-content-evenly">
+                            <div class="row">
+                                <div class="col d-flex flex-column">
+                                    <label class="form-label" for="">اسم صاحب المعمل</label>
+                                    <input class="mb-3" type="text" name="" value="" />
+                                </div>
+                                <div class="col d-flex flex-column">
+                                    <label class="form-label" for="">رقم الهاتف</label>
+                                    <input class="mb-3" type="text" name="" value="" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex flex-column">
+                                    <label class="form-label" for="">اسم المعمل</label>
+                                    <input class="mb-3" type="text" name="" value="" />
+                                </div>
+                                <div class="col d-flex flex-column">
+                                    <label class="form-label" for="">البريد الالكتروني</label>
+                                    <input class="mb-3" type="email" name="" value="" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="d-flex flex-column w-50">
+                                    <label class="form-label">الرقم السري</label>
+                                    <input class="mb-3" type="password" name="" value="" />
+                                </div>
+                            </div>
+                            <div class="row flex-row-reverse mt-5">
+                                <div class="d-flex flex-row-reverse w-50">
+                                    <input class="mb-3 btn" type="submit" name="" value="حفظ التعديلات" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
