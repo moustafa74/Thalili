@@ -73,9 +73,12 @@
                 <div class="col-3 d-none" id="AddorEditThalil">
                     <div class="container pt-2 pb-3 rounded-3">
                         <h3></h3>
+                        <div id="error">
+                         @Html.Raw(TempData["msg"])
+                        </div>
                         <form action="/LabDashboard/EditThalil" method="post">
                             <div class="row"><label for="#thalilName">اسم التحليل</label></div>
-                            <div class="row"><input class="rounded-3" type="text" name="tName" id="thalilName"></div>
+                            <div class="row"><input class="rounded-3" type="text" name="ThalilName" id="thalilName"></div>
                             <div class="row"><label for="">السعر</label></div>
                             <div class="row">
                                 <input class="col-10 rounded-3" type="text" name="price">

@@ -24,14 +24,34 @@ namespace Thalili.Controllers
 
             return View(analysis_in_lab);
         }
-        public ActionResult EditThalil(string tName, decimal price)
+        public ActionResult EditThalil(string ThalilName, decimal price)
         {
-            var edit = context.analysis_in_lab.FirstOrDefault(d => d.Labs_id == lab_id && d.medical_analysis.name == tName);
+            var edit = context.analysis_in_lab.FirstOrDefault(d => d.Labs_id == lab_id && d.medical_analysis.name == ThalilName);
             edit.price = price;
             context.SaveChanges();
             return RedirectToAction("Analysis");
         }
-        [HttpGet]
+
+        public ActionResult AddThalil(string ThalilName, decimal price)
+        {
+            try
+            {            
+                var analysis = context.medical_analysis.FirstOrDefault(d => d.name == ThalilName);
+                analysis_in_lab New_Analysis = new analysis_in_lab();
+                New_Analysis.Labs_id = lab_id;
+                New_Analysis.medical_analysis_id = analysis.medical_analysis_id;
+                New_Analysis.price = price;
+                context.analysis_in_lab.Add(New_Analysis);
+                context.SaveChanges();
+
+                return RedirectToAction("Analysis");
+            }
+            catch(Exception e)
+            {
+                TempData["msg"] = "<script>alert('Enter valid Analysis name');</script>";
+                return RedirectToAction("Analysis");
+            }
+        }
         public ActionResult DeleteThalil(int id)
         {
             var deleteitem = context.analysis_in_lab.FirstOrDefault(d => d.Labs_id == lab_id && d.medical_analysis_id == id);
