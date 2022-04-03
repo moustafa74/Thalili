@@ -223,9 +223,6 @@
       <DependentUpon>ThaliliModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\resetpassword.cs" />
-    <Compile Include="Models\result.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\review.cs">
       <DependentUpon>ThaliliModel.tt</DependentUpon>
     </Compile>

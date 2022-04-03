@@ -24,7 +24,6 @@ namespace Thalili.Controllers
         }
         public ActionResult filters(string searchField, int typeofsearch, int rating, int? page)
         {
-            ViewData["isFilter"] = 1;
             search_view result = new search_view();
             if (page == null)
                 page = 1;
