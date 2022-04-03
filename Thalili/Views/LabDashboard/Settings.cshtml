@@ -14,7 +14,10 @@
                 <form method="post" action="">
                     <div class="row d-flex flex-row">
                         <div class="col-2 d-flex flex-column">
-                            <label for="">صورة المعمل</label>
+                            <div class="row">
+                                <label class="col-8">صورة المعمل</label>
+                                <button type="button" class="col-4 btn" data-bs-toggle="modal" data-bs-target="#UploadImage"><img src="~/Content/Assets/imgs/Group 855.png" /></button>
+                            </div>
                             <img class="img-fluid rounded-3" src="" alt="صورة المعمل" style="width:11rem; height:11rem" />
                         </div>
                         <div class="col d-flex flex-column justify-content-evenly">
@@ -52,6 +55,28 @@
                         </div>
                     </div>
                 </form>
+                <div class="modal" id="UploadImage">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">رفع صورة</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" style="position: absolute; left: 1rem;"></button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="" method="get" id="UploadImageform">
+                                    <input type="file" name="" accept="image/*" />
+                                </form>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <a class="btn btn-danger" data-bs-dismiss="modal">لا</a>
+                                <button id="YesUpload" type="submit" form="UploadImageform" name="id" class="btn btn-danger">نعم</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
