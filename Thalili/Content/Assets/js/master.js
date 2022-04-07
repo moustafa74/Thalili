@@ -170,12 +170,19 @@ if (formofpage != null) {
 function onsentrepres(TheElement) {
     let parentId = TheElement.getAttribute('data-of-parent');
     let element = document.getElementById(parentId);
-    element.querySelector('button').innerHTML = "رفع نتيجة التحليل&nbsp;<i class='fa-solid fa-angle-left'></i>";
-    element.querySelector('button').setAttribute('onclick', '');
+    let button = element.querySelector('button');
+    button.innerHTML = "رفع نتيجة التحليل&nbsp;<i class='fa-solid fa-angle-left'></i>";
+    button.setAttribute('onclick', "location.href=''");
     element.setAttribute('id', 'OK-' + parentId);
-    element.querySelector('button').setAttribute('data-of-parent', 'OK-' + parentId);
+    button.setAttribute('data-of-parent', 'OK-' + parentId);
+    let frag = document.createDocumentFragment();
+    for (let i = 0; i < element.querySelectorAll('.tahlilName').length - 1; i++) {
+        let a = button.cloneNode(true);
+        frag.append(a);
+    }
+    element.querySelector('.talabt-item-buttons').append(frag);
     document.getElementById('oKOredered').firstChild.nextElementSibling.insertAdjacentElement("afterend", element);
-    document.getElementById('smallofItem').classList.remove('d-none');
+    element.querySelector('small').classList.remove('d-none');
 }
 // End Lab Owner Pages Functions
 
