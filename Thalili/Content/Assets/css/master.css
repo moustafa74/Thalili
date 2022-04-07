@@ -1071,6 +1071,9 @@ footer {
 #AddorEditThalil form {
     font-family: "Janna LT";
 }
+table tbody:nth-child(2n) {
+    background-color: #F2F2F2;
+}
 /* End Lab Owner Page */
 /* Start Pagination */
 .paginat {
@@ -1125,7 +1128,8 @@ footer {
 }
 #Settings input[type="text"],
 #Settings input[type="email"],
-#Settings input[type="password"] {
+#Settings input[type="password"],
+#Settings textarea {
     border: none;
     height: 3rem;
     box-shadow: 0px 0px 6px 0 #00000029;
@@ -1135,7 +1139,7 @@ footer {
     background-color: #5B79CC;
     color: white;
 }
-#Settings label {
+#Settings label{
     color: #D2D2D2;
     font-size: 1.2rem;
 }

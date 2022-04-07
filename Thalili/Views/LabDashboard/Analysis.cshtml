@@ -22,27 +22,32 @@
                                 <button class="btn" data-buttonType="add" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)" style="background-color: #5B79CC; color: white;">إضافة تحليل جديد</button>
                             </div>
                         </div>
-                        @foreach (var analysis in Model)
+                        @{
+                        int c = 1;
+                        foreach (var analysis in Model)
                         {
-                        <div class="row talabt-item justify-content-between" id="AddorEditThalil-item1">
-                            <div class="col">@analysis.medical_analysis.name</div>
-                            <div class="col">@analysis.price</div>
-                            <div class="col d-flex justify-content-center">
-                                <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal"  onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
+
+                            <div class="row talabt-item justify-content-between" id="AddorEditThalil-item-@c">
+                                <div class="col">@analysis.medical_analysis.name</div>
+                                <div class="col">@analysis.price</div>
+                                <div class="col d-flex justify-content-center">
+                                    <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
+                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
+                                </div>
+                                <input type="hidden" value="@analysis.medical_analysis_id">
                             </div>
-                            <input type="hidden" value="@analysis.medical_analysis_id">
-                        </div>
+                                c++;
+                        }
                         }
                         @*<div class="row talabt-item justify-content-between" id="AddorEditThalil-item2">
-                            <div class="col">Blood</div>
-                            <div class="col">220 ج.م</div>
-                            <div class="col d-flex justify-content-center">
-                                <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
-                            </div>
-                            <input type="hidden" value="2">
-                        </div>*@
+            <div class="col">Blood</div>
+            <div class="col">220 ج.م</div>
+            <div class="col d-flex justify-content-center">
+                <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
+            </div>
+            <input type="hidden" value="2">
+        </div>*@
                         <div class="modal" id="DeleteModal">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -57,7 +62,7 @@
                                     <div class="modal-footer">
                                         <a class="btn btn-danger" data-bs-dismiss="modal">لا</a>
                                         <form action="/LabDashboard/DeleteThalil/" method="get">
-                                            <button id="YesDelete" type="submit"  name="id" class="btn btn-danger" value="">نعم</button>
+                                            <button id="YesDelete" type="submit" name="id" class="btn btn-danger" value="">نعم</button>
                                         </form>
                                     </div>
                                 </div>
