@@ -11,12 +11,11 @@ namespace Thalili.Controllers
     public class LabDashboardController : Controller
     {
         thaliliEntities context = new thaliliEntities();
-        int lab_id = 4;
+        int lab_id = 1;
         public ActionResult Orders()
         {
-            var orders = context.sub_order.Where(d => d.analysis_in_lab_Labs_id == lab_id).ToList();
-            
-            return View(orders);
+            var sub = context.sub_order.Where(d => d.analysis_in_lab.Labs_id == lab_id).ToList();
+            return View(sub);
         }
         public ActionResult Analysis()
         {
