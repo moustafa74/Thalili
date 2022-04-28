@@ -29,6 +29,7 @@ namespace Thalili.Models
         public bool Email_confirmed { get; set; }
         public string activation_code { get; set; }
         public string reset_pass_ac { get; set; }
+        public string phone_number { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart> carts { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="thaliliModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="thaliliModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin" />
@@ -16,11 +16,11 @@
         </EntityType>
         <EntityType Name="analysis_in_lab">
           <Key>
-            <PropertyRef Name="Labs_id" />
             <PropertyRef Name="medical_analysis_id" />
+            <PropertyRef Name="Labs_id" />
           </Key>
-          <Property Name="Labs_id" Type="int" Nullable="false" />
           <Property Name="medical_analysis_id" Type="int" Nullable="false" />
+          <Property Name="Labs_id" Type="int" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="analysis_samples">
@@ -52,8 +52,8 @@
           <Property Name="description" Type="varchar" MaxLength="1000" />
           <Property Name="lab_rating" Type="decimal" Precision="2" Scale="1" />
           <Property Name="img" Type="varchar" MaxLength="50" />
+          <Property Name="phone_number" Type="varchar" MaxLength="15" />
           <Property Name="lab_owner_id" Type="int" Nullable="false" />
-          <Property Name="phone_number" Type="int" />
         </EntityType>
         <EntityType Name="lab_owner">
           <Key>
@@ -80,6 +80,7 @@
           <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date" Type="date" />
           <Property Name="response_time" Type="varchar" MaxLength="45" />
+          <Property Name="location" Type="varchar" MaxLength="60" />
         </EntityType>
         <EntityType Name="requests">
           <Key>
@@ -113,11 +114,11 @@
           <Key>
             <PropertyRef Name="user_id" />
             <PropertyRef Name="medical_analysis_id" />
-            <PropertyRef Name="analysis_in_lab_Labs_id" />
+            <PropertyRef Name="labs_id" />
           </Key>
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="medical_analysis_id" Type="int" Nullable="false" />
-          <Property Name="analysis_in_lab_Labs_id" Type="int" Nullable="false" />
+          <Property Name="labs_id" Type="int" Nullable="false" />
           <Property Name="count" Type="int" />
           <Property Name="is_finshed" Type="bool" />
           <Property Name="pdf" Type="varchar" MaxLength="50" />
@@ -134,6 +135,7 @@
           <Property Name="Email_confirmed" Type="bool" Nullable="false" />
           <Property Name="activation_code" Type="varchar" MaxLength="38" />
           <Property Name="reset_pass_ac" Type="varchar" MaxLength="38" />
+          <Property Name="phone_number" Type="varchar" MaxLength="15" />
         </EntityType>
         <Association Name="fk_Labs_lab_owner1">
           <End Role="lab_owner" Type="Self.lab_owner" Multiplicity="1">
@@ -205,6 +207,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_sub_order_analysis_in_lab1">
+          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analysis_in_lab">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="Labs_id" />
+            </Principal>
+            <Dependent Role="sub_order">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="labs_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_sub_order_order1">
           <End Role="order" Type="Self.order" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -230,6 +248,22 @@
             </Principal>
             <Dependent Role="sub_order">
               <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_has_analysis_in_lab_analysis_in_lab1">
+          <End Role="analysis_in_lab" Type="Self.analysis_in_lab" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cart" Type="Self.cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analysis_in_lab">
+              <PropertyRef Name="medical_analysis_id" />
+              <PropertyRef Name="Labs_id" />
+            </Principal>
+            <Dependent Role="cart">
+              <PropertyRef Name="analysis_id" />
+              <PropertyRef Name="Lab_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -309,6 +343,10 @@
             <End Role="sample" EntitySet="sample" />
             <End Role="analysis_samples" EntitySet="analysis_samples" />
           </AssociationSet>
+          <AssociationSet Name="fk_sub_order_analysis_in_lab1" Association="Self.fk_sub_order_analysis_in_lab1">
+            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
+            <End Role="sub_order" EntitySet="sub_order" />
+          </AssociationSet>
           <AssociationSet Name="fk_sub_order_order1" Association="Self.fk_sub_order_order1">
             <End Role="order" EntitySet="order" />
             <End Role="sub_order" EntitySet="sub_order" />
@@ -316,6 +354,10 @@
           <AssociationSet Name="fk_sub_order_user1" Association="Self.fk_sub_order_user1">
             <End Role="user" EntitySet="user" />
             <End Role="sub_order" EntitySet="sub_order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_has_analysis_in_lab_analysis_in_lab1" Association="Self.fk_user_has_analysis_in_lab_analysis_in_lab1">
+            <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
+            <End Role="cart" EntitySet="cart" />
           </AssociationSet>
           <AssociationSet Name="fk_user_has_analysis_in_lab_user1" Association="Self.fk_user_has_analysis_in_lab_user1">
             <End Role="user" EntitySet="user" />
@@ -330,7 +372,8 @@
             <End Role="review" EntitySet="review" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="thaliliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -379,7 +422,7 @@
           <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="lab_rating" Type="Decimal" />
           <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="phone_number" Type="Int32" />
+          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="lab_owner_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_medical_analysis_has_Labs_Labs1" FromRole="lab" ToRole="analysis_in_lab" />
           <NavigationProperty Name="lab_owner" Relationship="Self.fk_Labs_lab_owner1" FromRole="lab" ToRole="lab_owner" />
@@ -413,6 +456,7 @@
           <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date" Type="DateTime" />
           <Property Name="response_time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="sub_order" Relationship="Self.fk_sub_order_order1" FromRole="order" ToRole="sub_order" />
         </EntityType>
         <EntityType Name="request">
@@ -450,11 +494,11 @@
           <Key>
             <PropertyRef Name="user_id" />
             <PropertyRef Name="medical_analysis_id" />
-            <PropertyRef Name="analysis_in_lab_Labs_id" />
+            <PropertyRef Name="labs_id" />
           </Key>
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
-          <Property Name="analysis_in_lab_Labs_id" Type="Int32" Nullable="false" />
+          <Property Name="labs_id" Type="Int32" Nullable="false" />
           <Property Name="count" Type="Int32" />
           <Property Name="is_finshed" Type="Boolean" />
           <Property Name="pdf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -474,6 +518,7 @@
           <Property Name="Email_confirmed" Type="Boolean" Nullable="false" />
           <Property Name="activation_code" Type="String" MaxLength="38" FixedLength="false" Unicode="false" />
           <Property Name="reset_pass_ac" Type="String" MaxLength="38" FixedLength="false" Unicode="false" />
+          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="carts" Relationship="Self.fk_user_has_analysis_in_lab_user1" FromRole="user" ToRole="cart" />
           <NavigationProperty Name="reviews" Relationship="Self.fk_user_has_Labs_user1" FromRole="user" ToRole="review" />
           <NavigationProperty Name="sub_order" Relationship="Self.fk_sub_order_user1" FromRole="user" ToRole="sub_order" />
@@ -518,7 +563,7 @@
             </Principal>
             <Dependent Role="sub_order">
               <PropertyRef Name="medical_analysis_id" />
-              <PropertyRef Name="analysis_in_lab_Labs_id" />
+              <PropertyRef Name="labs_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -759,6 +804,7 @@
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="response_time" ColumnName="response_time" />
+                <ScalarProperty Name="location" ColumnName="location" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -797,7 +843,7 @@
               <MappingFragment StoreEntitySet="sub_order">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
-                <ScalarProperty Name="analysis_in_lab_Labs_id" ColumnName="analysis_in_lab_Labs_id" />
+                <ScalarProperty Name="labs_id" ColumnName="labs_id" />
                 <ScalarProperty Name="count" ColumnName="count" />
                 <ScalarProperty Name="is_finshed" ColumnName="is_finshed" />
                 <ScalarProperty Name="pdf" ColumnName="pdf" />
@@ -815,6 +861,7 @@
                 <ScalarProperty Name="Email_confirmed" ColumnName="Email_confirmed" />
                 <ScalarProperty Name="activation_code" ColumnName="activation_code" />
                 <ScalarProperty Name="reset_pass_ac" ColumnName="reset_pass_ac" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

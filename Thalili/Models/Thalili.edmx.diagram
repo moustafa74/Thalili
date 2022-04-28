@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f5f5ac5e0efc4753887b019bda253952" Name="Diagram1">
+      <Diagram DiagramId="74f5bf11ba524284a3f686698403f7c5" Name="Diagram1">
         <EntityTypeShape EntityType="thaliliModel.admin" Width="1.5" PointX="2.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.analysis_in_lab" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.cart" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.lab" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.lab_owner" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.medical_analysis" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="thaliliModel.order" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thaliliModel.order" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.request" Width="1.5" PointX="8.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.review" Width="1.5" PointX="11.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.sample" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\MrEvilx\source\repos\moustafa74\Thalili\Thalili\Models\ThaliliModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\wwwmo\source\repos\Thalili\Thalili\Models\Thalili.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -23,6 +23,7 @@ namespace Thalili.Models
         public int order_id { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public string response_time { get; set; }
+        public string location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sub_order> sub_order { get; set; }
