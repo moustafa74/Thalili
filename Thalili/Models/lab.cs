@@ -27,8 +27,8 @@ namespace Thalili.Models
         public string description { get; set; }
         public Nullable<decimal> lab_rating { get; set; }
         public string img { get; set; }
-        public Nullable<int> phone_number { get; set; }
         public int lab_owner_id { get; set; }
+        public string phone_number { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analysis_in_lab> analysis_in_lab { get; set; }

@@ -17,7 +17,7 @@ namespace Thalili.Models
         public int requst_ID { get; set; }
         public string name { get; set; }
         public string location { get; set; }
-        public Nullable<int> phone_number { get; set; }
+        public string phone_number { get; set; }
         public string owner_name { get; set; }
         public string email { get; set; }
     }

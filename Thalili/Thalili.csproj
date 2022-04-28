@@ -199,58 +199,58 @@
     </Compile>
     <Compile Include="Helpers\Crypto.cs" />
     <Compile Include="Models\admin.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\analysis_in_lab.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cart.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\lab.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\lab_owner.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\medical_analysis.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\order.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\request.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\resetpassword.cs" />
     <Compile Include="Models\review.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sample.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\search_view.cs" />
     <Compile Include="Models\sub_order.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThaliliModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ThaliliModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThaliliModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThaliliModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ThaliliModel.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\uploadFile.cs" />
     <Compile Include="Models\user.cs">
-      <DependentUpon>ThaliliModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1931,15 +1931,15 @@
     <Content Include="Content\Assets\webfonts\fa-solid-900.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ThaliliModel.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ThaliliModel.edmx</DependentUpon>
-      <LastGenOutput>ThaliliModel.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ThaliliModel.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ThaliliModel.edmx</DependentUpon>
-      <LastGenOutput>ThaliliModel.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1996,12 +1996,12 @@
     <Content Include="Content\Assets\webfonts\fa-solid-900.woff" />
     <Content Include="Content\Assets\webfonts\fa-solid-900.woff2" />
     <Content Include="libman.json" />
-    <EntityDeploy Include="Models\ThaliliModel.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ThaliliModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ThaliliModel.edmx.diagram">
-      <DependentUpon>ThaliliModel.edmx</DependentUpon>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutBase.cshtml" />

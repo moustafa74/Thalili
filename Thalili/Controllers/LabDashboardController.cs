@@ -14,7 +14,7 @@ namespace Thalili.Controllers
         int lab_id = 1;
         public ActionResult Orders()
         {
-            var sub = context.sub_order.Where(d => d.analysis_in_lab.Labs_id == lab_id).ToList();
+            var sub = context.sub_order.Where(d => d.lab_id == lab_id).ToList();
             return View(sub);
         }
         public ActionResult Analysis()
