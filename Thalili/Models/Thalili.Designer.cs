@@ -1,8 +1,4 @@
-<<<<<<< HEAD:Thalili/Models/Model1.Designer.cs
-﻿// T4 code generation is enabled for model 'C:\Users\MrEvilx\source\repos\moustafa74\Thalili\Thalili\Models\Model1.edmx'. 
-=======
-﻿// T4 code generation is enabled for model 'C:\Users\wwwmo\source\repos\Thalili\Thalili\Models\Thalili.edmx'. 
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.Designer.cs
+﻿// T4 code generation is enabled for model 'C:\Users\wwwmo\Source\Repos\moustafa74\Thalili\Thalili\Models\Thalili.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

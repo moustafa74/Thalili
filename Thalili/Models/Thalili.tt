@@ -2,11 +2,7 @@
 <#@ include file="EF6.Utility.CS.ttinclude"#><#@ 
  output extension=".cs"#><#
 
-<<<<<<< HEAD:Thalili/Models/Model1.tt
-const string inputFile = @"Model1.edmx";
-=======
 const string inputFile = @"Thalili.edmx";
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.tt
 var textTransform = DynamicTextTransformation.Create(this);
 var code = new CodeGenerationTools(this);
 var ef = new MetadataTools(this);

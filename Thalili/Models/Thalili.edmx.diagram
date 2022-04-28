@@ -4,23 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-<<<<<<< HEAD:Thalili/Models/Model1.edmx.diagram
-      <Diagram DiagramId="0fee8c99204545f28f2996c376634a10" Name="Diagram1">
-=======
-      <Diagram DiagramId="74f5bf11ba524284a3f686698403f7c5" Name="Diagram1">
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx.diagram
+      <Diagram DiagramId="6059bd41160b4b02ad10ab9961a29bae" Name="Diagram1">
         <EntityTypeShape EntityType="thaliliModel.admin" Width="1.5" PointX="2.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.analysis_in_lab" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.cart" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.lab" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.lab_owner" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.medical_analysis" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="thaliliModel.order" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="thaliliModel.order" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.request" Width="1.5" PointX="8.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="thaliliModel.review" Width="1.5" PointX="11.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="thaliliModel.review" Width="1.5" PointX="11.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.sample" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="thaliliModel.sub_order" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="thaliliModel.user" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="thaliliModel.user" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="thaliliModel.fk_medical_analysis_has_Labs_Labs1" ManuallyRouted="false" />
         <AssociationConnector Association="thaliliModel.fk_medical_analysis_has_Labs_medical_analysis1" ManuallyRouted="false" />
         <AssociationConnector Association="thaliliModel.fk_sub_order_analysis_in_lab1" ManuallyRouted="false" />

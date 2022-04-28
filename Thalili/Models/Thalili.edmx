@@ -52,12 +52,8 @@
           <Property Name="description" Type="varchar" MaxLength="1000" />
           <Property Name="lab_rating" Type="decimal" Precision="2" Scale="1" />
           <Property Name="img" Type="varchar" MaxLength="50" />
-          <Property Name="phone_number" Type="varchar" MaxLength="15" />
           <Property Name="lab_owner_id" Type="int" Nullable="false" />
-<<<<<<< HEAD:Thalili/Models/Model1.edmx
           <Property Name="phone_number" Type="varchar" MaxLength="15" />
-=======
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx
         </EntityType>
         <EntityType Name="lab_owner">
           <Key>
@@ -85,6 +81,7 @@
           <Property Name="date" Type="date" />
           <Property Name="response_time" Type="varchar" MaxLength="45" />
           <Property Name="location" Type="varchar" MaxLength="60" />
+          <Property Name="is_sent" Type="bool" />
         </EntityType>
         <EntityType Name="requests">
           <Key>
@@ -118,19 +115,11 @@
           <Key>
             <PropertyRef Name="user_id" />
             <PropertyRef Name="medical_analysis_id" />
-<<<<<<< HEAD:Thalili/Models/Model1.edmx
             <PropertyRef Name="lab_id" />
           </Key>
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="medical_analysis_id" Type="int" Nullable="false" />
           <Property Name="lab_id" Type="int" Nullable="false" />
-=======
-            <PropertyRef Name="labs_id" />
-          </Key>
-          <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="medical_analysis_id" Type="int" Nullable="false" />
-          <Property Name="labs_id" Type="int" Nullable="false" />
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx
           <Property Name="count" Type="int" />
           <Property Name="is_finshed" Type="bool" />
           <Property Name="pdf" Type="varchar" MaxLength="50" />
@@ -231,11 +220,7 @@
             </Principal>
             <Dependent Role="sub_order">
               <PropertyRef Name="medical_analysis_id" />
-<<<<<<< HEAD:Thalili/Models/Model1.edmx
               <PropertyRef Name="lab_id" />
-=======
-              <PropertyRef Name="labs_id" />
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -438,10 +423,6 @@
           <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="lab_rating" Type="Decimal" />
           <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-<<<<<<< HEAD:Thalili/Models/Model1.edmx
-=======
-          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx
           <Property Name="lab_owner_id" Type="Int32" Nullable="false" />
           <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.fk_medical_analysis_has_Labs_Labs1" FromRole="lab" ToRole="analysis_in_lab" />
@@ -477,8 +458,8 @@
           <Property Name="date" Type="DateTime" />
           <Property Name="response_time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="location" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="is_sent" Type="Boolean" />
           <NavigationProperty Name="sub_order" Relationship="Self.fk_sub_order_order1" FromRole="order" ToRole="sub_order" />
-          <Property Name="location" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="request">
           <Key>
@@ -515,19 +496,11 @@
           <Key>
             <PropertyRef Name="user_id" />
             <PropertyRef Name="medical_analysis_id" />
-<<<<<<< HEAD:Thalili/Models/Model1.edmx
             <PropertyRef Name="lab_id" />
           </Key>
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
           <Property Name="lab_id" Type="Int32" Nullable="false" />
-=======
-            <PropertyRef Name="labs_id" />
-          </Key>
-          <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="medical_analysis_id" Type="Int32" Nullable="false" />
-          <Property Name="labs_id" Type="Int32" Nullable="false" />
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx
           <Property Name="count" Type="Int32" />
           <Property Name="is_finshed" Type="Boolean" />
           <Property Name="pdf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -551,7 +524,6 @@
           <NavigationProperty Name="carts" Relationship="Self.fk_user_has_analysis_in_lab_user1" FromRole="user" ToRole="cart" />
           <NavigationProperty Name="reviews" Relationship="Self.fk_user_has_Labs_user1" FromRole="user" ToRole="review" />
           <NavigationProperty Name="sub_order" Relationship="Self.fk_sub_order_user1" FromRole="user" ToRole="sub_order" />
-          <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="fk_medical_analysis_has_Labs_Labs1">
           <End Role="lab" Type="Self.lab" Multiplicity="1">
@@ -593,11 +565,7 @@
             </Principal>
             <Dependent Role="sub_order">
               <PropertyRef Name="medical_analysis_id" />
-<<<<<<< HEAD:Thalili/Models/Model1.edmx
               <PropertyRef Name="lab_id" />
-=======
-              <PropertyRef Name="labs_id" />
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -835,11 +803,11 @@
           <EntitySetMapping Name="orders">
             <EntityTypeMapping TypeName="thaliliModel.order">
               <MappingFragment StoreEntitySet="order">
-                <ScalarProperty Name="location" ColumnName="location" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="response_time" ColumnName="response_time" />
                 <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="is_sent" ColumnName="is_sent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -878,11 +846,7 @@
               <MappingFragment StoreEntitySet="sub_order">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
-<<<<<<< HEAD:Thalili/Models/Model1.edmx
                 <ScalarProperty Name="lab_id" ColumnName="lab_id" />
-=======
-                <ScalarProperty Name="labs_id" ColumnName="labs_id" />
->>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a:Thalili/Models/Thalili.edmx
                 <ScalarProperty Name="count" ColumnName="count" />
                 <ScalarProperty Name="is_finshed" ColumnName="is_finshed" />
                 <ScalarProperty Name="pdf" ColumnName="pdf" />
@@ -893,7 +857,6 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="thaliliModel.user">
               <MappingFragment StoreEntitySet="user">
-                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="email" ColumnName="email" />

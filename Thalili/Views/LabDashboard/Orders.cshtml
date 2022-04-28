@@ -1,5 +1,5 @@
 ﻿@using Thalili.Models
-@model List<sub_order> 
+@model List<sub_order>
 @{
     ViewBag.Title = "Orders";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
@@ -17,6 +17,7 @@
                     <div id="modernOrderes">
                         <p class="section-address">الطلبات الحديثة</p>
                         <div class="row table-head">
+                            <div class="col">معرف الطلب</div>
                             <div class="col">اسم العميل</div>
                             <div class="col">تاريخ الطلب</div>
                             <div class="col-5">
@@ -30,78 +31,147 @@
                             <div class="col">رقم المحمول</div>
                             <div class="col"></div>
                         </div>
-                        @{int prevID = 0;
-                            int ordID = 0;} 
+                        @{ int ordID = 0;}
                         @foreach (var ord in Model)
                         {
-                            if (ordID == ord.order_id)
+                            if (ordID == ord.order_id || ord.order.is_sent == true)
                             {
                                 continue;
                             }
-                            
-                        <div class="row talabt-item" id="talabat-item-1">
-                            <div class="col">@ord.user.name</div>
-                            <div class="col">@ord.order.date</div>
-                            <div class="col-5">
-                                @foreach (var ords in Model)
-                                {
-                                    if(ords.user_id == ord.user_id && ords.order_id == ord.order_id)
-                                    { 
-                                <div class="row flex-row text-center">
-                                    <div class="row mb-2 p-0">
-                                        <div class="col align-self-center tahlilName">@ords.analysis_in_lab.medical_analysis.name</div>
-                                        <div class="col">
-                                            <div class="row flex-column">
-                                                @foreach (var item in ords.analysis_in_lab.medical_analysis.samples.ToList())
-                                                {
-                                                    <div class="col">@item.sample_name</div>
-                                                }
+                            <div class="row talabt-item" id="talabat-item-1">
+                                <div class="col">@ord.order_id</div>
+                                <div class="col">@ord.user.name</div>
+                                <div class="col">@ord.order.date</div>
+                                <div class="col-5">
+                                    @foreach (var ords in Model)
+                                    {
+                                        if (ords.user_id == ord.user_id && ords.order_id == ord.order_id)
+                                        {
+                                            <div class="row flex-row text-center">
+                                                <div class="row mb-2 p-0">
+                                                    <div class="col align-self-center tahlilName">@ords.analysis_in_lab.medical_analysis.name</div>
+                                                    <div class="col">
+                                                        <div class="row flex-column">
+                                                            @foreach (var item in ords.analysis_in_lab.medical_analysis.samples.ToList())
+                                                            {
+                                                                <div class="col">@item.sample_name</div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="col align-self-center">@ords.count</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col align-self-center">@ords.count</div>
-                                    </div>
-                                </div>
+                                        }
                                     }
-                                }
+                                </div>
+                                <div class="col">@ord.order.location</div>
+                                <div class="col">@ord.user.phone_number</div>
+                                <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
+                                    <!--For on thalil_nums-->
+                                    <button name="" class="btn btn-primary px-2 mb-3" onclick="location.href = '/LabDashboard/SendClient/@ord.order_id'">ارسال المندوب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                </div>
                             </div>
-                            <div class="col">@ord.order.location</div>
-                            <div class="col">@ord.user.phone_number</div>
-                            <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
-                                <!--For on thalil_nums-->
-                                <button name="" class="btn btn-primary px-2 mb-3" onclick="location.href=''">ارسال المندوب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
-                            </div>
-                        </div>
-                            prevID = ord.user_id;
                             ordID = ord.order_id;
                         }
-                    <div id="oKOredered">
-                        <p class="section-address">الطلبات الملباة</p>
-                        <div class="row talabt-item" id="okOrder-item-1">
-                            <div class="col">يييييي</div>
-                            <div class="col">شششششش</div>
-                            <div class="col-5">
-                                <div class="row flex-row text-center">
-                                    <div class="row mb-2 p-0">
-                                        <div class="col align-self-center tahlilName">ضضضضضضضض</div>
-                                        <div class="col">
-                                            <div class="row flex-column">
-                                                <div class="col">عينة بول</div>
-                                                <div class="col">عينة بول</div>
-                                            </div>
+                        <div id="oKOredered">
+                            <p class="section-address">الطلبات الملباة</p>
+                            <div class="row table-head">
+                                <div class="col">معرف الطلب</div>
+                                <div class="col">اسم العميل</div>
+                                <div class="col">تاريخ الطلب</div>
+                                <div class="col-5">
+                                    <div class="row flex-row text-center">
+                                        <div class="col">اسم التحليل</div>
+                                        <div class="col">العينات</div>
+                                        <div class="col">العدد</div>
+                                    </div>
+                                </div>
+                                <div class="col">العنوان</div>
+                                <div class="col">رقم المحمول</div>
+                                <div class="col"></div>
+                            </div>
+                            @{ordID = 0; }
+                            @foreach (var ord in Model)
+                            {
+                                if (ordID == ord.order_id || ord.order.is_sent == false)
+                                {
+                                    continue;
+                                }
+                                <div class="row talabt-item" id="okOrder-item-1">
+                                    <div class="col">@ord.order_id</div>
+                                    <div class="col">@ord.user.name</div>
+                                    <div class="col">@ord.order.date</div>
+                                    <div class="col-5">
+                                        @foreach (var subord in Model)
+                                        {
+                                            if (subord.user_id == ord.user_id && subord.order_id == ord.order_id)
+                                            {
+                                                <div class="row flex-row text-center">
+                                                    <div class="row mb-2 p-0">
+                                                        <div class="col align-self-center tahlilName">@subord.analysis_in_lab.medical_analysis.name</div>
+                                                        <div class="col">
+                                                            <div class="row flex-column">
+                                                                @foreach (var smple in subord.analysis_in_lab.medical_analysis.samples.ToList())
+                                                                {
+                                                                    <div class="col">@smple.sample_name</div>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="col align-self-center">@subord.count</div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="col">@ord.order.location</div>
+                                    <div class="col">@ord.user.phone_number</div>
+                                    @foreach (var subord in Model)
+                                    {
+                                        if (subord.user_id == ord.user_id && subord.order_id == ord.order_id)
+                                        {
+                                    if (ord.is_finshed == true)
+                                    {
+                                        <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
+                                            <small style="color: #5B79CC;">تم رفع نتيجه التحليل</small>
+                                            <!--For on thalil_nums-->
                                         </div>
-                                        <div class="col align-self-center">2</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
+                                            <small style="color: #5B79CC;">تم ارسال المندوب</small>
+                                            <!--For on thalil_nums-->
+                                            <button type="button" class="btn btn-primary px-2 mb-3" data-bs-toggle="modal" data-bs-target="#Uploadpdf">رفع نتيجة التحليل&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                        </div>
+                                    }
+                                        }
+                                    }
+                                </div>
+                                ordID = ord.order_id;
+                            }
+                        </div>
+                        <div class="modal" id="Uploadpdf">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">رفع النتيجه</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" style="position: absolute; left: 1rem;"></button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form action="/LabDashboard/UploadPdf" method="post" id="UploadImageform" enctype="multipart/form-data">          
+                                            <input type="file" name="file" accept=".pdf" />  <!--edit here-->
+                                        </form>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" data-bs-dismiss="modal">لا</a>
+                                        <button id="YesUpload" type="submit" form="UploadImageform" class="btn btn-danger">نعم</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">شارع الضحك حي الضحك والضحكاوية عمارة 12</div>
-                            <div class="col">01277735198</div>
-                            <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
-                                <small style="color: #5B79CC;">تم ارسال المندوب</small>
-                                <!--For on thalil_nums-->
-                                <button name="" class="btn btn-primary px-2 mb-3" onclick="location.href=''">رفع نتيجة التحليل&nbsp;<i class="fa-solid fa-angle-left"></i></button>
-                            </div>
                         </div>
-                    </div>
                         <div class="text-center pt-5">
                             <a href=""><i class="fa-solid fa-circle-right"></i></a>
                             <span>page <span class="currentpage">1</span> of <span class="allpages">3</span></span>

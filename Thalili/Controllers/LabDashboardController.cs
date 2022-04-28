@@ -12,10 +12,31 @@ namespace Thalili.Controllers
     {
         thaliliEntities context = new thaliliEntities();
         int lab_id = 1;
+        int user = 1;
+        int medical = 1;
         public ActionResult Orders()
         {
             var sub = context.sub_order.Where(d => d.lab_id == lab_id).ToList();
             return View(sub);
+        }
+        public ActionResult SendClient(int? id)
+        {
+            context.orders.Where(d => d.order_id == id).FirstOrDefault().is_sent = true;
+            context.SaveChanges();
+            return RedirectToAction("Orders");
+        }
+        public ActionResult UploadPdf(HttpPostedFileBase file)
+        {
+            var fileExtenstion = Path.GetExtension(file.FileName);
+            var fileguid = Guid.NewGuid().ToString();
+            string pdf_name = fileguid + fileExtenstion;
+            context.sub_order.Where(d => d.user_id == user && d.medical_analysis_id == medical && d.lab_id == lab_id).FirstOrDefault().pdf = pdf_name;
+            context.sub_order.Where(d => d.user_id == user && d.medical_analysis_id == medical && d.lab_id == lab_id).FirstOrDefault().is_finshed = true;
+            string filePath = Server.MapPath($"~/Content/Results/{pdf_name}");
+            context.SaveChanges();
+            file.SaveAs(filePath);
+
+            return RedirectToAction("Orders");
         }
         public ActionResult Analysis()
         {
