@@ -16,7 +16,11 @@ namespace Thalili.Models
     {
         public int user_id { get; set; }
         public int medical_analysis_id { get; set; }
+<<<<<<< HEAD
         public int lab_id { get; set; }
+=======
+        public int labs_id { get; set; }
+>>>>>>> 4d0b997e0450e7c92d50a16a07f0390596e86b6a
         public Nullable<int> count { get; set; }
         public Nullable<bool> is_finshed { get; set; }
         public string pdf { get; set; }
