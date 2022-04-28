@@ -646,6 +646,12 @@ footer {
     background-color: #5B79CC !important;
     color: white !important;
 }
+.FormPage .userHeader p {
+    color: #C7C7C7;
+    font-family: "Hanimation";
+    font-weight: 600;
+    font-size: 1.5rem;
+}
 
 .TheForm {
     background-color: white;
@@ -655,12 +661,16 @@ footer {
     border-radius: 0 0 20px 20px;
 }
 
-    .TheForm small {
-        visibility: hidden;
-    }
+.TheForm small {
+    visibility: hidden;
+}
 
 .FormPage .TheForm form h3, .FormPage .TheForm form p {
     color: #707070;
+}
+.FormPage .TheForm label {
+    color: #D2D2D2;
+    font-family: "Janna LT";
 }
 
 .FormPage .TheForm form h3 {
