@@ -20,7 +20,7 @@ namespace Thalili.Controllers
         [HttpPost]
         public ActionResult LoginConfirm(user user)
         {
-            string crc = Crypto.Hash(user.pass); 
+            string crc = Crypto.Hash(user.pass);
             var userDetail = Context.users.Where(x => x.email == user.email && x.pass == crc).FirstOrDefault();
             if (userDetail == null)
             {
@@ -36,6 +36,26 @@ namespace Thalili.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+        }
+        public ActionResult AdminLogin(lab_owner lbowner)
+        {
+            string crc = Crypto.Hash(lbowner.pass);
+            var labownerD = Context.lab_owner.Where(x => x.email == lbowner.email && x.pass == crc).FirstOrDefault();
+            if (labownerD == null)
+            {
+                ViewData["ERoor"] = "البريد الالكترونى او الرقم السرى غير صحيح";
+                ViewData["Email"] = lbowner.email;
+                ViewData["Password"] = lbowner.pass;
+                return View("index");
+            }
+            else
+            {
+                Session["labownerID"] = labownerD.lab_owner_id;
+                Session["labownerName"] = labownerD.name;
+                Session["labID"] = labownerD;
+
+                return RedirectToAction("Index", "Home");
+            }
         }
         public ActionResult ResetPassword()
         {

@@ -1,10 +1,10 @@
 ﻿@using Thalili.Models
 @model List<analysis_in_lab>
-    @{
-        ViewBag.Title = "Analysis";
-        Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
-    }
-
+@{
+    ViewBag.Title = "Analysis";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@{int curent = Convert.ToInt32(ViewData["page"]); }
 <div class="labOwnerPage container-flud">
     <div class="row m-0">
         <div class="col-2"></div>
@@ -23,20 +23,20 @@
                             </div>
                         </div>
                         @{
-                        int c = 1;
-                        foreach (var analysis in Model)
-                        {
-                            <div class="row talabt-item justify-content-between" id="AddorEditThalil-item-@c">
-                                <div class="col">@analysis.medical_analysis.name</div>
-                                <div class="col">@analysis.price</div>
-                                <div class="col d-flex justify-content-center">
-                                    <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
-                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
+                            int c = 1;
+                            for (int i = (curent - 1) * 5; i < Math.Min(Model.Count(), 5 * curent); i++)
+                            {
+                                <div class="row talabt-item justify-content-between" id="AddorEditThalil-item-@c">
+                                    <div class="col">@Model[i].medical_analysis.name</div>
+                                    <div class="col">@Model[i].price</div>
+                                    <div class="col d-flex justify-content-center">
+                                        <button type="button" class="btn ms-2" data-buttonType="edit" data-parentTarget="AddorEditThalil" onclick="addorEditThalil(this)"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteModal" onclick="sendIdofDelete(this)"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
+                                    </div>
+                                    <input type="hidden" value="@Model[i].medical_analysis_id">
                                 </div>
-                                <input type="hidden" value="@analysis.medical_analysis_id">
-                            </div>
                                 c++;
-                        }
+                            }
                         }
                         @*<div class="row talabt-item justify-content-between" id="AddorEditThalil-item2">
             <div class="col">Blood</div>
@@ -67,10 +67,11 @@
                                 </div>
                             </div>
                         </div>
+                        @{ int max_num_of_pages = Math.Max((int)Math.Ceiling((Model.Count * 1.0) / 5), 1);}   @*paging*@
                         <div class="text-center pt-5 pagi">
-                            <a href=""><i class="fa-solid fa-circle-right"></i></a>
-                            <span>page <span class="currentpage">1</span> of <span class="allpages">3</span></span>
-                            <a href=""><i class="fa-solid fa-circle-left"></i></a>
+                            <a href="/LabDashboard/Analysis/?page=@(Math.Min(curent+1,max_num_of_pages))"><i class="fa-solid fa-circle-right"></i></a>
+                            <span>page <span class="currentpage">@curent</span> of <span class="allpages">@max_num_of_pages</span></span>
+                            <a href="/LabDashboard/Analysis/?page=@(Math.Max(curent-1,1))"><i class="fa-solid fa-circle-left"></i></a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +79,7 @@
                     <div class="container pt-2 pb-3 rounded-3">
                         <h3></h3>
                         <div id="error">
-                         @Html.Raw(TempData["msg"])
+                            @Html.Raw(TempData["msg"])
                         </div>
                         <form action="/LabDashboard/EditThalil" method="post">
                             <div class="row"><label for="#thalilName">اسم التحليل</label></div>

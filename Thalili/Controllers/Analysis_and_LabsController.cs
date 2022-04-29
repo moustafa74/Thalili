@@ -21,5 +21,14 @@ namespace Thalili.Controllers
             ViewData["page"] = page;
             return View("lab_analysis", anlysis_labs);
         }
+        public ActionResult lab(int id)
+        {
+            return View();
+        }
+        public ActionResult analysis(int id)
+        {
+            return View();
+        }
     }
+    
 }

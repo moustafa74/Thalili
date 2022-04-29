@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Thalili.Models;
+using Thalili.Helpers;
 
 namespace Thalili.Controllers
 {
@@ -12,12 +13,19 @@ namespace Thalili.Controllers
     {
         thaliliEntities context = new thaliliEntities();
         int lab_id = 1;
-        int user = 1;
-        int medical = 1;
-        public ActionResult Orders()
+        //int user = 1;
+        //int medical = 1;
+        public ActionResult Orders(int? page)
         {
-            var sub = context.sub_order.Where(d => d.lab_id == lab_id).ToList();
-            return View(sub);
+            List<List<sub_order>> allorders = new List<List<sub_order>>();
+            if (page == null)
+                page = 1;
+            ViewData["page"] = page;
+            var sub1 = context.sub_order.Where(d => d.lab_id == lab_id&&d.order.is_sent==false).OrderByDescending(d=>d.order_id).ToList();
+            allorders.Add(sub1);
+            var sub2 = context.sub_order.Where(d => d.lab_id == lab_id && d.order.is_sent == true).OrderByDescending(d=>d.order_id).ToList();
+            allorders.Add(sub2);
+            return View(allorders);
         }
         public ActionResult SendClient(int? id)
         {
@@ -25,24 +33,26 @@ namespace Thalili.Controllers
             context.SaveChanges();
             return RedirectToAction("Orders");
         }
-        public ActionResult UploadPdf(HttpPostedFileBase file)
+        public ActionResult UploadPdf(HttpPostedFileBase file,int analysis_id, int user_id)
         {
             var fileExtenstion = Path.GetExtension(file.FileName);
             var fileguid = Guid.NewGuid().ToString();
             string pdf_name = fileguid + fileExtenstion;
-            context.sub_order.Where(d => d.user_id == user && d.medical_analysis_id == medical && d.lab_id == lab_id).FirstOrDefault().pdf = pdf_name;
-            context.sub_order.Where(d => d.user_id == user && d.medical_analysis_id == medical && d.lab_id == lab_id).FirstOrDefault().is_finshed = true;
+            context.sub_order.Where(d => d.user_id ==user_id && d.medical_analysis_id == analysis_id && d.lab_id == lab_id).FirstOrDefault().pdf = pdf_name;
+            context.sub_order.Where(d => d.user_id == user_id && d.medical_analysis_id == analysis_id && d.lab_id == lab_id).FirstOrDefault().is_finshed = true;
             string filePath = Server.MapPath($"~/Content/Results/{pdf_name}");
+
             context.SaveChanges();
             file.SaveAs(filePath);
 
             return RedirectToAction("Orders");
         }
-        public ActionResult Analysis()
+        public ActionResult Analysis(int? page)
         {
-                
+            if (page == null)
+                page = 1;
+            ViewData["page"] = page;
             var analysis_in_lab = context.analysis_in_lab.Where(d => d.Labs_id == lab_id).ToList();
-
             return View(analysis_in_lab);
         }
         public ActionResult EditThalil(string ThalilName, decimal price)
@@ -85,7 +95,7 @@ namespace Thalili.Controllers
         public ActionResult Settings()
         {
             var lab = context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault();
-
+            lab.lab_owner.pass = "***********";
             return View(lab);
         }
 
@@ -97,14 +107,14 @@ namespace Thalili.Controllers
             lab.phone_number = edits.phone_number;
             lab.description = edits.description;
             lab.location = edits.location;
-            lab.lab_owner.email = edits.lab_owner.email;
-            lab.lab_owner.pass = edits.lab_owner.pass;
+            if(edits.lab_owner.pass!= "***********")
+            lab.lab_owner.pass = Crypto.Hash(edits.lab_owner.pass);
             lab.img = edits.img;
             context.SaveChanges();
 
             return RedirectToAction("Settings");
         }
-        public ActionResult UploadImage(HttpPostedFileBase file)
+        public ActionResult UploadImage(HttpPostedFileBase file)   //next edit will be **delete temp pic 
         {
             var fileExtenstion = Path.GetExtension(file.FileName);
             var fileguid = Guid.NewGuid().ToString();
@@ -112,7 +122,6 @@ namespace Thalili.Controllers
             string filePath = Server.MapPath($"~/Content/Images/{filee}");
             TempData["Image"] = file;
             file.SaveAs(filePath);
-
             return RedirectToAction("Settings");
 
         }

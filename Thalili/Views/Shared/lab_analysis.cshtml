@@ -20,7 +20,7 @@
                     <div class="row flex-column flex-md-row">
                         @foreach (var analyss in Model.analysisList)
                         {
-                            <a class="col-9 col-sm-6 col-md m-auto mt-4 m-md-0 ms-md-3  px-2  testSearchCard" href="">
+                            <a class="col-9 col-sm-6 col-md m-auto mt-4 m-md-0 ms-md-3  px-2  testSearchCard" href="/Analysis_and_Labs/analysis/@analyss.medical_analysis_id">
                                 <img class="mt-2 d-flex mx-auto" src="@analyss.img" alt="" style="width:97%; height:104px">
                                 <p class="pt-2 m-2 m-md-0">@analyss.name</p>
                                 <span class="m-2 m-md-0">@analyss.description </span>
@@ -30,7 +30,7 @@
                                         <li class="tag p-1 ms-1 mt-1">@sampl.sample_name</li>
                                     }
                                 </ul>
-                                <button type="button" class="btn d-flex mx-auto my-3 justify-content-center" onclick="">المزيد من التفاصيل</button>
+                                <button type="button" class="btn d-flex mx-auto my-3 justify-content-center" onclick="@analyss.medical_analysis_id">المزيد من التفاصيل</button>
                             </a>
                         }
                             <div class="col-1" style="position: relative;">
@@ -50,7 +50,7 @@
                     @for (int i = (curent-1)*4; i < Math.Min(Model.labList.Count(),4*curent); i++)
                         {
                     <div class="row flex-column flex-md-row my-3">
-                        <a href="" class="col-9 col-sm-6 col-md m-auto mt-4  m-md-0 ms-md-3 labSearchCard py-3 row flex-column flex-md-row">
+                        <a href="/Analysis_and_Labs/lab/@Model.labList[i].lab_id" class="col-9 col-sm-6 col-md m-auto mt-4  m-md-0 ms-md-3 labSearchCard py-3 row flex-column flex-md-row">
                             <div class="d-flex col-xl-3 col-md-4 col-12 m-auto m-md-0">
                                 <img class="m-auto" src="@Model.labList[i].img" alt="" style="height: 136px; width:100%">
                             </div>
