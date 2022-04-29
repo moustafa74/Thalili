@@ -217,3 +217,13 @@ function sendIdofDelete(TheParent) {
     let val = TheParent.parentElement.parentElement.querySelector('input[type="hidden"]').value;
     document.getElementById('YesDelete').setAttribute('value', val);
 }
+
+function uploadpdf(theButton) {
+    const parent = theButton.parentElement;
+    const inputs = parent.querySelectorAll("input[type='hidden']");
+    const targetForm = document.querySelector('#Uploadpdf').querySelector('form');
+    for (let i = 0; i < inputs.length; i++) {
+        targetForm.querySelectorAll("input[type='hidden']")[i].value = inputs[i].value;
+        targetForm.querySelectorAll("input[type='hidden']")[i].name = inputs[i].name;
+    }
+}

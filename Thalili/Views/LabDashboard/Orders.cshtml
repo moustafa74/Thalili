@@ -68,7 +68,9 @@
                                 <div class="col">@ord.user.phone_number</div>
                                 <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
                                     <!--For on thalil_nums-->
-                                    <button name="" class="btn btn-primary px-2 mb-3" onclick="location.href = '/LabDashboard/SendClient/@ord.order_id'">ارسال المندوب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                    <div class="row">
+                                        <button name="" class="btn btn-primary px-2 mb-3" onclick="location.href = '/LabDashboard/SendClient/@ord.order_id'">ارسال المندوب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                    </div>
                                 </div>
                             </div>
                             ordID = ord.order_id;
@@ -125,27 +127,30 @@
                                     </div>
                                     <div class="col">@ord.order.location</div>
                                     <div class="col">@ord.user.phone_number</div>
-                                    @foreach (var subord in Model)
-                                    {
-                                        if (subord.user_id == ord.user_id && subord.order_id == ord.order_id)
+                                    <div class="col">
+                                        <small style="color: #5B79CC;">تم ارسال المندوب</small>
+                                        @foreach (var subord in Model)
                                         {
-                                    if (ord.is_finshed == true)
-                                    {
-                                        <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
-                                            <small style="color: #5B79CC;">تم رفع نتيجه التحليل</small>
-                                            <!--For on thalil_nums-->
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
-                                            <small style="color: #5B79CC;">تم ارسال المندوب</small>
-                                            <!--For on thalil_nums-->
-                                            <button type="button" class="btn btn-primary px-2 mb-3" data-bs-toggle="modal" data-bs-target="#Uploadpdf">رفع نتيجة التحليل&nbsp;<i class="fa-solid fa-angle-left"></i></button>
-                                        </div>
-                                    }
+                                            if (subord.user_id == ord.user_id && subord.order_id == ord.order_id)
+                                            {
+                                                if (ord.is_finshed == true)
+                                                {
+                                                    <div class="row">
+                                                        <p class="m-0" style="color: #5B79CC;">تم رفع نتيجه التحليل</p>
+                                                        <a href="" target="_blank">MMM</a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="row">
+                                                        <input type="hidden" name="a" value="1" />
+                                                        <input type="hidden" name="b" value="2" />
+                                                        <button type="button" class="btn btn-primary px-2 mb-3" data-bs-toggle="modal" data-bs-target="#Uploadpdf" onclick="uploadpdf(this)">رفع نتيجة التحليل&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                                    </div>
+                                                }
+                                            }
                                         }
-                                    }
+                                    </div>
                                 </div>
                                 ordID = ord.order_id;
                             }
@@ -160,14 +165,16 @@
                                     </div>
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <form action="/LabDashboard/UploadPdf" method="post" id="UploadImageform" enctype="multipart/form-data">          
-                                            <input type="file" name="file" accept=".pdf" />  <!--edit here-->
+                                        <form id="UploadPdfform" method="post" action="/LabDashboard/UploadPdf" enctype="multipart/form-data">
+                                            <input type="hidden" />
+                                            <input type="hidden" />
+                                            <input type="file" name="file" accept=".pdf" required/>
                                         </form>
                                     </div>
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <a class="btn btn-danger" data-bs-dismiss="modal">لا</a>
-                                        <button id="YesUpload" type="submit" form="UploadImageform" class="btn btn-danger">نعم</button>
+                                        <a class="btn btn-danger" data-bs-dismiss="modal">إلغاء</a>
+                                        <button id="YesUpload" type="submit" form="UploadPdfform" class="btn btn-danger">تأكيد</button>
                                     </div>
                                 </div>
                             </div>
@@ -182,3 +189,4 @@
             </div>
         </div>
     </div>
+</div>
