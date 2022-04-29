@@ -20,7 +20,7 @@ namespace Thalili.Controllers
         [HttpPost]
         public ActionResult LoginConfirm(user user)
         {
-            string crc = Crypto.Hash(user.pass);
+            string crc = Crypto.Hash(user.pass); 
             var userDetail = Context.users.Where(x => x.email == user.email && x.pass == crc).FirstOrDefault();
             if (userDetail == null)
             {
@@ -31,7 +31,7 @@ namespace Thalili.Controllers
             }
             else
             {
-                Session["CustomerID"] = userDetail.user_id;
+                Session["UserID"] = userDetail.user_id;
                 Session["userName"] = userDetail.name;
                 return RedirectToAction("Index", "Home");
             }

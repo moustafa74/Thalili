@@ -1,4 +1,5 @@
-﻿
+﻿@using Thalili.Models;
+@model user
 @{
     ViewBag.Title = "Profile";
 }
@@ -12,25 +13,25 @@
         </div>
         <div class="row w-100 m-0">
             <div class="col-lg-6 col-md-8 col-sm-10 mx-auto rounded-3 TheForm">
-                <form action="userLogin.php" method="post" style="width:90%;margin:auto;">
+                <form action="/Profile/SaveChanges" method="post" style="width:90%;margin:auto;">
                     <div class="row m-0 mt-5">
                         <label class="form-label mb-3">الاسم</label>
-                        <input class="col m-auto rounded-2 pe-2" type="text" name="name" required>
+                        <input class="col m-auto rounded-2 pe-2" type="text" name="name" value="@Model.name" required>
                         <small>Error Message</small>
                     </div>
                     <div class="row m-0">
                         <label class="form-label mb-3">البريد الالكترونى</label>
-                        <input class="col m-auto rounded-2 pe-2" type="email" name="userPassword" required oninvalid="this.setCustomValidity('Email is invalid')" oninput="this.setCustomValidity('')">
+                        <input class="col m-auto rounded-2 pe-2" type="email" name="email" value="@Model.email" readonly required oninvalid="this.setCustomValidity('Email is invalid')" oninput="this.setCustomValidity('')">
                         <small>Error Message</small>
                     </div>
                     <div class="row m-0">
                         <label class="form-label mb-3">كلمة المرور</label>
-                        <input class="col m-auto rounded-2 pe-2 py-2" type="password" name="userPassword" required oninvalid="this.setCustomValidity('Password Should be greater than or equal 8')" oninput="this.setCustomValidity('')">
+                        <input class="col m-auto rounded-2 pe-2 py-2" type="password" name="pass" value="@Model.pass" required oninvalid="this.setCustomValidity('Password Should be greater than or equal 8')" oninput="this.setCustomValidity('')">
                         <small>Error Message</small>
                     </div>
                     <div class="row m-0">
                         <label class="form-label mb-3">رقم الهاتف</label>
-                        <input class="col m-auto rounded-2 pe-2" type="text" name="userPassword" required>
+                        <input class="col m-auto rounded-2 pe-2" type="text" name="phone_number" value="@Model.phone_number" required>
                         <small>Error Message</small>
                     </div>
                     <div class="row d-flex flex-row-reverse m-0 mt-3">

@@ -187,6 +187,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Analysis_and_LabsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JoinAsPartnerController.cs" />
     <Compile Include="Controllers\LabDashboardController.cs" />
@@ -2023,6 +2024,7 @@
     <Content Include="Views\LabDashboard\Analysis.cshtml" />
     <Content Include="Views\LabDashboard\Settings.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
