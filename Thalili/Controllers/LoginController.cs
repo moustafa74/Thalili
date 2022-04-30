@@ -52,8 +52,7 @@ namespace Thalili.Controllers
             {
                 Session["labownerID"] = labownerD.lab_owner_id;
                 Session["labownerName"] = labownerD.name;
-                Session["labID"] = labownerD;
-
+                Session["labID"] = labownerD.lab.lab_id;
                 return RedirectToAction("Index", "Home");
             }
         }
