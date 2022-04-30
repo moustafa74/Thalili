@@ -3,5 +3,87 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="cartPage">
+    <div class="container">
+        <h3 class="h3 py-3">قائمــة التسـوق</h3>
+        <div class="row justify-content-between">
+            <div class="col-8 rightSection" style="width: 70%;">
+                <div class="container">
+                    <p class="numofThalil py-3"><span>3</span> تحاليل مضافة</p>
+                    <form action="" method="post" id="cartFrom">
+                        <div class="row cartItem py-2 px-4 mb-3" id="CartItem-1">
+                            <input type="hidden" name="thalil" value="">
+                            <input type="hidden" name="Lab" value="">
+                            <div class="col-3">
+                                <img src="" alt="صورة المعمل" width="100" height="100">
+                            </div>
+                            <div class="col">
+                                <p class="w-auto thalilName m-0">تحليل مسحة كورونا</p>
+                                <div class="row flex-row">
+                                    <i class="fa fa-solid fa-shop"></i>
+                                    <small class="w-auto p-0 labName">معمل الحياة</small>
+                                </div>
+                                <div class="row samples flex-row mt-3">
+                                    <span class="w-auto">عينة بول</span>
+                                    <span class="w-auto">عينة دم</span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="row">
+                                    <button class="btn btn-danger btn-sm w-100 deleteBtn" type="button" data-bs-toggle="modal" data-bs-target="#DeleteCartfModal" data-parentID="CartItem-1" onclick="deleteItemfromCart(this)">إزالة من القائمة</button>
+                                </div>
+                                <div class="row align-items-baseline justify-content-end">
+                                    <small class="w-auto p-0 ps-2">العدد المطلوب</small>
+                                    <button type="button" class="btn w-auto p-0"><i class="fa-solid fa-circle-plus" data-action="plusBtn" onclick="addorminusone(this)"></i></button>
+                                    <span class="w-auto numberoford" style="font-size: 0.9rem;font-family: 'Janna LT'; color: #707070;">1</span>
+                                    <input type="hidden" name="num" value="1">
+                                    <button type="button" class="btn w-auto p-0"><i class="fa-solid fa-circle-minus" data-action="minusBtn" onclick="addorminusone(this)"></i></button>
+                                </div>
+                                <div class="row d-flex justify-content-end">
+                                    <p class="w-auto p-0 m-0" style="color: #5B79CC; font-family: 'Hanimation';"><strong class="me-2 priceofThalil">280</strong>EGP</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-3 leftSection" style="width: 27%">
+                <div class="container">
+                    <h4 class="h4 py-3 m-0">التكلفة الكلية</h4>
+                    <p class="m-0"><strong class="ms-2" id="AllCost">280</strong>ج.م</p>
+                    <small>الدفع كاش عند وصول المندوبين</small>
+                    <h4 class="h4 mt-2">العنوان</h4>
+                    <form action="" method="post">
+                        <textarea class="p-3" name="" rows="5" placeholder="ادخل عنوانك بالتفصيل هنا..." required oninvalid="this.setCustomValidity('ادخل عنوانك بالتفصيل')" oninput="this.setCustomValidity('')"></textarea>
+                        <input class="btn my-3" type="submit" name="" value="طلب المندوبين الان">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="DeleteCartfModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">حذف تحليل</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" style="position: absolute; left: 1rem;"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        هل أنت متأكد من أنك تريد حذف هذا العنصر؟
+                        <form action="" method="post" id="deleteItemfromCartform">
+                            <input type="hidden">
+                            <input type="hidden">
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <a class="btn btn-danger" data-bs-dismiss="modal">لا</a>
+                        <button id="YesDelete" type="submit" form="deleteItemfromCartform" name="" class="btn btn-danger" value="">نعم</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

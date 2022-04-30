@@ -227,3 +227,34 @@ function uploadpdf(theButton) {
         targetForm.querySelectorAll("input[type='hidden']")[i].name = inputs[i].name;
     }
 }
+
+// Start Cart Page
+function addorminusone(theButton) {
+    const parent = theButton.parentElement.parentElement;
+    const elem = parent.querySelector('.numberoford');
+    let num = parseInt(elem.textContent);
+    if (theButton.getAttribute('data-action') === 'plusBtn') {
+        if (num < 10) {
+            num++;
+            elem.textContent = num;
+        }
+    }
+    else {
+        if (num > 1) {
+            num--;
+            elem.textContent = num;
+        }
+    }
+    parent.querySelector('input[type="hidden"]').value = num;
+    document.querySelector('#cartFrom').submit();
+}
+function deleteItemfromCart(theButton) {
+    const parent = document.getElementById(theButton.getAttribute('data-parentID'));
+    const inputs = parent.querySelectorAll("input[type='hidden']");
+    const targetForm = document.querySelector('#DeleteCartfModal').querySelector('form');
+    for (let i = 0; i < inputs.length - 1; i++) {
+        targetForm.querySelectorAll("input[type='hidden']")[i].value = inputs[i].value;
+        targetForm.querySelectorAll("input[type='hidden']")[i].name = inputs[i].name;
+    }
+}
+// End Cart Page

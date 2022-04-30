@@ -1153,3 +1153,109 @@ table tbody:nth-child(2n) {
     color: #D2D2D2;
     font-size: 1.2rem;
 }
+/* Start Cart Page  */
+.cartPage {
+    min-height: 100vh;
+    background-color: #F1F3F3;
+}
+
+.cartPage h3 {
+    color: #C7C7C7;
+    font-family: "Hanimation";
+    font-weight: 600;
+}
+
+.cartPage .numofThalil {
+    color: #9E9E9E;
+    font-family: "Janna LT";
+    font-size: 1.4rem;
+}
+
+.cartPage .rightSection, .cartPage .leftSection {
+    background-color: white;
+    border-radius: 20px;
+}
+
+.cartPage .cartItem {
+    border-radius: 20px;
+    box-shadow: 0px 0px 6px #00000029;
+}
+
+.cartPage .cartItem .thalilName {
+    color: #5B79CC;
+    font-size: 1.3rem;
+    font-family: "Hanimation";
+    font-weight: 600;
+}
+
+.cartPage .cartItem .labName {
+    font-family: "Janna LT";
+    font-size: 0.8rem;
+}
+
+.cartPage .cartItem .deleteBtn {
+    font-size: 0.8rem;
+    font-family: "Hanimation";
+}
+
+.cartPage .cartItem .priceofThalil {
+    font-size: 2.3rem;
+    font-family: "Hanimation";
+}
+
+.cartPage .cartItem svg {
+    color: #5B79CC;
+    width: 1rem;
+}
+
+.cartPage .cartItem .samples span {
+    background-color: #9FB1E3;
+    color: white;
+    border-radius: 14px;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.cartPage .cartItem small {
+    font-family: "Janna LT";
+    font-size: 0.7rem;
+    color: #707070;
+}
+
+.cartPage .cartItem #plusBtn, .cartPage .cartItem #minusBtn {
+    color: #5B79CC;
+}
+
+.cartPage .leftSection h4 {
+    font-size: 1.5rem;
+    color: #707070;
+    font-family: "Hanimation";
+    font-weight: 600;
+}
+
+.cartPage .leftSection strong {
+    font-size: 4rem;
+    color: #5B79CC;
+    font-family: "Hanimation";
+}
+
+.cartPage .leftSection small {
+    font-size: 0.8rem;
+    color: #C7C7C7;
+}
+
+.cartPage .leftSection form textarea {
+    border: none;
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 0.8rem;
+    width: 100%;
+    font-family: "Jana LT";
+}
+
+.cartPage .leftSection form input[type="submit"] {
+    background-color: #F79A3D;
+    color: white;
+    border-radius: 0.6rem;
+    width: 100%;
+}
+/* End Cart Page  */
