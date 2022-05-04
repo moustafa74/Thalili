@@ -221,18 +221,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_cart_lab">
-          <End Role="lab" Type="Self.lab" Multiplicity="1" />
-          <End Role="cart" Type="Self.cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="lab">
-              <PropertyRef Name="lab_id" />
-            </Principal>
-            <Dependent Role="cart">
-              <PropertyRef Name="Lab_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_lab_lab_owner">
           <End Role="lab_owner" Type="Self.lab_owner" Multiplicity="1" />
           <End Role="lab" Type="Self.lab" Multiplicity="0..1" />
@@ -254,18 +242,6 @@
             </Principal>
             <Dependent Role="review">
               <PropertyRef Name="Labs_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_sub_order_lab">
-          <End Role="lab" Type="Self.lab" Multiplicity="1" />
-          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="lab">
-              <PropertyRef Name="lab_id" />
-            </Principal>
-            <Dependent Role="sub_order">
-              <PropertyRef Name="lab_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -365,10 +341,6 @@
             <End Role="lab" EntitySet="lab" />
             <End Role="analysis_in_lab" EntitySet="analysis_in_lab" />
           </AssociationSet>
-          <AssociationSet Name="FK_cart_lab" Association="Self.FK_cart_lab">
-            <End Role="lab" EntitySet="lab" />
-            <End Role="cart" EntitySet="cart" />
-          </AssociationSet>
           <AssociationSet Name="FK_lab_lab_owner" Association="Self.FK_lab_lab_owner">
             <End Role="lab_owner" EntitySet="lab_owner" />
             <End Role="lab" EntitySet="lab" />
@@ -376,10 +348,6 @@
           <AssociationSet Name="FK_review_lab" Association="Self.FK_review_lab">
             <End Role="lab" EntitySet="lab" />
             <End Role="review" EntitySet="review" />
-          </AssociationSet>
-          <AssociationSet Name="FK_sub_order_lab" Association="Self.FK_sub_order_lab">
-            <End Role="lab" EntitySet="lab" />
-            <End Role="sub_order" EntitySet="sub_order" />
           </AssociationSet>
           <AssociationSet Name="review$fk_user_has_Labs_user1" Association="Self.review$fk_user_has_Labs_user1">
             <End Role="user" EntitySet="user" />
@@ -437,7 +405,6 @@
           <Property Name="count" Type="Int32" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.cart_fk_user_has_analysis_in_lab_analysis_in_lab1" FromRole="cart" ToRole="analysis_in_lab" />
           <NavigationProperty Name="user" Relationship="Self.cart_fk_user_has_analysis_in_lab_user1" FromRole="cart" ToRole="user" />
-          <NavigationProperty Name="lab" Relationship="Self.FK_cart_lab" FromRole="cart" ToRole="lab" />
         </EntityType>
         <EntityType Name="lab">
           <Key>
@@ -451,10 +418,8 @@
           <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.FK_analysis_in_lab_lab" FromRole="lab" ToRole="analysis_in_lab" />
-          <NavigationProperty Name="carts" Relationship="Self.FK_cart_lab" FromRole="lab" ToRole="cart" />
           <NavigationProperty Name="lab_owner" Relationship="Self.FK_lab_lab_owner" FromRole="lab" ToRole="lab_owner" />
           <NavigationProperty Name="reviews" Relationship="Self.FK_review_lab" FromRole="lab" ToRole="review" />
-          <NavigationProperty Name="sub_order" Relationship="Self.FK_sub_order_lab" FromRole="lab" ToRole="sub_order" />
         </EntityType>
         <EntityType Name="lab_owner">
           <Key>
@@ -533,7 +498,6 @@
           <Property Name="order_id" Type="Int32" Nullable="false" />
           <Property Name="is_finshed" Type="Boolean" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.sub_order_fk_sub_order_analysis_in_lab1" FromRole="sub_order" ToRole="analysis_in_lab" />
-          <NavigationProperty Name="lab" Relationship="Self.FK_sub_order_lab" FromRole="sub_order" ToRole="lab" />
           <NavigationProperty Name="order" Relationship="Self.sub_order_fk_sub_order_order1" FromRole="sub_order" ToRole="order" />
           <NavigationProperty Name="user" Relationship="Self.sub_order_fk_sub_order_user1" FromRole="sub_order" ToRole="user" />
         </EntityType>
@@ -625,18 +589,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_cart_lab">
-          <End Role="lab" Type="Self.lab" Multiplicity="1" />
-          <End Role="cart" Type="Self.cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="lab">
-              <PropertyRef Name="lab_id" />
-            </Principal>
-            <Dependent Role="cart">
-              <PropertyRef Name="Lab_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_lab_lab_owner">
           <End Role="lab_owner" Type="Self.lab_owner" Multiplicity="1" />
           <End Role="lab" Type="Self.lab" Multiplicity="0..1" />
@@ -658,18 +610,6 @@
             </Principal>
             <Dependent Role="review">
               <PropertyRef Name="Labs_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_sub_order_lab">
-          <End Role="lab" Type="Self.lab" Multiplicity="1" />
-          <End Role="sub_order" Type="Self.sub_order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="lab">
-              <PropertyRef Name="lab_id" />
-            </Principal>
-            <Dependent Role="sub_order">
-              <PropertyRef Name="lab_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -752,10 +692,6 @@
             <End Role="user" EntitySet="users" />
             <End Role="cart" EntitySet="carts" />
           </AssociationSet>
-          <AssociationSet Name="FK_cart_lab" Association="Self.FK_cart_lab">
-            <End Role="lab" EntitySet="labs" />
-            <End Role="cart" EntitySet="carts" />
-          </AssociationSet>
           <AssociationSet Name="FK_lab_lab_owner" Association="Self.FK_lab_lab_owner">
             <End Role="lab_owner" EntitySet="lab_owner" />
             <End Role="lab" EntitySet="labs" />
@@ -763,10 +699,6 @@
           <AssociationSet Name="FK_review_lab" Association="Self.FK_review_lab">
             <End Role="lab" EntitySet="labs" />
             <End Role="review" EntitySet="reviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_sub_order_lab" Association="Self.FK_sub_order_lab">
-            <End Role="lab" EntitySet="labs" />
-            <End Role="sub_order" EntitySet="sub_order" />
           </AssociationSet>
           <AssociationSet Name="sub_order_fk_sub_order_order1" Association="Self.sub_order_fk_sub_order_order1">
             <End Role="order" EntitySet="orders" />

@@ -18,9 +18,7 @@ namespace Thalili.Models
         public lab()
         {
             this.analysis_in_lab = new HashSet<analysis_in_lab>();
-            this.carts = new HashSet<cart>();
             this.reviews = new HashSet<review>();
-            this.sub_order = new HashSet<sub_order>();
         }
     
         public int lab_id { get; set; }
@@ -33,12 +31,8 @@ namespace Thalili.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analysis_in_lab> analysis_in_lab { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cart> carts { get; set; }
         public virtual lab_owner lab_owner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<review> reviews { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sub_order> sub_order { get; set; }
     }
 }

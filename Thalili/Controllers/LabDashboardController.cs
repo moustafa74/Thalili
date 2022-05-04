@@ -12,16 +12,14 @@ namespace Thalili.Controllers
     public class LabDashboardController : Controller
     {
         thaliliEntities context = new thaliliEntities();
-        int lab_id = 1;
+        //int lab_id = 2;
         //int user = 1;
         //int medical = 1;
-        public ActionResult test()
-        {
-            int x = context.lab_owner.Where(d => d.lab.lab_id == lab_id).FirstOrDefault().lab_owner_id;
-            return View(x);
-        }
         public ActionResult Orders(int? page)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             List<List<sub_order>> allorders = new List<List<sub_order>>();
             if (page == null)
                 page = 1;
@@ -34,12 +32,17 @@ namespace Thalili.Controllers
         }
         public ActionResult SendClient(int? id)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
             context.orders.Where(d => d.order_id == id).FirstOrDefault().is_sent = true;
             context.SaveChanges();
             return RedirectToAction("Orders");
         }
         public ActionResult UploadPdf(HttpPostedFileBase file,int analysis_id, int user_id)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             var fileExtenstion = Path.GetExtension(file.FileName);
             var fileguid = Guid.NewGuid().ToString();
             string pdf_name = fileguid + fileExtenstion;
@@ -54,6 +57,9 @@ namespace Thalili.Controllers
         }
         public ActionResult Analysis(int? page)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             if (page == null)
                 page = 1;
             ViewData["page"] = page;
@@ -62,6 +68,9 @@ namespace Thalili.Controllers
         }
         public ActionResult EditThalil(string ThalilName, decimal price)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             var edit = context.analysis_in_lab.Where(d => d.Labs_id == lab_id && d.medical_analysis.name == ThalilName).FirstOrDefault();
             edit.price = price;
             context.SaveChanges();
@@ -70,6 +79,9 @@ namespace Thalili.Controllers
 
         public ActionResult AddThalil(string ThalilName, decimal price)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             try
             {            
                 var analysis = context.medical_analysis.Where(d => d.name == ThalilName).FirstOrDefault();
@@ -90,6 +102,9 @@ namespace Thalili.Controllers
         }
         public ActionResult DeleteThalil(int id)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             var deleteitem = context.analysis_in_lab.Where(d => d.Labs_id == lab_id && d.medical_analysis_id == id).FirstOrDefault();
             context.analysis_in_lab.Remove(deleteitem);
             context.SaveChanges();
@@ -99,6 +114,9 @@ namespace Thalili.Controllers
         [HttpGet]
         public ActionResult Settings()
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             var lab = context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault();
             lab.lab_owner.pass = "***********";
             return View(lab);
@@ -107,6 +125,9 @@ namespace Thalili.Controllers
         [HttpPost]
         public ActionResult Settings(lab edits)
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            int lab_id = (int)Session["labID"];
             var lab = context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault();
             lab.name = edits.name;
             lab.phone_number = edits.phone_number;
@@ -121,6 +142,8 @@ namespace Thalili.Controllers
         }
         public ActionResult UploadImage(HttpPostedFileBase file)   //next edit will be **delete temp pic 
         {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
             var fileExtenstion = Path.GetExtension(file.FileName);
             var fileguid = Guid.NewGuid().ToString();
             var filee = fileguid + fileExtenstion;
@@ -128,7 +151,11 @@ namespace Thalili.Controllers
             TempData["Image"] = file;
             file.SaveAs(filePath);
             return RedirectToAction("Settings");
-
+        }
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
         }
     }
 }

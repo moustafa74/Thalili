@@ -2023,7 +2023,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Analysis_and_Labs\lab.cshtml" />
     <Content Include="Views\Analysis_and_Labs\analysis.cshtml" />
-    <Content Include="Views\LabDashboard\test.cshtml" />
+    <Content Include="Views\Cart\completeRequst.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
