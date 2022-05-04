@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8992dd34cf9943898e7349690209caf3" Name="Diagram1">
+      <Diagram DiagramId="d23507a4b4cb47439a4e498f7f8982db" Name="Diagram1">
         <EntityTypeShape EntityType="ThaliliModel.admin" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ThaliliModel.analysis_in_lab" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ThaliliModel.cart" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
