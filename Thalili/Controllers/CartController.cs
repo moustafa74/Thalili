@@ -46,7 +46,8 @@ namespace Thalili.Controllers
             List<sub_order> suborders = new List<sub_order>();
             order order = new order();
             order.location = Adress;
-            order.date = DateTime.Now;   
+            order.date = DateTime.Now;
+            order.is_sent = false;
             context.orders.Add(order);
             var carts = context.carts.Where(d => d.user_id == user_id).ToList();
             foreach (cart crt in carts)

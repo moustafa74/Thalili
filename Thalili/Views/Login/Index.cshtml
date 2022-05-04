@@ -1,8 +1,6 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Login";
 }
-
 <main>
     <div class="FormPage aLoginPageForUser">
         <div class="container-xl">
@@ -14,6 +12,7 @@
             </div>
             <div class="row w-100 m-0">
                 <div class="col-lg-6 col-md-8 col-sm-10 TheForm">
+<<<<<<< HEAD
                     @{ 
                         string act = "/Login/LoginConfirm";
                         if (ViewData["islab"] !=null)
@@ -23,8 +22,13 @@
                                 document.body.onload = function () { document.getElementById("lab-owner-btn").click(); };
                             </script>
                         }
+=======
+                    @if (ViewData["islab"] != null)
+                    {
+                        <script>document.onload = function () { document.getElementById("lab-owner-btn").click(); };</script>
+>>>>>>> 358c5495c5f1081a46d3895a5fc1087ef7cbff68
                     }
-                    <form class="align-middle" action="@act" method="post" style="width:90%;margin:auto;">
+                    <form class="align-middle" action="/Login/LoginConfirm" method="post" style="width:90%;margin:auto;">
                         <h3 class="h3 pt-3">مستخدم عادي</h3>
                         <p>تسجيل الدخول كمستخدم عادي يتيح لك إمكانيات اختيار التحاليل والمعامل وطلب عميل لاخذ العينات اللازمة</p>
                         <p style="color:red"> @ViewBag.ERoor</p>
@@ -48,6 +52,6 @@
             </div>
             <div class="layer"></div>
         </div>
-    </div>
+    </div>   
 </main>
 

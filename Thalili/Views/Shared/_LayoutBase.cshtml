@@ -9,14 +9,14 @@
     </title>
     <link rel="icon" href="~/Content/Assets/imgs/Group 640.png" type="image/x-icon">
     <!-- Main CSS File -->
-        <link rel="stylesheet" href="~/Content/Assets/css/master.css" asp-append-version="true">
-        <!-- BootStarp CSS File -->
-        <link rel="stylesheet" href="~/Content/Assets/css/bootstrap-5.1.3-dist/bootstrap.min.css" asp-append-version="true">
-        <!-- Fontawesome CSS File -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-        <!-- Fontawesome Js File -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js"></script>
-        <script src="https://js.hcaptcha.com/1/api.js"></script>
+    <link rel="stylesheet" href="~/Content/Assets/css/master.css" asp-append-version="true">
+    <!-- BootStarp CSS File -->
+    <link rel="stylesheet" href="~/Content/Assets/css/bootstrap-5.1.3-dist/bootstrap.min.css" asp-append-version="true">
+    <!-- Fontawesome CSS File -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <!-- Fontawesome Js File -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js"></script>
 </head>
 <body>
     <!-- Start Navbar -->
@@ -24,7 +24,8 @@
         <div class="container">
             <div class="navbar-brand align-items-center"><a href="/home"><img src="~/Content/Assets/imgs/Group_798.PNG" alt="Logo"></a></div>
             <div class="before-nav">
-                <a href="/cart"><img src="~/Content/Assets/imgs/icons8_invoice.png" alt=""></a>
+                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                </a>
                 @{
                     if (Session["userName"] != null)
                     {
@@ -32,7 +33,7 @@
                             <button id="arrowBtn" type="button" onclick="arrow_clicked()"> <img id="arrow" src="~/Content/Assets/imgs/icons8_triangle_arrow.png" alt=""> </button>
                             <div class="arrowMenu" data-Todisplay="arrowMenuShow">
                                 <div class="container">
-                                    <a href="#">قائمة التسوق</a>
+                                    <a >حسابك الشخصى</a>
                                     <hr>
                                     <div class="list-group">
                                         <a href="#" class="list-group-item list-group-item-action">نتائج التحاليل</a>
