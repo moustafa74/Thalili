@@ -12,14 +12,9 @@ namespace Thalili.Controllers
     public class LabDashboardController : Controller
     {
         thaliliEntities context = new thaliliEntities();
-        int lab_id = 1;
+        int lab_id = 2;
         //int user = 1;
         //int medical = 1;
-        public ActionResult test()
-        {
-            int x = context.lab_owner.Where(d => d.lab.lab_id == lab_id).FirstOrDefault().lab_owner_id;
-            return View(x);
-        }
         public ActionResult Orders(int? page)
         {
             List<List<sub_order>> allorders = new List<List<sub_order>>();

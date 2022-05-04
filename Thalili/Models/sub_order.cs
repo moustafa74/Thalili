@@ -23,7 +23,6 @@ namespace Thalili.Models
         public Nullable<bool> is_finshed { get; set; }
     
         public virtual analysis_in_lab analysis_in_lab { get; set; }
-        public virtual lab lab { get; set; }
         public virtual order order { get; set; }
         public virtual user user { get; set; }
     }

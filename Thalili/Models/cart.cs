@@ -21,6 +21,5 @@ namespace Thalili.Models
     
         public virtual analysis_in_lab analysis_in_lab { get; set; }
         public virtual user user { get; set; }
-        public virtual lab lab { get; set; }
     }
 }
