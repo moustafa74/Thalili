@@ -24,8 +24,7 @@
         <div class="row m-0">
             <div class="col-2 rightCont fixed-top">
                 <div class="container-flud">
-                    <h3 class="h3 pt-3">اسم المعمل</h3>
-                    <small>القاهرة</small>
+                    <h3 class="h3 pt-3">@Session["labName"]</h3>
                     <hr>
                     <ul class="list-group p-0 d-flex">
                         <li class="list-group-item px-0 border-0">
@@ -48,7 +47,7 @@
                             </a>
                         </li>
                         <li class="list-group-item px-0 border-0" style="position: absolute; bottom: 3vh;">
-                            <a href="" class="btn ps-0 w-100 text-end">
+                            <a href="/LabDashboard/LogOut" class="btn ps-0 w-100 text-end">
                                 <i class="fa-solid fa-right-from-bracket"></i>
                                 <span>تسجيل الخروج</span>
                             </a>

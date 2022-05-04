@@ -24,7 +24,7 @@
         <div class="container">
             <div class="navbar-brand align-items-center"><a href="/home"><img src="~/Content/Assets/imgs/Group_798.PNG" alt="Logo"></a></div>
             <div class="before-nav">
-                <a href="#"><img src="~/Content/Assets/imgs/icons8_invoice.png" alt=""></a>
+                <a href="/cart"><img src="~/Content/Assets/imgs/icons8_invoice.png" alt=""></a>
                 @{
                     if (Session["userName"] != null)
                     {
@@ -32,7 +32,7 @@
                             <button id="arrowBtn" type="button" onclick="arrow_clicked()"> <img id="arrow" src="~/Content/Assets/imgs/icons8_triangle_arrow.png" alt=""> </button>
                             <div class="arrowMenu" data-Todisplay="arrowMenuShow">
                                 <div class="container">
-                                    <a href="#">حسابك الشخصي</a>
+                                    <a href="#">قائمة التسوق</a>
                                     <hr>
                                     <div class="list-group">
                                         <a href="#" class="list-group-item list-group-item-action">نتائج التحاليل</a>
@@ -113,7 +113,7 @@
                 <div class="col-md-4 col-sm-12 flex-column">
                     <div class="mb-3 head">عن التطبيق</div>
                     <a href="#">شاركنا رايك</a>
-                    <a href="#">انضم كشريك</a>
+                    <a href="/JoinAsPartner">انضم كشريك</a>
                     <a href="#">الشروط والاحكام</a>
                     <a href="#">سياسة الخصوصية</a>
                 </div>

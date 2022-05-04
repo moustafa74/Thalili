@@ -113,10 +113,10 @@ function changeLogin(h3text, formaction, idofbutton, idofanother, backgroundclas
     document.querySelector(".FormPage").classList.remove(removeoldbackgroundclass);
 }
 function changeLoginUserButton() {
-    changeLogin("مستخدم عادي", "userLogin.php", "#user-btn", "#lab-owner-btn", "aLoginPageForUser", "aLoginPageForLabOwner");
+    changeLogin("مستخدم عادي", "/Login/LoginConfirm", "#user-btn", "#lab-owner-btn", "aLoginPageForUser", "aLoginPageForLabOwner");
 }
 function changeLoginLabOwnerButton() {
-    changeLogin("صاحب معمل", "labOwnerLogin.php", "#lab-owner-btn", "#user-btn", "aLoginPageForLabOwner", "aLoginPageForUser");
+    changeLogin("صاحب معمل", "/Login/LabLogin", "#lab-owner-btn", "#user-btn", "aLoginPageForLabOwner", "aLoginPageForUser");
 }
 //End Functions of Login Page 
 

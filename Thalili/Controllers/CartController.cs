@@ -21,15 +21,27 @@ namespace Thalili.Controllers
         }
         public ActionResult edit(int analysis_id, int Lab_id,int count)
         {
-
+            if (Session["UserID"] == null)
+                return RedirectToAction("Index", "Login");
+            int user_id = (int)Session["UserID"];
+            context.carts.Where(d => d.analysis_id == analysis_id && d.Lab_id == Lab_id && d.user_id == user_id).FirstOrDefault().count=count;
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
         public ActionResult deleteItem(int analysis_id,int Lab_id)
         {
+            if (Session["UserID"] == null)
+                return RedirectToAction("Index", "Login");
+            int user_id = (int)Session["UserID"];
+            cart cart=context.carts.Where(d => d.analysis_id == analysis_id && d.Lab_id == Lab_id && d.user_id == user_id).FirstOrDefault();
+            context.carts.Remove(cart);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
         public ActionResult completeRequst(string Adress)
         {
+            if (Session["UserID"] == null)
+                return RedirectToAction("Index", "Login");
             int user_id = (int)Session["UserID"];
             List<sub_order> suborders = new List<sub_order>();
             order order = new order();

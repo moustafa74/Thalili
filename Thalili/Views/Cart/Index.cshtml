@@ -52,6 +52,7 @@
                                 </div>
                                 @{ 
                                     decimal price = (decimal)(crt.analysis_in_lab.price * crt.count);
+                                     price = (int)Math.Ceiling(price);
                                     total_price += price;
                                 }
                                 <div class="row d-flex justify-content-end">
