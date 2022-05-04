@@ -52,62 +52,70 @@ html {
         font-size: 10px;
     }
 }
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5B79CC;
+    border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #313C55;
+}
 /* Start Navbar  */
 .navbar {
     background-color: #5B79CC;
     position: relative;
 }
-
-    .navbar #arrowBtn {
-        background-color: transparent;
-        border: none;
-        padding: 0.5vh 1vw;
-    }
-    /* .navbar #arrow{
-    margin-right: 1vw;
-} */
-    .navbar .arrowMenu {
-        font-family: "Janna LT";
-        display: none;
-        height: 14rem;
-        width: 18rem;
-        z-index: 10;
-        padding-top: 2vh;
-        position: absolute;
-        background-color: white;
-        border-radius: 20px 0px 20px 20px;
-        top: 100%;
-        animation-name: slideDown;
-        animation-duration: 0.5s;
-    }
-
-        .navbar .arrowMenu .container > a {
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.3rem;
-            color: #707070;
-            margin-top: 2vh;
-        }
-
-            .navbar .arrowMenu .container > a:hover {
-                color: #5B79CC;
-                transition: 0.5s;
-            }
-
-        .navbar .arrowMenu p {
-            font-size: 0.7rem;
-        }
-
-        .navbar .arrowMenu .list-group-item {
-            border: none;
-            font-size: 1rem;
-        }
-
-        .navbar .arrowMenu h3, .navbar .arrowMenu .list-group, .navbar .arrowMenu p, .navbar .arrowMenu hr {
-            animation-name: slide;
-            animation-duration: 3s;
-        }
-
+.navbar #arrowBtn {
+    background-color: transparent;
+    border: none;
+    padding: 0.5vh 1vw;
+}
+.navbar .arrowMenu {
+    font-family: "Janna LT";
+    display: none;
+    height: 14rem;
+    width: 18rem;
+    z-index: 10;
+    padding-top: 2vh;
+    position: absolute;
+    background-color: white;
+    border-radius: 20px 0px 20px 20px;
+    top: 100%;
+    animation-name: slideDown;
+    animation-duration: 0.5s;
+}
+.navbar .arrowMenu .container > a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #707070;
+    margin-top: 2vh;
+}
+.navbar .arrowMenu .container > a:hover {
+    color: #5B79CC;
+    transition: 0.5s;
+}
+.navbar .arrowMenu p {
+    font-size: 0.7rem;
+}
+.navbar .arrowMenu .list-group-item {
+    border: none;
+    font-size: 1rem;
+}
+.navbar .arrowMenu h3, .navbar .arrowMenu .list-group, .navbar .arrowMenu p, .navbar .arrowMenu hr {
+    animation-name: slide;
+    animation-duration: 3s;
+}
 @keyframes slideDown {
     from {
         height: 0;
@@ -117,7 +125,6 @@ html {
         height: 14rem;
     }
 }
-
 @keyframes slide {
     from {
         opacity: 0;
@@ -127,11 +134,9 @@ html {
         opacity: 1;
     }
 }
-
 .arrowMenuShow {
     display: block !important;
 }
-
 .navbar .arrowMenu::before {
     content: "";
     width: 0px;
@@ -143,7 +148,6 @@ html {
     border-style: solid;
     border-color: transparent transparent white transparent;
 }
-
 .navbar .login {
     display: flex;
     flex-direction: column;
@@ -153,59 +157,48 @@ html {
     font-family: "Hanimation";
     position: relative;
 }
-
-    .navbar .login::after {
-        content: "";
-        height: 90%;
-        position: absolute;
-        left: 0;
-        border-left: 3px solid white;
-        opacity: 0.5;
-    }
-
+.navbar .login::after {
+    content: "";
+    height: 90%;
+    position: absolute;
+    left: 0;
+    border-left: 3px solid white;
+    opacity: 0.5;
+}
 .navbar .login {
     font-size: 0.8rem;
 }
-
-    .navbar .login a {
-        font-size: 1rem;
-        color: white;
-        text-decoration: none;
-    }
-
-        .navbar .login a:hover {
-            color: #313C55;
-        }
-
+.navbar .login a {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+}
+.navbar .login a:hover {
+    color: #313C55;
+}
 .navbar .before-nav {
     display: flex;
     align-items: center;
 }
-
 .navbar .navbar-brand {
     margin-left: 10rem;
 }
-
 .navbar .navbar-nav {
     padding: 0;
 }
-
-    .navbar .navbar-nav .nav-item {
-        margin-right: 2vw;
-        font-size: 1rem;
-        font-family: "Hanimation";
-    }
-
-        .navbar .navbar-nav .nav-item span {
-            color: white;
-            margin-right: 0.5vw;
-        }
-
-        .nav-item-active, .navbar .navbar-nav .nav-item:hover {
-            background-color: #313C55;
-            border-radius: 10px;
-        }
-
+.navbar .navbar-nav .nav-item {
+    margin-right: 2vw;
+    font-size: 1rem;
+    font-family: "Hanimation";
+}
+.navbar .navbar-nav .nav-item span {
+    color: white;
+    margin-right: 0.5vw;
+}
+.nav-item-active, .navbar .navbar-nav .nav-item:hover {
+    background-color: #313C55;
+    border-radius: 10px;
+}
 @media (max-width: 767.5px) {
     .before-nav {
         display: none !important;
@@ -236,18 +229,15 @@ html {
     background-size: cover;
     position: relative;
 }
-
-    .mainPage-searchSection .row p {
-        color: #707070;
-        font-family: "Hanimation";
-        font-size: 2.5rem;
-        margin-bottom: 8vh;
-    }
-
-    .mainPage-searchSection .row img {
-        width: 22.8rem;
-    }
-
+.mainPage-searchSection .row p {
+    color: #707070;
+    font-family: "Hanimation";
+    font-size: 2.5rem;
+    margin-bottom: 8vh;
+}
+.mainPage-searchSection .row img {
+    width: 22.8rem;
+}
 .mySearchField {
     width: 95%;
     padding: 1vh;
@@ -259,15 +249,12 @@ html {
     border: none;
     box-shadow: 0px 0px 5px 1px #5b79cc;
 }
-
 .mainPage-searchSection .row form input::placeholder {
     color: #D2D2D2;
 }
-
 .mainPage-searchSection .row form div {
     position: relative;
 }
-
 .mainPage-searchSection .row form #searchList {
     direction: ltr;
     width: fit-content;
@@ -280,11 +267,9 @@ html {
     color: #D2D2D2;
     background-color: transparent;
 }
-
-    .mainPage-searchSection .row form #searchList:focus {
-        color: black;
-    }
-
+.mainPage-searchSection .row form #searchList:focus {
+    color: black;
+}
 .mySubmit-btn {
     background-color: #F79A3D;
     background-image: url(../imgs/Group\ 625.png);
@@ -301,7 +286,6 @@ html {
     border: 1px solid #F79A3D;
     border-radius: 0 10px 10px 0;
 }
-
 @media(max-width: 480px) {
     .mySearchField {
         padding-right: 1rem;
@@ -329,7 +313,6 @@ html {
         height: fit-content;
     }
 }
-
 .mainPage-searchSection .socialBox {
     height: calc(154px + 1vh);
     background-color: #5B79CC;
@@ -339,19 +322,16 @@ html {
     transform: translate(0, -50%);
     border-radius: 10px 0 0 10px;
 }
-
-    .mainPage-searchSection .socialBox div {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        position: relative;
-    }
-
-        .mainPage-searchSection .socialBox div img {
-            padding: 0 1vw;
-        }
-
+.mainPage-searchSection .socialBox div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+.mainPage-searchSection .socialBox div img {
+    padding: 0 1vw;
+}
 @media(max-width: 480px) {
     .mainPage-searchSection .socialBox {
         display: none;
@@ -365,62 +345,51 @@ html {
     background-image: url(../imgs/woman-working-laborator-1.png);
     background-size: cover;
 }
-
-    .mainPage-aboutSection .topPart {
-        height: fit-content;
-        background-color: rgba(91, 121, 204,85%);
-    }
-
-        .mainPage-aboutSection .topPart .container {
-            padding-top: 4vh;
-            padding-bottom: 4vh;
-        }
-
-            .mainPage-aboutSection .topPart .container, .mainPage-aboutSection .topPart .container .row {
-                height: fit-content;
-            }
-
-        .mainPage-aboutSection .topPart .left h2 {
-            color: white;
-            font-family: "Hanimation";
-            font-size: 2.6rem;
-            font-weight: 600;
-        }
-
-        .mainPage-aboutSection .topPart .left p {
-            color: white;
-            font-family: "Janna LT";
-            font-size: 1.3rem;
-            font-weight: 300;
-        }
-
-    .mainPage-aboutSection .bottomPart {
-        height: fit-content;
-        background-color: rgb(49, 60, 85,85%);
-    }
-
-        .mainPage-aboutSection .bottomPart .container {
-            padding-top: 4vh;
-            padding-bottom: 4vh;
-        }
-
-            .mainPage-aboutSection .bottomPart .container, .mainPage-aboutSection .bottomPart .container .row {
-                height: fit-content;
-            }
-
-                .mainPage-aboutSection .bottomPart .container .row img {
-                    height: 4rem;
-                    align-self: center;
-                }
-
-                .mainPage-aboutSection .bottomPart .container .row p {
-                    color: white;
-                    font-family: "Hanimation";
-                    font-size: 2rem;
-                    line-height: 1.2;
-                    margin-right: 1rem;
-                }
-
+.mainPage-aboutSection .topPart {
+    height: fit-content;
+    background-color: rgba(91, 121, 204,85%);
+}
+.mainPage-aboutSection .topPart .container {
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+}
+.mainPage-aboutSection .topPart .container, .mainPage-aboutSection .topPart .container .row {
+    height: fit-content;
+}
+.mainPage-aboutSection .topPart .left h2 {
+    color: white;
+    font-family: "Hanimation";
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+.mainPage-aboutSection .topPart .left p {
+    color: white;
+    font-family: "Janna LT";
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+.mainPage-aboutSection .bottomPart {
+    height: fit-content;
+    background-color: rgb(49, 60, 85,85%);
+}
+.mainPage-aboutSection .bottomPart .container {
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+}
+.mainPage-aboutSection .bottomPart .container, .mainPage-aboutSection .bottomPart .container .row {
+    height: fit-content;
+}
+.mainPage-aboutSection .bottomPart .container .row img {
+    height: 4rem;
+    align-self: center;
+}
+.mainPage-aboutSection .bottomPart .container .row p {
+    color: white;
+    font-family: "Hanimation";
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-right: 1rem;
+}
 @media(max-width: 768px) {
     .mainPage-aboutSection .topPart .right {
         display: none;
@@ -440,77 +409,65 @@ html {
 .mainPage-nearLabs {
     background-color: #F1F3F3;
 }
-
-    .mainPage-nearLabs .container :nth-child(1) h2 {
-        font-size: 2.5rem;
-        font-family: "Hanimation";
-        font-weight: 600;
-        color: #5B79CC;
-    }
-
-    .mainPage-nearLabs :nth-child(2) div p {
-        font-family: "Janna LT";
-        font-size: 0.9rem;
-        color: #707070;
-    }
-
-    .mainPage-nearLabs :nth-child(2) div a {
-        direction: ltr;
-    }
-
-    .mainPage-nearLabs #cards .card {
-        width: 300px;
-        min-height: 391px;
-        background-color: white;
-        border-radius: 10px;
-        margin-top: 6vh;
-        margin-bottom: 12vh;
-    }
-
-        .mainPage-nearLabs #cards .card img {
-            width: 272px;
-            height: 177px;
-            margin-top: 16px;
-        }
-
-        .mainPage-nearLabs #cards .card p {
-            color: #5B79CC;
-            font-size: 26px;
-            font-family: "Hanimation";
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .mainPage-nearLabs #cards .card .evaluate svg {
-            width: 15px;
-            height: 15px;
-            color: #F0D738;
-        }
-
-        .mainPage-nearLabs #cards .card .evaluate span {
-            color: #9E9E9E;
-            font-size: 13px;
-            font-family: "Janna LT";
-        }
-
-        .mainPage-nearLabs #cards .card .labLocation img {
-            width: 13px;
-            height: 16px;
-            margin: 0;
-        }
-
-        .mainPage-nearLabs #cards .card .labLocation span {
-            font-size: 14px;
-            font-family: "Janna LT";
-            color: #707070;
-        }
-
-        .mainPage-nearLabs #cards .card button {
-            background-color: #F79A3D;
-            font-size: 18px;
-            font-family: "Hanimation";
-        }
-
+.mainPage-nearLabs .container :nth-child(1) h2 {
+    font-size: 2.5rem;
+    font-family: "Hanimation";
+    font-weight: 600;
+    color: #5B79CC;
+}
+.mainPage-nearLabs :nth-child(2) div p {
+    font-family: "Janna LT";
+    font-size: 0.9rem;
+    color: #707070;
+}
+.mainPage-nearLabs :nth-child(2) div a {
+    direction: ltr;
+}
+.mainPage-nearLabs #cards .card {
+    width: 300px;
+    min-height: 391px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 6vh;
+    margin-bottom: 12vh;
+}
+.mainPage-nearLabs #cards .card img {
+    width: 272px;
+    height: 177px;
+    margin-top: 16px;
+}
+.mainPage-nearLabs #cards .card p {
+    color: #5B79CC;
+    font-size: 26px;
+    font-family: "Hanimation";
+    font-weight: 600;
+    margin: 0;
+}
+.mainPage-nearLabs #cards .card .evaluate svg {
+    width: 15px;
+    height: 15px;
+    color: #F0D738;
+}
+.mainPage-nearLabs #cards .card .evaluate span {
+    color: #9E9E9E;
+    font-size: 13px;
+    font-family: "Janna LT";
+}
+.mainPage-nearLabs #cards .card .labLocation img {
+    width: 13px;
+    height: 16px;
+    margin: 0;
+}
+.mainPage-nearLabs #cards .card .labLocation span {
+    font-size: 14px;
+    font-family: "Janna LT";
+    color: #707070;
+}
+.mainPage-nearLabs #cards .card button {
+    background-color: #F79A3D;
+    font-size: 18px;
+    font-family: "Hanimation";
+}
 @media(max-width: 767px) {
     .mainPage-nearLabs #cards {
         justify-content: center !important;
@@ -524,35 +481,33 @@ html {
     background-size: cover;
     color: white;
 }
+.mainPage-partnerSection .layer {
+    background-color: rgba(91, 121, 204,85%);
+}
 
-    .mainPage-partnerSection .layer {
-        background-color: rgba(91, 121, 204,85%);
-    }
+.mainPage-partnerSection .container .row .right p {
+    font-size: 1.7rem;
+}
 
-    .mainPage-partnerSection .container .row .right p {
-        font-size: 1.7rem;
-    }
+.mainPage-partnerSection .container .row .right img {
+    width: 12.39rem;
+}
 
-    .mainPage-partnerSection .container .row .right img {
-        width: 12.39rem;
-    }
+.mainPage-partnerSection .container .row .left h2 {
+    font-size: 2.5rem;
+}
 
-    .mainPage-partnerSection .container .row .left h2 {
-        font-size: 2.5rem;
-    }
+.mainPage-partnerSection .container .row .left p {
+    font-size: 1rem;
+    font-weight: 600;
+}
 
-    .mainPage-partnerSection .container .row .left p {
-        font-size: 1rem;
-        font-weight: 600;
-    }
-
-    .mainPage-partnerSection .container .row .left button {
-        width: fit-content;
-        font-family: "Hanimation";
-        font-size: 1rem;
-        background-color: #F79A3D;
-    }
-
+.mainPage-partnerSection .container .row .left button {
+    width: fit-content;
+    font-family: "Hanimation";
+    font-size: 1rem;
+    background-color: #F79A3D;
+}
 @media(max-width: 768px) {
     .mainPage-partnerSection .container .row .right {
         display: none;
@@ -566,25 +521,21 @@ footer {
     color: white;
     font-family: "Janna LT";
 }
-
-    footer .row .flex-column a {
-        display: block;
-        font-size: 1rem;
-        text-decoration: none;
-        color: white;
-        margin-bottom: 2vh;
-    }
-
-    footer .row .flex-row a {
-        margin-left: 2vh;
-    }
-
-    footer .head {
-        color: #9FB1E3;
-        font-family: "Hanimation";
-        font-size: 1.4rem;
-    }
-
+footer .row .flex-column a {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 2vh;
+}
+footer .row .flex-row a {
+    margin-left: 2vh;
+}
+footer .head {
+    color: #9FB1E3;
+    font-family: "Hanimation";
+    font-size: 1.4rem;
+}
 @media(max-width: 768px) {
     footer .row {
         flex-direction: column !important;
@@ -1259,3 +1210,62 @@ table tbody:nth-child(2n) {
     width: 100%;
 }
 /* End Cart Page  */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(55px);
+    -ms-transform: translateX(55px);
+    transform: translateX(55px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }

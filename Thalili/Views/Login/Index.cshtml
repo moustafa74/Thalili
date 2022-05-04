@@ -19,6 +19,9 @@
                         if (ViewData["islab"] !=null)
                         {
                             act = "/Login/LabLogin";
+                            <script>
+                                document.body.onload = function () { document.getElementById("lab-owner-btn").click(); };
+                            </script>
                         }
                     }
                     <form class="align-middle" action="@act" method="post" style="width:90%;margin:auto;">

@@ -19,8 +19,8 @@
                     @foreach (var crt in Model)
                     {
                         cart_id++;
-                    <form action="/Cart/edit" method="post" id="cartFrom">
-                         <div class="row cartItem py-2 px-4 mb-3" id="CartItem-@cart_id.ToString()">
+                    <form action="/Cart/edit" method="post" id="CartItem-@cart_id">
+                         <div class="row cartItem py-2 px-4 mb-3">
                             <input type="hidden" name="analysis_id" value="@crt.analysis_id">
                             <input type="hidden" name="Lab_id" value="@crt.Lab_id">
                             <div class="col-3">
@@ -45,10 +45,10 @@
                                 </div>
                                 <div class="row align-items-baseline justify-content-end">
                                     <small class="w-auto p-0 ps-2">العدد المطلوب</small>
-                                    <button type="button" class="btn w-auto p-0"><i class="fa-solid fa-circle-plus" data-action="plusBtn" onclick="addorminusone(this)"></i></button>
+                                    <button type="button" class="btn w-auto p-0" data-action="plusBtn" data-parentForm="CartItem-@cart_id" onclick="addorminusone(this)"><i class="fa-solid fa-circle-plus"></i></button>
                                     <span class="w-auto numberoford" style="font-size: 0.9rem;font-family: 'Janna LT'; color: #707070;">@crt.count</span>
                                     <input type="hidden" name="count" value="@crt.count">
-                                    <button type="button" class="btn w-auto p-0"><i class="fa-solid fa-circle-minus" data-action="minusBtn" onclick="addorminusone(this)"></i></button>
+                                    <button type="button" class="btn w-auto p-0" data-action="minusBtn" data-parentForm="CartItem-@cart_id" onclick="addorminusone(this)"><i class="fa-solid fa-circle-minus"></i></button>
                                 </div>
                                 @{ 
                                     decimal price = (decimal)(crt.analysis_in_lab.price * crt.count);
