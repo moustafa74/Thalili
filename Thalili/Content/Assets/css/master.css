@@ -52,6 +52,24 @@ html {
         font-size: 10px;
     }
 }
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5B79CC;
+    border-radius: 10px;
+}
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #313C55;
+    }
 /* Start Navbar  */
 .navbar {
     background-color: #5B79CC;
@@ -63,9 +81,7 @@ html {
         border: none;
         padding: 0.5vh 1vw;
     }
-    /* .navbar #arrow{
-    margin-right: 1vw;
-} */
+
     .navbar .arrowMenu {
         font-family: "Janna LT";
         display: none;
@@ -646,6 +662,7 @@ footer {
     background-color: #5B79CC !important;
     color: white !important;
 }
+
 .FormPage .userHeader p {
     color: #C7C7C7;
     font-family: "Hanimation";
@@ -661,13 +678,14 @@ footer {
     border-radius: 0 0 20px 20px;
 }
 
-.TheForm small {
-    visibility: hidden;
-}
+    .TheForm small {
+        visibility: hidden;
+    }
 
 .FormPage .TheForm form h3, .FormPage .TheForm form p {
     color: #707070;
 }
+
 .FormPage .TheForm label {
     color: #D2D2D2;
     font-family: "Janna LT";
@@ -1074,13 +1092,16 @@ footer {
     font-family: "Hanimation";
     color: #5B79CC;
 }
+
 #AddorEditThalil label {
     font-size: 1.2rem;
     color: #D2D2D2;
 }
+
 #AddorEditThalil form {
     font-family: "Janna LT";
 }
+
 table tbody:nth-child(2n) {
     background-color: #F2F2F2;
 }
@@ -1136,22 +1157,379 @@ table tbody:nth-child(2n) {
 #Settings {
     font-family: "Janna LT";
 }
-#Settings input[type="text"],
-#Settings input[type="email"],
-#Settings input[type="password"],
-#Settings textarea {
+
+    #Settings input[type="text"],
+    #Settings input[type="email"],
+    #Settings input[type="password"],
+    #Settings textarea {
+        border: none;
+        height: 3rem;
+        box-shadow: 0px 0px 6px 0 #00000029;
+        border-radius: 10px;
+    }
+
+    #Settings input[type="submit"] {
+        background-color: #5B79CC;
+        color: white;
+    }
+
+    #Settings label {
+        color: #D2D2D2;
+        font-size: 1.2rem;
+    }
+
+
+/* Analysis PAGE */
+body {
+    background-color: #F1F3F3 !important;
+}
+
+.search_section .row form input[type='search'] {
+    height: 2.5rem;
+    padding: 1vh;
+    padding-left: 1vw;
+    padding-right: 3rem;
+    font-family: "Janna LT";
+    font-size: 1rem;
+    border-radius: 10px;
     border: none;
-    height: 3rem;
-    box-shadow: 0px 0px 6px 0 #00000029;
+    box-shadow: 0px 0px 5px 1px #a4a7af;
+}
+
+.search_section .row form input::placeholder {
+    color: #D2D2D2;
+}
+
+.search_section .row form div {
+    position: relative;
+}
+
+.search_section .row form #searchList {
+    direction: ltr;
+    width: fit-content;
+    font-family: "Janna LT";
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    position: absolute;
+    left: 7vw;
+    color: #D2D2D2;
+    background-color: transparent;
+}
+
+    .search_section .row form #searchList:focus {
+        color: black;
+    }
+
+.search_section .row form #mainPage-submitBtn {
+    background-color: #F79A3D;
+    background-image: url(../imgs/Group\ 625.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1vh;
+    font-size: 1.5rem;
+    height: 2.6rem;
+    width: 2.6rem;
+    position: absolute;
+    right: 0;
+    border: none;
+    border: 1px solid #F79A3D;
     border-radius: 10px;
 }
-#Settings input[type="submit"] {
-    background-color: #5B79CC;
-    color: white;
+
+.main-section-result .right-section,
+.main-section-result .left-section {
+    background-color: #FFF;
+    box-shadow: 0px 0px 5px 1px #a4a7af63;
+    border-radius: 15px;
+    margin-bottom: 50px;
 }
-#Settings label{
+
+.main-section-result .right-section {
+    padding: 20px;
+}
+
+    .main-section-result .right-section .search-title {
+        text-align: right;
+        color: #5B79CC;
+        font-family: Hanimation;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .main-section-result .right-section .search-description {
+        font-family: 'Janna LT';
+        font-size: 15px;
+        font-weight: 400;
+        color: #707070;
+    }
+
+.main-section-result .left-section .side-title {
+    font-family: 'Janna LT';
+    font-size: 24px;
+    font-weight: bold;
+    color: #707070;
+}
+
+.main-section-result .left-section .side-title-description {
+    font-family: 'Janna LT';
+    font-size: 14px;
+    font-weight: 400;
+    color: #9E9E9E;
+    border-bottom: 2px solid #C7C7C7;
+    padding-bottom: 5px;
+}
+
+.main-section-result .section-aside {
+    border-bottom: 2px solid #C7C7C7;
+    padding-bottom: 5px;
+}
+
+    .main-section-result .section-aside .title {
+        font-family: 'Janna LT';
+        font-size: 24px;
+        font-weight: bold;
+        color: #707070;
+    }
+
+.main-section-result .left-section .section-aside .choice {
+    font-size: 15px;
+    font-weight: bold;
+    color: #9E9E9E;
+    font-family: 'Janna LT';
+}
+
+.main-section-result .left-section form button[type="submit"] {
+    background: #F79A3D 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    width: 100%;
+    font-family: 'Janna LT';
+    font-size: 18px;
+    box-shadow: none;
+    border: none;
+}
+
+.main-section-result .right-section .tags .tag a {
+    border-radius: 14px;
+    height: 27px;
+    background: #9FB1E3 0% 0% no-repeat padding-box;
+    padding: 0 1rem;
+    font-size: 15px;
+    font-weight: 100;
+    color: #fff;
+    font-family: 'Janna LT';
+    margin: 0 2px;
+    text-decoration: none;
+}
+
+.lab-res-pic {
+    overflow: hidden;
+    border-radius: 10px;
+    height: 350px;
+}
+
+.tags-title {
+    font-family: 'Janna LT';
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #707070;
+}
+
+.inner-img {
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.search_analysis .row form input[type='search'] {
+    height: 2rem;
+    padding: 1vh;
+    padding-left: 1vw;
+    padding-right: 3rem;
+    font-family: "Janna LT";
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 5px 1px #a4a7af;
+}
+
+.search_analysis .row form input::placeholder {
     color: #D2D2D2;
-    font-size: 1.2rem;
+}
+
+.search_analysis .row form div {
+    position: relative;
+}
+
+.search_analysis .row form #searchList {
+    direction: ltr;
+    width: fit-content;
+    font-family: "Janna LT";
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    position: absolute;
+    left: 7vw;
+    color: #D2D2D2;
+    background-color: transparent;
+}
+
+    .search_analysis .row form #searchList:focus {
+        color: black;
+    }
+
+.search_analysis .row form #mainPage-submitBtn {
+    background-color: #F79A3D;
+    background-image: url(../imgs/Group\ 625.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1vh;
+    font-size: 1.5rem;
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    right: 0;
+    border: none;
+    border: 1px solid #F79A3D;
+    border-radius: 10px;
+}
+
+.other-results .item {
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 10px;
+}
+
+    .other-results .item .picture {
+        overflow: hidden;
+    }
+
+    .other-results .item .content .title {
+        text-align: right;
+        color: #5B79CC;
+        font-family: Hanimation;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .other-results .item .content .rating svg {
+        color: #F0D738;
+    }
+
+    .other-results .item .content .rating span {
+        color: #707070;
+        font-family: 'Janna LT';
+        font-size: 15px;
+        font-weight: 400;
+        color: #707070;
+    }
+
+    .other-results .item .content .waiting-time {
+        font-family: 'Janna LT';
+        font-size: 15px;
+        font-weight: 400;
+        color: #5B79CC;
+    }
+
+        .other-results .item .content .waiting-time span {
+            color: #707070;
+        }
+
+    .other-results .item .content .description {
+        font-family: 'Janna LT';
+        font-size: 15px;
+        font-weight: 400;
+        color: #707070;
+    }
+
+
+        .other-results .item .content .description svg,
+        .other-results .item .content .waiting-time svg {
+            margin-left: 2px;
+        }
+
+.other-results div .more-details {
+}
+
+    .other-results div .more-details .add-cart {
+    }
+
+.other-results .more-details .add-cart .add-to-cart {
+    background: #F79A3D 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    width: 100%;
+    font-family: 'Janna LT';
+    font-size: 14px;
+    box-shadow: none;
+    border: none;
+}
+
+.other-results .more-details .add-cart span {
+    cursor: pointer;
+}
+
+.other-results .more-details .add-cart .number .qu-need {
+    font-family: 'Janna LT';
+    font-size: 15px;
+    font-weight: 400;
+    color: #707070;
+}
+
+.other-results .more-details .add-cart .minus, .plus {
+    width: 30px;
+    height: 30px;
+    background: #5B79CC;
+    border-radius: 30px;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.other-results .more-details .add-cart input[class="quantity"] {
+    height: 30px;
+    width: 85px;
+    text-align: center;
+    font-size: 26px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.other-results .more-details .add-cart svg {
+    font-size: 16px;
+    color: #fff;
+}
+
+.other-results div .more-details .price {
+    direction: ltr;
+    font-family: 'Janna LT';
+    font-size: 15px;
+    font-weight: 400;
+    color: #707070;
+}
+
+    .other-results div .more-details .price .currency {
+        color: #5B79CC;
+    }
+
+    .other-results div .more-details .price p {
+        direction: ltr;
+        margin: 0;
+        font-family: Hanimation;
+        font-weight: bold;
+        color: #5B79CC;
+        font-size: 45px;
+    }
+
+/* For rate color in the sidebar */
+.rate-filter svg {
+    color: #F0D738;
+}
+
+
+/* End Analysis Result PAGE */
 }
 /* Start Cart Page  */
 .cartPage {
@@ -1159,103 +1537,162 @@ table tbody:nth-child(2n) {
     background-color: #F1F3F3;
 }
 
-.cartPage h3 {
-    color: #C7C7C7;
-    font-family: "Hanimation";
-    font-weight: 600;
-}
+    .cartPage h3 {
+        color: #C7C7C7;
+        font-family: "Hanimation";
+        font-weight: 600;
+    }
 
-.cartPage .numofThalil {
-    color: #9E9E9E;
-    font-family: "Janna LT";
-    font-size: 1.4rem;
-}
+    .cartPage .numofThalil {
+        color: #9E9E9E;
+        font-family: "Janna LT";
+        font-size: 1.4rem;
+    }
 
-.cartPage .rightSection, .cartPage .leftSection {
-    background-color: white;
-    border-radius: 20px;
-}
+    .cartPage .rightSection, .cartPage .leftSection {
+        background-color: white;
+        border-radius: 20px;
+    }
 
-.cartPage .cartItem {
-    border-radius: 20px;
-    box-shadow: 0px 0px 6px #00000029;
-}
+    .cartPage .cartItem {
+        border-radius: 20px;
+        box-shadow: 0px 0px 6px #00000029;
+    }
 
-.cartPage .cartItem .thalilName {
-    color: #5B79CC;
-    font-size: 1.3rem;
-    font-family: "Hanimation";
-    font-weight: 600;
-}
+        .cartPage .cartItem .thalilName {
+            color: #5B79CC;
+            font-size: 1.3rem;
+            font-family: "Hanimation";
+            font-weight: 600;
+        }
 
-.cartPage .cartItem .labName {
-    font-family: "Janna LT";
-    font-size: 0.8rem;
-}
+        .cartPage .cartItem .labName {
+            font-family: "Janna LT";
+            font-size: 0.8rem;
+        }
 
-.cartPage .cartItem .deleteBtn {
-    font-size: 0.8rem;
-    font-family: "Hanimation";
-}
+        .cartPage .cartItem .deleteBtn {
+            font-size: 0.8rem;
+            font-family: "Hanimation";
+        }
 
-.cartPage .cartItem .priceofThalil {
-    font-size: 2.3rem;
-    font-family: "Hanimation";
-}
+        .cartPage .cartItem .priceofThalil {
+            font-size: 2.3rem;
+            font-family: "Hanimation";
+        }
 
-.cartPage .cartItem svg {
-    color: #5B79CC;
-    width: 1rem;
-}
+        .cartPage .cartItem svg {
+            color: #5B79CC;
+            width: 1rem;
+        }
 
-.cartPage .cartItem .samples span {
-    background-color: #9FB1E3;
-    color: white;
-    border-radius: 14px;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-}
+        .cartPage .cartItem .samples span {
+            background-color: #9FB1E3;
+            color: white;
+            border-radius: 14px;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
 
-.cartPage .cartItem small {
-    font-family: "Janna LT";
-    font-size: 0.7rem;
-    color: #707070;
-}
+        .cartPage .cartItem small {
+            font-family: "Janna LT";
+            font-size: 0.7rem;
+            color: #707070;
+        }
 
-.cartPage .cartItem #plusBtn, .cartPage .cartItem #minusBtn {
-    color: #5B79CC;
-}
+        .cartPage .cartItem #plusBtn, .cartPage .cartItem #minusBtn {
+            color: #5B79CC;
+        }
 
-.cartPage .leftSection h4 {
-    font-size: 1.5rem;
-    color: #707070;
-    font-family: "Hanimation";
-    font-weight: 600;
-}
+    .cartPage .leftSection h4 {
+        font-size: 1.5rem;
+        color: #707070;
+        font-family: "Hanimation";
+        font-weight: 600;
+    }
 
-.cartPage .leftSection strong {
-    font-size: 4rem;
-    color: #5B79CC;
-    font-family: "Hanimation";
-}
+    .cartPage .leftSection strong {
+        font-size: 4rem;
+        color: #5B79CC;
+        font-family: "Hanimation";
+    }
 
-.cartPage .leftSection small {
-    font-size: 0.8rem;
-    color: #C7C7C7;
-}
+    .cartPage .leftSection small {
+        font-size: 0.8rem;
+        color: #C7C7C7;
+    }
 
-.cartPage .leftSection form textarea {
-    border: none;
-    box-shadow: 0px 0px 6px #00000029;
-    border-radius: 0.8rem;
-    width: 100%;
-    font-family: "Jana LT";
-}
+    .cartPage .leftSection form textarea {
+        border: none;
+        box-shadow: 0px 0px 6px #00000029;
+        border-radius: 0.8rem;
+        width: 100%;
+        font-family: "Jana LT";
+    }
 
-.cartPage .leftSection form input[type="submit"] {
-    background-color: #F79A3D;
-    color: white;
-    border-radius: 0.6rem;
-    width: 100%;
-}
+    .cartPage .leftSection form input[type="submit"] {
+        background-color: #F79A3D;
+        color: white;
+        border-radius: 0.6rem;
+        width: 100%;
+    }
 /* End Cart Page  */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(55px);
+    -ms-transform: translateX(55px);
+    transform: translateX(55px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }

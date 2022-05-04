@@ -246,7 +246,9 @@ function addorminusone(theButton) {
         }
     }
     parent.querySelector('input[type="hidden"]').value = num;
-    document.querySelector('#cartFrom').submit();
+    console.log(theButton.getAttribute('data-parentForm'));
+    document.querySelector('#' + theButton.getAttribute('data-parentForm')).submit();
+    /*document.getElementById(theButton.getAttribute('data-parentForm')).submit();*/
 }
 function deleteItemfromCart(theButton) {
     const parent = document.getElementById(theButton.getAttribute('data-parentID'));
