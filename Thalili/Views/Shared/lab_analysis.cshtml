@@ -75,7 +75,7 @@
                 <nav class="paginat mt-3 mb-3">
                     <ul class="d-flex justify-content-center" style="list-style:none;">
                         <li class="page_item_arrow d-none"><i class="fa-solid fa-angle-right"></i></li>
-                        @for (int i = 1; i <= Math.Ceiling((Model.labList.Count()*1.0)/4); i++)
+                        @for (int i = 1; i <= Math.Ceiling((Model.labList.Count() * 1.0) / 4); i++)
                         {
                             if (i == curent)
                             {
@@ -91,11 +91,11 @@
                                 {
                                     if (searchField == null)
                                     {
-                                    <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri?page=@i">@i</a></li>
+                                        <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri?page=@i">@i</a></li>
                                     }
                                     else
                                     {
-                                    <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri&page=@i">@i</a></li>
+                                        <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri&page=@i">@i</a></li>
 
                                     }
                                 }
@@ -112,8 +112,8 @@
                                 }
                             }
                         }
-                            <li class="page_item_arrow"><i class="fa-solid fa-angle-left"></i></li>
-                        </ul>
+                        <li class="page_item_arrow"><i class="fa-solid fa-angle-left"></i></li>
+                    </ul>
                 </nav>
 
                 }
