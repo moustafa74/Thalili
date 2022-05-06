@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#ignore Models Folder and Web Config files
+Thalili/Models/
+Thalili/Web.config/
+Thalili/Web.Debug.config
+Thalili/Web.Release.config
+Thalili/packages.config
