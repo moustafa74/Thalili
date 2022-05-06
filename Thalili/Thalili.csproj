@@ -297,7 +297,11 @@
     <Content Include="Content\Assets\imgs\icons8_invoice.png" />
     <Content Include="Content\Assets\imgs\icons8_key.png" />
     <Content Include="Content\Assets\imgs\icons8_lab_items.png" />
+    <Content Include="Content\Assets\imgs\icons8_Logout.jpg" />
+    <Content Include="Content\Assets\imgs\icons8_order_history.jpg" />
     <Content Include="Content\Assets\imgs\icons8_sand_timer.png" />
+    <Content Include="Content\Assets\imgs\icons8_settings_1.jpg" />
+    <Content Include="Content\Assets\imgs\icons8_test_passed.jpg" />
     <Content Include="Content\Assets\imgs\icons8_triangle_arrow.png" />
     <Content Include="Content\Assets\imgs\icons8_twitter.png" />
     <Content Include="Content\Assets\imgs\icons8_user_2.png" />

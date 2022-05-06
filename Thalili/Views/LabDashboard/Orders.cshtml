@@ -67,7 +67,6 @@
                                 <div class="col">@ord.order.location</div>
                                 <div class="col">@ord.user.phone_number</div>
                                 <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons">
-                                    <!--For on thalil_nums-->
                                     <div class="row">
                                         <button name="" class="btn btn-primary px-2 mb-3" onclick="location.href = '/LabDashboard/SendClient/@ord.order_id'">ارسال المندوب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
                                     </div>
@@ -180,7 +179,7 @@
                                 </div>
                             </div>
                         </div>
-                        @{ int max_num_of_pages = Math.Max((int)Math.Ceiling((Model.Last().Count * 1.0) / 4),1);}   @*paging*@ 
+                        @{ int max_num_of_pages = Math.Max((int)Math.Ceiling((Model.Last().Count * 1.0) / 4), 1);}   @*paging*@
                         <div class="text-center pt-5">
                             <a href="/LabDashboard/Orders/?page=@(Math.Min(curent+1,max_num_of_pages))"><i class="fa-solid fa-circle-right"></i></a>
                             <span>page <span class="currentpage">@curent</span> of <span class="allpages">@max_num_of_pages</span></span>

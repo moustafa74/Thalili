@@ -111,6 +111,12 @@ function changeLogin(h3text, formaction, idofbutton, idofanother, backgroundclas
     document.querySelector(idofanother).classList.remove("loginChangeBtnsActive");
     document.querySelector(".FormPage").classList.add(backgroundclass);
     document.querySelector(".FormPage").classList.remove(removeoldbackgroundclass);
+    if (idofbutton === "#lab-owner-btn") {
+        forminElement.querySelector('.aboutParagraph').textContent = "تسجيل الدخول كصاحب معمل مخصص لاصحاب المعامل لادارة التحاليل الخاصة بالمعمل ومتابعة الطلبات";
+    }
+    else {
+        forminElement.querySelector('.aboutParagraph').textContent = "تسجيل الدخول كمستخدم عادي يتيح لك إمكانيات اختيار التحاليل والمعامل وطلب عميل لاخذ العينات اللازمة";
+    }
 }
 function changeLoginUserButton() {
     changeLogin("مستخدم عادي", "/Login/LoginConfirm", "#user-btn", "#lab-owner-btn", "aLoginPageForUser", "aLoginPageForLabOwner");

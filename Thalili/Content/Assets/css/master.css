@@ -85,7 +85,7 @@ html {
     .navbar .arrowMenu {
         font-family: "Janna LT";
         display: none;
-        height: 14rem;
+        height: fit-content;
         width: 18rem;
         z-index: 10;
         padding-top: 2vh;
@@ -130,7 +130,7 @@ html {
     }
 
     to {
-        height: 14rem;
+        height: 15rem;
     }
 }
 
@@ -239,6 +239,12 @@ html {
 @media(min-width: 768px) {
     .login-in-nav {
         display: none;
+    }
+}
+
+@media(max-width: 992px) {
+    .navbar-brand {
+        margin-left: 5rem !important;
     }
 }
 /* End Navbar  */
@@ -1048,7 +1054,7 @@ footer {
         background-color: white;
     }
 
-    .labOwnerPage .leftCont .leftCont-all .section-address {
+    .labOwnerPage .leftCont .leftCont-all .section-address, .userorderspage .section-address {
         font-family: "Hanimation";
         font-size: 1.667rem;
         font-weight: 600;
@@ -1056,12 +1062,12 @@ footer {
         padding-top: 2rem;
     }
 
-    .labOwnerPage .leftCont .leftCont-all .table-head {
-        font-family: "Janna LT";
-        font-size: 1rem;
-        color: #A9A9A9;
-        padding-bottom: 2rem;
-    }
+.table-head {
+    font-family: "Janna LT";
+    font-size: 1rem;
+    color: #A9A9A9;
+    padding-bottom: 2rem;
+}
 
 .talabt-item {
     display: flex;
@@ -1696,3 +1702,29 @@ input:checked + .slider:before {
     .slider.round:before {
         border-radius: 50%;
     }
+
+/*Start CompleteRequest Page*/
+.completeRequestPage {
+    background-color: #F1F3F3;
+    height: fit-content;
+}
+
+    .completeRequestPage .header {
+        color: #5B79CC;
+        font-family: "Hanimation";
+        font-size: 3rem;
+        font-weight: 600;
+    }
+
+    .completeRequestPage svg {
+        width: 7rem;
+        height: 7rem;
+        color: #5B79CC;
+    }
+
+    .completeRequestPage .bodymessage {
+        color: #9E9E9E;
+        font-family: "Janna LT";
+        font-size: 1.2rem;
+    }
+/*End CompleteRequest Page*/

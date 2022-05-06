@@ -24,7 +24,8 @@
         <div class="container">
             <div class="navbar-brand align-items-center"><a href="/home"><img src="~/Content/Assets/imgs/Group_798.PNG" alt="Logo"></a></div>
             <div class="before-nav">
-                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                <a href="/cart">
+                    <i style="color:white; width: 2rem; height: 2rem;" class="fa-solid fa-cart-shopping"></i>
                 </a>
                 @{
                     if (Session["userName"] != null)
@@ -33,33 +34,34 @@
                             <button id="arrowBtn" type="button" onclick="arrow_clicked()"> <img id="arrow" src="~/Content/Assets/imgs/icons8_triangle_arrow.png" alt=""> </button>
                             <div class="arrowMenu" data-Todisplay="arrowMenuShow">
                                 <div class="container">
-                                    <a >حسابك الشخصى</a>
+                                    <a>حسابك الشخصى</a>
                                     <hr>
                                     <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">نتائج التحاليل</a>
-                                        <a href="/Profile" class="list-group-item list-group-item-action">تعديل معلومات الحساب</a>
-                                        <a href="/Logout" class="list-group-item list-group-item-action">تسجيل خروج</a>
+                                        <a href="#" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_test_passed.jpg" />نتائج التحاليل</a>
+                                        <a href="/Profile" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_settings_1.jpg" />تعديل معلومات الحساب</a>
+                                        <a href="/Profile" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_order_history.jpg" />طلباتي</a>
+                                        <a href="/Logout" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_Logout.jpg" />تسجيل خروج</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     }
-            else
-            {
-            <div >
-                <button id="arrowBtn" type="button" onclick="arrow_clicked()"> <img id="arrow" src="~/Content/Assets/imgs/icons8_triangle_arrow.png" alt=""> </button>
-                <div class="arrowMenu" data-Todisplay="arrowMenuShow" style="height: fit-content !important">
-                    <div class="container">
-                        <a href="/login">حسابك الشخصي</a>
-                        <hr>
-                        <div class="list-group">
-                            <a href="/login"  class="list-group-item list-group-item-action">نتائج التحاليل</a>
+                    else
+                    {
+                        <div>
+                            <button id="arrowBtn" type="button" onclick="arrow_clicked()"> <img id="arrow" src="~/Content/Assets/imgs/icons8_triangle_arrow.png" alt=""> </button>
+                            <div class="arrowMenu" data-Todisplay="arrowMenuShow" style="height: fit-content !important">
+                                <div class="container">
+                                    <a href="/login">حسابك الشخصي</a>
+                                    <hr>
+                                    <div class="list-group">
+                                        <a href="/login" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_test_passed.jpg" />نتائج التحاليل</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            }
-                }  
+                    }
+                }
                 <span class="login">
                     <span>مرحبا بك</span>
                     @{
@@ -106,7 +108,7 @@
     <div>
         @RenderBody()
     </div>
-   
+
     <!-- Start Footer -->
     <footer>
         <div class="container py-5">
