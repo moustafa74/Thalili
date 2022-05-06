@@ -30,15 +30,14 @@
                             @Model.FirstOrDefault().medical_analysis.description
                         </p>
                         <h2 class="tags-title">العينات المطلوبة</h2>
-                        @foreach (var sample in Model.FirstOrDefault().medical_analysis.samples.ToList())
-                        {
-
                         <div class="tags d-flex">
-                            <div class="tag">
-                                <a href="#">@sample.sample_name</a>
-                            </div>
+                            @foreach (var sample in Model.FirstOrDefault().medical_analysis.samples.ToList())
+                            {
+                                <div class="tag">
+                                    <a href="#">@sample.sample_name</a>
+                                </div>
+                            }
                         </div>
-                        }
                     </div>
                 </div>
                 <div class="search_analysis">
