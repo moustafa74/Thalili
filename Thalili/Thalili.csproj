@@ -193,6 +193,8 @@
     <Compile Include="Controllers\LabDashboardController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
+    <Compile Include="Controllers\MyOrdersController.cs" />
+    <Compile Include="Controllers\MyResultsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -2031,6 +2033,8 @@
     <Content Include="Views\Analysis_and_Labs\lab.cshtml" />
     <Content Include="Views\Analysis_and_Labs\analysis.cshtml" />
     <Content Include="Views\Cart\completeRequst.cshtml" />
+    <Content Include="Views\MyOrders\Index.cshtml" />
+    <Content Include="Views\MyResults\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
