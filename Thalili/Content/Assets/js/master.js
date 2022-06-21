@@ -266,3 +266,11 @@ function deleteItemfromCart(theButton) {
     }
 }
 // End Cart Page
+
+function go_next_item(element) {
+    const parent = element.parentElement.parentElement;
+    const child_length = parent.children.length;
+    parent.children[0].style.display = "none";
+    parent.children[child_length - 2].insertAdjacentElement('afterend', parent.children[0]);
+    parent.children[2].style.display = "block";
+}

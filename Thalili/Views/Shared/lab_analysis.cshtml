@@ -15,40 +15,71 @@
             <div class="col-9">
                 @if (Model.analysisList != null)
                 {
+                    int c = -1;
                 <div class="testResult">
                     <p>نتائج التحاليل</p>
+                    @if (Model.analysisList.Count < 2)
+                    {
+                        <p style="color: black;">لا يوجد نتائج في المعامل</p>
+                    }
                     <div class="row flex-column flex-md-row">
                         @foreach (var analyss in Model.analysisList)
                         {
-                            <a class="col-9 col-sm-6 col-md m-auto mt-4 m-md-0 ms-md-3  px-2  testSearchCard" href="/Analysis_and_Labs/analysis/@analyss.medical_analysis_id">
-                                <img class="mt-2 d-flex mx-auto" src="@analyss.img" alt="" style="width:97%; height:104px">
-                                <p class="pt-2 m-2 m-md-0">@analyss.name</p>
-                                <span class="m-2 m-md-0">@analyss.description </span>
-                                <ul class="m-0 mt-2">
-                                    @foreach (var sampl in analyss.samples)
-                                    {
-                                        <li class="tag p-1 ms-1 mt-1">@sampl.sample_name</li>
-                                    }
-                                </ul>
-                                <button type="button" class="btn d-flex mx-auto my-3 justify-content-center" onclick="@analyss.medical_analysis_id">المزيد من التفاصيل</button>
-                            </a>
+                            if (c >= 2)
+                            {
+                                <a class="col-9 col-sm-6 col-md-3 m-auto mt-4 m-md-0 ms-md-3  px-2 testSearchCard" href="/Analysis_and_Labs/analysis/@analyss.medical_analysis_id" style="display:none">
+                                    <img class="mt-2 d-flex mx-auto" src="@analyss.img" alt="" style="width:97%; height:104px">
+                                    <p class="pt-2 m-2 m-md-0">@analyss.name</p>
+                                    <span class="m-2 m-md-0">@analyss.description </span>
+                                    <ul class="m-0 mt-2">
+                                        @foreach (var sampl in analyss.samples)
+                                        {
+                                            <li class="tag p-1 ms-1 mt-1">@sampl.sample_name</li>
+                                        }
+                                    </ul>
+                                    <button type="button" class="btn d-flex mx-auto my-3 justify-content-center" onclick="@analyss.medical_analysis_id">المزيد من التفاصيل</button>
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="col-9 col-sm-6 col-md-3 m-auto mt-4 m-md-0 ms-md-3  px-2 testSearchCard" href="/Analysis_and_Labs/analysis/@analyss.medical_analysis_id" style="display:block">
+                                    <img class="mt-2 d-flex mx-auto" src="@analyss.img" alt="" style="width:97%; height:104px">
+                                    <p class="pt-2 m-2 m-md-0">@analyss.name</p>
+                                    <span class="m-2 m-md-0">@analyss.description </span>
+                                    <ul class="m-0 mt-2">
+                                        @foreach (var sampl in analyss.samples)
+                                        {
+                                            <li class="tag p-1 ms-1 mt-1">@sampl.sample_name</li>
+                                        }
+                                    </ul>
+                                    <button type="button" class="btn d-flex mx-auto my-3 justify-content-center" onclick="@analyss.medical_analysis_id">المزيد من التفاصيل</button>
+                                </a>
+                            }
+                            c++;
                         }
+                        @if (c >= 2)
+                        {
                             <div class="col-1" style="position: relative;">
-                                <button class="carousel-control-prev d-none d-md-flex" type="button" id="nextElementBtn">
+                                <button class="carousel-control-prev d-none d-md-flex" type="button" id="nextElementBtn" onclick="go_next_item(this)">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </button>
                             </div>
-                        </div>
+                        }
+                    </div>
                 </div>
                 }
                 @if (Model.labList != null)
                 {
-                <div class="labResult">
-                    <p>نتائج المعامل</p>
-                    @{int curent = Convert.ToInt32(ViewData["page"]);
-                    }
-                    @for (int i = (curent-1)*4; i < Math.Min(Model.labList.Count(),4*curent); i++)
-                        {
+            <div class="labResult">
+                <p>نتائج المعامل</p>
+                @if (Math.Ceiling((Model.labList.Count() * 1.0) / 4) < 1)
+                {
+                    <p style="color: black;">لا يوجد نتائج في المعامل</p>
+                }
+                @{int curent = Convert.ToInt32(ViewData["page"]);
+                }
+                @for (int i = (curent - 1) * 4; i < Math.Min(Model.labList.Count(), 4 * curent); i++)
+                {
                     <div class="row flex-column flex-md-row my-3">
                         <a href="/Analysis_and_Labs/lab/@Model.labList[i].lab_id" class="col-9 col-sm-6 col-md m-auto mt-4  m-md-0 ms-md-3 labSearchCard py-3 row flex-column flex-md-row">
                             <div class="d-flex col-xl-3 col-md-4 col-12 m-auto m-md-0">
@@ -58,9 +89,9 @@
                                 <p class="m-2 m-md-0">@Model.labList[i].name</p>
                                 <div class="evaluation m-2 m-md-0" style="word-spacing: -10px;">
                                     @for (int j = 0; j < Model.labList[i].lab_rating; j++)
-                                            {
-                                    <i class="fa fa-star"></i>
-                                            }
+                                    {
+                                        <i class="fa fa-star"></i>
+                                    }
                                     <small>(@Model.labList[i].reviews.Count())</small>
                                 </div>
                                 <div class="location m-2 m-md-0">
@@ -70,8 +101,8 @@
                             </div>
                         </a>
                     </div>
-                        }
-                </div>
+                }
+            </div>
                 <nav class="paginat mt-3 mb-3">
                     <ul class="d-flex justify-content-center" style="list-style:none;">
                         <li class="page_item_arrow d-none"><i class="fa-solid fa-angle-right"></i></li>
@@ -112,7 +143,6 @@
                                 }
                             }
                         }
-                        <li class="page_item_arrow"><i class="fa-solid fa-angle-left"></i></li>
                     </ul>
                 </nav>
 
