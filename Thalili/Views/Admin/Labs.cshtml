@@ -3,5 +3,216 @@
     ViewBag.Title = "Labs";
 }
 
-<h2>Labs</h2>
+<main>
+    <div class="labOwnerPage container-flud">
+        <div class="row m-0">
+            <div class="col-2 rightCont fixed-top">
+                <div class="container-flud">
+                    <img src="./Assets/imgs/Group 1005.png" alt="" style="width: 100%;">
+                    <hr>
+                    <ul class="list-group p-0 d-flex">
+                        <li class="list-group-item px-0 border-0">
+                            <a href="#" class="btn ps-0 w-100 text-end" onclick="active_Element(this)">
+                                <i class="fa-solid fa-flask"></i>
+                                <span>الطلبات الجارية</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item px-0 border-0">
+                            <a href="#" class="btn ps-0 w-100 text-end" onclick="active_Element(this)">
+                                <i class="fa-solid fa-shop"></i>
+                                <span>المعامل</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item px-0 border-0">
+                            <a href="#" class="btn ps-0 w-100 text-end" onclick="active_Element(this)">
+                                <i class="fa-solid fa-flask"></i>
+                                <span>التحاليل</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item px-0 border-0">
+                            <a href="#" class="btn ps-0 w-100 text-end" onclick="active_Element(this)">
+                                <i class="fa-solid fa-users-gear"></i>
+                                <span>المستخدمين</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item px-0 border-0" style="position: absolute; bottom: 3vh;">
+                            <a href="/LabDashboard/LogOut" class="btn ps-0 w-100 text-end">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span>تسجيل الخروج</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="col-2"></div>
+            <div class="col-10 leftCont pt-3 pe-3">
+                <i class="fa-solid fa-shop leftsvg"></i>
+                <h3 class="h3 d-inline lefth3 ">المعامل</h3>
+                <small class="d-block pb-3">المعامل</small>
+                <div class="leftCont-all">
+                    <div class="container pt-2 pb-5">
+                        <div>
+                            <p class="section-address">الطلبات الحديثة</p>
+                            <div class="row table-head text-center">
+                                <div class="col">معرف الطلب</div>
+                                <div class="col">اسم المعمل</div>
+                                <div class="col">تاريخ الطلب</div>
+                                <div class="col">العنوان</div>
+                                <div class="col">البريد الالكتروني</div>
+                                <div class="col">رقم الهاتف الخاص</div>
+                                <div class="col"></div>
+                            </div>
+                            <div class="row talabt-item text-center" id="Admin-Lab-item-1">
+                                <div class="col" id="LabID">1</div>
+                                <div class="col">الحياة</div>
+                                <div class="col">11/9/2002</div>
+                                <div class="col">أسيوط</div>
+                                <div class="col">M@g.com</div>
+                                <div class="col">01111111111</div>
+                                <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons align-items-center">
+                                    <div class="row">
+                                        <button name="" class="btn btn-primary px-2 w-auto" data-bs-toggle="modal" data-bs-target="#AcceptLabOrder">قبول الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                        <button name="" class="btn btn-danger px-2 mt-2 w-auto" onclick="location.href = ">رفض الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="section-address">المعامل المشتركة</p>
+                                <div class="row admin-lab-item py-3 mb-3">
+                                    <div class="w-auto">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="col me-2">
+                                        <div class="row lab-name">
+                                            <div class="col">
+                                                <p>معمل الحياة</p>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col">
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">اسم صاحب المعمل</div>
+                                                    <div class="col lab-value">محمود</div>
+                                                </div>
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">رقم الهاتف</div>
+                                                    <div class="col lab-value">0111111111</div>
+                                                </div>
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">البريد الالكتوني</div>
+                                                    <div class="col lab-value">0111111111</div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">العنوان</div>
+                                                    <div class="col lab-value">أسيوط</div>
+                                                </div>
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">التقييم</div>
+                                                    <div class="col lab-value">4.5</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="row justify-content-center">
+                                                    <button type="button" class="btn btn-primary w-auto">التحاليل المتوفرة</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row admin-lab-item py-3 mb-3">
+                                    <div class="w-auto">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="col me-2">
+                                        <div class="row lab-name">
+                                            <div class="col">
+                                                <p>معمل الحياة</p>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col">
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">اسم صاحب المعمل</div>
+                                                    <div class="col lab-value">محمود</div>
+                                                </div>
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">رقم الهاتف</div>
+                                                    <div class="col lab-value">0111111111</div>
+                                                </div>
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">البريد الالكتوني</div>
+                                                    <div class="col lab-value">0111111111</div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">العنوان</div>
+                                                    <div class="col lab-value">أسيوط</div>
+                                                </div>
+                                                <div class="row justify-content-center">
+                                                    <div class="col lab-label">التقييم</div>
+                                                    <div class="col lab-value">4.5</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="row justify-content-center">
+                                                    <button type="button" class="btn btn-primary w-auto">التحاليل المتوفرة</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal" id="AcceptLabOrder">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">قبول المعمل</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="position: absolute; left: 1rem;"></button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <i class="fa-solid fa-circle-check d-flex" style="width:2rem; height:2rem;color: #43AF5C;"></i>
+                                                <p class="d-flex w-auto"> هل انت متأكد انك تريد قبول المعمل</p>
+                                            </div>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <a class="btn btn-primary" data-bs-dismiss="modal">لا</a>
+                                            <form action="" method="post" id="YesAccept">
+                                                <input type="hidden" name="" value="" />
+                                                <button id="YesAcceptbtn" type="submit" form="YesAccept" class="btn btn-primary">نعم</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <nav class="paginat mt-4 mb-3">
+                                <ul class="d-flex justify-content-center" style="list-style:none;">
+                                    <li class="page_item active" aria-current="page">
+                                        <span class="page_link">1</span>
+                                    </li>
+                                    <li class="page_item" aria-current="page">
+                                        <span class="page_link">2</span>
+                                    </li>
+                                    <li class="page_item" aria-current="page">
+                                        <span class="page_link">3</span>
+                                    </li>
+                                    <li class="page_item_arrow"><i class="fa-solid fa-angle-left"></i></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
 

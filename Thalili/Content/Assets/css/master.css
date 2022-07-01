@@ -54,7 +54,7 @@ html {
 }
 /* width */
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 10px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
@@ -63,7 +63,7 @@ html {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #5B79CC;
+    background: #8CABFF;
     border-radius: 10px;
 }
     /* Handle on hover */
@@ -1454,12 +1454,6 @@ body {
             margin-left: 2px;
         }
 
-.other-results div .more-details {
-}
-
-    .other-results div .more-details .add-cart {
-    }
-
 .other-results .more-details .add-cart .add-to-cart {
     background: #F79A3D 0% 0% no-repeat padding-box;
     border-radius: 10px;
@@ -1536,7 +1530,7 @@ body {
 
 
 /* End Analysis Result PAGE */
-}
+
 /* Start Cart Page  */
 .cartPage {
     min-height: 100vh;
@@ -1756,3 +1750,65 @@ input:checked + .slider:before {
     color: white;
 }
 /* End USerOrder Page */
+
+/* Start Admin Login Page*/
+.admin-loginpage img {
+    width: 22rem;
+}
+
+.admin-loginpage form {
+    width: 30rem;
+    background-color: white;
+    border-radius: 10px;
+}
+
+    .admin-loginpage form p {
+        font-size: 1.3rem;
+        font-family: "Janna LT";
+        color: #6F7688;
+    }
+
+    .admin-loginpage form input:not([type="submit"]) {
+        height: 3rem;
+        font-family: "Janna LT";
+        font-size: 1rem;
+        border: none;
+        box-shadow: 0px 0px 6px 0px #00000029;
+        padding-right: 50px;
+        position: relative;
+        border-radius: 10px;
+    }
+
+    .admin-loginpage form input[type="submit"] {
+        background-color: #5B79CC;
+        border-radius: 10px;
+    }
+
+.admin-lab-item {
+    background-color: #F2F2F2;
+}
+
+    .admin-lab-item img {
+        width: 12rem;
+        height: 10rem;
+    }
+
+    .admin-lab-item .lab-name p {
+        color: #6F7688;
+        font-family: "Janna LT";
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .admin-lab-item .lab-label {
+        color: #BBBBBB;
+        font-family: "Janna LT";
+        font-size: 0.8rem;
+    }
+
+    .admin-lab-item .lab-value {
+        color: #6F7688;
+        font-family: "Janna LT";
+        font-size: 1rem;
+    }
+/* End Admin Login Page*/
