@@ -2037,6 +2037,10 @@
     <Content Include="Views\MyOrders\Index.cshtml" />
     <Content Include="Views\MyResults\Index.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\Current_orders.cshtml" />
+    <Content Include="Views\Admin\Labs.cshtml" />
+    <Content Include="Views\Admin\Analysis.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
