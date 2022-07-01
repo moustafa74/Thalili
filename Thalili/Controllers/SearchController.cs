@@ -9,7 +9,7 @@ namespace Thalili.Controllers
     public class SearchController : Controller
     {
 
-        thaliliEntities context = new thaliliEntities();
+        ThaliliEntities context = new ThaliliEntities();
         public ActionResult Index(string searchField, int? page)
         {
 

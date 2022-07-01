@@ -9,7 +9,7 @@ namespace Thalili.Controllers
 {
     public class ProfileController : Controller
     {
-        thaliliEntities context = new thaliliEntities();
+        ThaliliEntities context = new ThaliliEntities();
         // GET: Profile
         public ActionResult Index()
         {

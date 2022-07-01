@@ -9,7 +9,7 @@ namespace Thalili.Controllers
 {
     public class CartController : Controller
     {
-        thaliliEntities context = new thaliliEntities();
+        ThaliliEntities context = new ThaliliEntities();
         // GET: Cart
         public ActionResult Index()
         {

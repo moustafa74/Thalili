@@ -18,7 +18,7 @@ namespace Thalili.Controllers
         }
         public ActionResult SaveData(request rq)
         {
-            using (thaliliEntities context = new thaliliEntities()) 
+            using (ThaliliEntities context = new ThaliliEntities()) 
             {
                 context.requests.Add(rq);
                 context.SaveChanges();

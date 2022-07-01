@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="thaliliModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ThaliliModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin" />
@@ -53,6 +53,7 @@
           <Property Name="lab_rating" Type="decimal" Precision="2" Scale="1" />
           <Property Name="img" Type="nvarchar" MaxLength="50" />
           <Property Name="phone_number" Type="nvarchar" MaxLength="15" />
+          <Property Name="is_available" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="lab_owner">
           <Key>
@@ -81,6 +82,8 @@
           <Property Name="response_time" Type="nvarchar" MaxLength="45" />
           <Property Name="location" Type="nvarchar" MaxLength="60" />
           <Property Name="is_sent" Type="bit" />
+          <Property Name="is_accept" Type="bit" />
+          <Property Name="Refuse_Reason" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="requests">
           <Key>
@@ -303,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="thaliliModelStoreContainer">
+        <EntityContainer Name="ThaliliModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="analysis_in_lab" EntityType="Self.analysis_in_lab" Schema="thalili" store:Type="Tables" />
           <EntitySet Name="analysis_samples" EntityType="Self.analysis_samples" Schema="thalili" store:Type="Tables" />
@@ -370,7 +373,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="thaliliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ThaliliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin1" />
@@ -417,6 +420,7 @@
           <Property Name="lab_rating" Type="Decimal" Precision="2" Scale="1" />
           <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="is_available" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="analysis_in_lab" Relationship="Self.FK_analysis_in_lab_lab" FromRole="lab" ToRole="analysis_in_lab" />
           <NavigationProperty Name="lab_owner" Relationship="Self.FK_lab_lab_owner" FromRole="lab" ToRole="lab_owner" />
           <NavigationProperty Name="reviews" Relationship="Self.FK_review_lab" FromRole="lab" ToRole="review" />
@@ -451,6 +455,8 @@
           <Property Name="response_time" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="location" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="is_sent" Type="Boolean" />
+          <Property Name="is_accept" Type="Boolean" />
+          <Property Name="Refuse_Reason" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="sub_order" Relationship="Self.sub_order_fk_sub_order_order1" FromRole="order" ToRole="sub_order" />
         </EntityType>
         <EntityType Name="request">
@@ -659,7 +665,7 @@
           <End Role="medical_analysis" Type="Self.medical_analysis" Multiplicity="*" />
           <End Role="sample" Type="Self.sample" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="thaliliEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ThaliliEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admin" />
           <EntitySet Name="analysis_in_lab" EntityType="Self.analysis_in_lab" />
           <EntitySet Name="carts" EntityType="Self.cart" />
@@ -722,9 +728,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="thaliliModelStoreContainer" CdmEntityContainer="thaliliEntities">
+        <EntityContainerMapping StorageEntityContainer="ThaliliModelStoreContainer" CdmEntityContainer="ThaliliEntities">
           <EntitySetMapping Name="admins">
-            <EntityTypeMapping TypeName="thaliliModel.admin">
+            <EntityTypeMapping TypeName="ThaliliModel.admin">
               <MappingFragment StoreEntitySet="admin">
                 <ScalarProperty Name="admin1" ColumnName="admin" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -734,7 +740,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="analysis_in_lab">
-            <EntityTypeMapping TypeName="thaliliModel.analysis_in_lab">
+            <EntityTypeMapping TypeName="ThaliliModel.analysis_in_lab">
               <MappingFragment StoreEntitySet="analysis_in_lab">
                 <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
                 <ScalarProperty Name="Labs_id" ColumnName="Labs_id" />
@@ -743,7 +749,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="carts">
-            <EntityTypeMapping TypeName="thaliliModel.cart">
+            <EntityTypeMapping TypeName="ThaliliModel.cart">
               <MappingFragment StoreEntitySet="cart">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="analysis_id" ColumnName="analysis_id" />
@@ -753,7 +759,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="labs">
-            <EntityTypeMapping TypeName="thaliliModel.lab">
+            <EntityTypeMapping TypeName="ThaliliModel.lab">
               <MappingFragment StoreEntitySet="lab">
                 <ScalarProperty Name="lab_id" ColumnName="lab_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -762,11 +768,12 @@
                 <ScalarProperty Name="lab_rating" ColumnName="lab_rating" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="is_available" ColumnName="is_available" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="lab_owner">
-            <EntityTypeMapping TypeName="thaliliModel.lab_owner">
+            <EntityTypeMapping TypeName="ThaliliModel.lab_owner">
               <MappingFragment StoreEntitySet="lab_owner">
                 <ScalarProperty Name="lab_owner_id" ColumnName="lab_owner_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -776,7 +783,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="medical_analysis">
-            <EntityTypeMapping TypeName="thaliliModel.medical_analysis">
+            <EntityTypeMapping TypeName="ThaliliModel.medical_analysis">
               <MappingFragment StoreEntitySet="medical_analysis">
                 <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -786,18 +793,20 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="thaliliModel.order">
+            <EntityTypeMapping TypeName="ThaliliModel.order">
               <MappingFragment StoreEntitySet="order">
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="response_time" ColumnName="response_time" />
                 <ScalarProperty Name="location" ColumnName="location" />
                 <ScalarProperty Name="is_sent" ColumnName="is_sent" />
+                <ScalarProperty Name="is_accept" ColumnName="is_accept" />
+                <ScalarProperty Name="Refuse_Reason" ColumnName="Refuse_Reason" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="requests">
-            <EntityTypeMapping TypeName="thaliliModel.request">
+            <EntityTypeMapping TypeName="ThaliliModel.request">
               <MappingFragment StoreEntitySet="requests">
                 <ScalarProperty Name="requst_ID" ColumnName="requst_ID" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -809,7 +818,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="reviews">
-            <EntityTypeMapping TypeName="thaliliModel.review">
+            <EntityTypeMapping TypeName="ThaliliModel.review">
               <MappingFragment StoreEntitySet="review">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="Labs_id" ColumnName="Labs_id" />
@@ -819,7 +828,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="samples">
-            <EntityTypeMapping TypeName="thaliliModel.sample">
+            <EntityTypeMapping TypeName="ThaliliModel.sample">
               <MappingFragment StoreEntitySet="sample">
                 <ScalarProperty Name="sample__id" ColumnName="sample_ id" />
                 <ScalarProperty Name="sample_name" ColumnName="sample name" />
@@ -827,7 +836,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sub_order">
-            <EntityTypeMapping TypeName="thaliliModel.sub_order">
+            <EntityTypeMapping TypeName="ThaliliModel.sub_order">
               <MappingFragment StoreEntitySet="sub_order">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
@@ -840,7 +849,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="thaliliModel.user">
+            <EntityTypeMapping TypeName="ThaliliModel.user">
               <MappingFragment StoreEntitySet="user">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -853,7 +862,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="analysis_samples" TypeName="thaliliModel.analysis_samples" StoreEntitySet="analysis_samples">
+          <AssociationSetMapping Name="analysis_samples" TypeName="ThaliliModel.analysis_samples" StoreEntitySet="analysis_samples">
             <EndProperty Name="medical_analysis">
               <ScalarProperty Name="medical_analysis_id" ColumnName="medical_analysis_id" />
             </EndProperty>

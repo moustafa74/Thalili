@@ -11,7 +11,7 @@ namespace Thalili.Controllers
 
     public class HomeController : Controller
     {
-        thaliliEntities Context = new thaliliEntities();
+        ThaliliEntities Context = new ThaliliEntities();
 
         public ActionResult Index()
         {

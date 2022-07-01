@@ -8,8 +8,7 @@ namespace Thalili.Controllers
     public class Analysis_and_LabsController : Controller
     {
         // GET: Analysis_and_Labs
-        private thaliliEntities context = new thaliliEntities();
-
+         ThaliliEntities context = new ThaliliEntities();
         public ActionResult Index(int? page)
         {
             var labs = context.labs.ToList();

@@ -11,7 +11,7 @@ namespace Thalili.Controllers
 {
     public class LoginController : Controller
     {
-        thaliliEntities Context = new thaliliEntities();
+        ThaliliEntities Context = new ThaliliEntities();
         // GET: Login     
         public ActionResult Index()
         {

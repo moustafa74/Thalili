@@ -13,10 +13,10 @@ namespace Thalili.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class thaliliEntities : DbContext
+    public partial class ThaliliEntities : DbContext
     {
-        public thaliliEntities()
-            : base("name=thaliliEntities")
+        public ThaliliEntities()
+            : base("name=ThaliliEntities")
         {
         }
     

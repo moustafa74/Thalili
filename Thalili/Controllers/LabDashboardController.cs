@@ -11,7 +11,7 @@ namespace Thalili.Controllers
 {
     public class LabDashboardController : Controller
     {
-        thaliliEntities context = new thaliliEntities();
+        ThaliliEntities context = new ThaliliEntities();
         //int lab_id = 2;
         //int user = 1;
         //int medical = 1;

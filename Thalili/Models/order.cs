@@ -25,6 +25,8 @@ namespace Thalili.Models
         public string response_time { get; set; }
         public string location { get; set; }
         public Nullable<bool> is_sent { get; set; }
+        public Nullable<bool> is_accept { get; set; }
+        public string Refuse_Reason { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sub_order> sub_order { get; set; }
