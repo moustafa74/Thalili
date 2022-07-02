@@ -1,6 +1,204 @@
-﻿
+﻿@using Thalili.Models;
+@model List<analysis_in_lab>
 @{
     ViewBag.Title = "lab";
 }
+<div class="search_section py-5">
+    <div class="container">
+        <div class="row position-relative">
+            <form action="/Search" method="get">
+                <div class="col-xxl-12 col-xl-10 col-lg-8">
+                    <input class="col-6" type="search" name="searchField" id="mainPage-searchField"
+                           placeholder="ابحث عن تحاليل او معامل">
+                    <input type="submit" name="submitBtn" value="" id="mainPage-submitBtn">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="main-section-result">
+    <div class="container">
+        <div class="row">
+            <main class="right-section p-4 ms-lg-2 me-lg-2 col-lg-8 col-md-12">
+                <div class="lab-details mb-3">
+                    <div class="row">
+                        <div class="col-md-5 col-12">
+                            <div class="lab-pic">
+                                <img src="https://source.unsplash.com/random/400x400" />
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-12">
+                            <h2 class="title">
+                                @Model.FirstOrDefault().lab.name
+                            </h2>
+
+                            <div class="rating mb-2" style="word-spacing: -10px;">
+                                @for (int i = 0; i < Model.FirstOrDefault().lab.lab_rating; i++)
+                                {
+                                    <i class="fa fa-star"></i>
+
+                                }
+                            </div>
 
 
+
+                            <p class="search-description">
+                                @Model.FirstOrDefault().lab.description
+                            </p>
+                            @if (Model.FirstOrDefault().lab.is_available)
+                            {
+                                <div class="available mb-2"><i class="fa-solid fa-circle"></i> متاح لاستقبال طلبات </div>
+
+                            }
+                            else
+                            {
+                                <div class="available mb-2" style="color:red"><i class="fa-solid fa-circle"></i> غير متاح لاستقبال طلبات </div>
+                            }
+
+                            @*<div class="waiting-time mb-2">
+                                    <i class="fa-solid fa-stopwatch"></i> استجابة الطلبات خلال <span>20 دقيقة</span>
+                                </div>*@
+                            <div class="location mb-2"><i class="fa fa-location-dot"></i> @Model.FirstOrDefault().lab.location</div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="search_analysis">
+
+                    <h3 class="search-title mb-3" style="color: #C7C7C7">التحاليل المتوفرة من المعمل</h3>
+                    <div class="row position-relative">
+                        <form action="/Analysis_and_Labs/SearchAnalysis" method="get">
+                            <div class="col-xxl-12 col-xl-10 col-lg-8 mb-4">
+                                <input type="hidden" name="LabID" value="@Model.FirstOrDefault().lab.lab_id">
+                                <input class="col-6" type="search" name="Analysis" id="mainPage-searchField" placeholder=" ابحث في التحاليل ">
+                                <input type="submit" name="submitBtn" value="" id="mainPage-submitBtn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                @{int curent = Convert.ToInt32(ViewData["page"]);
+                }
+                @if (ViewBag.isEmpty != true)
+                {
+                    <div class="related-thalil">
+                            <div class="row">
+                        @for (int i = (curent - 1) * 8; i < Math.Min(Model.Count(), 8 * curent); i++)
+                        {
+
+
+                                <div class="col-md-3">
+                                    <div class="item mb-3">
+                                        <div class="pictue">
+                                            <img src="https://gcdnb.pbrd.co/images/VTGzZf5G5u1s.png" />
+                                        </div>
+                                        <h3 class="title mt-1 px-1">@Model[i].medical_analysis.name</h3>
+                                        <div class="tags d-flex">
+                                            @foreach (var samp in Model[i].medical_analysis.samples.ToList())
+                                            {
+
+                                                <div class="tag">
+                                                    <a href="#">@samp.sample_name</a>
+                                                </div>
+                                            }
+
+                                        </div>
+                                        <div class="more-details">
+                                            <div class="price p-2 bd-highlight">
+                                                <span class="phase">التكلفة </span>
+
+                                                <p class="total-price">@Model[i].price<span class="currency">EGP</span></p>
+
+
+                                            </div>
+                                            <div class="add-cart p-2 bd-highlight">
+                                                <form action="/Analysis_and_Labs/AddToCart" method="post" id="">
+                                                    <input class="btn btn-primary add-to-cart" type="submit" name="" value="إضافة الي القائمة">
+                                                    <input type="hidden" name="analysis_id" value="1">
+                                                    <input type="hidden" name="lab_id" value="1">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        }
+                            </div>
+
+
+
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="paginat mt-4 mb-3">
+                            <ul class="d-flex justify-content-center" style="list-style:none;">
+
+                                @for (int i = 1; i <= Math.Ceiling((Model.Count() * 1.0) / 8); i++)
+                                {
+                                    if (i == curent)
+                                    {
+                                        <li class="page_item active" aria-current="page">
+                                            <span class="page_link">@i</span>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        string pagination = Request.QueryString["page"];
+                                        string Labname = Request.QueryString["Analysis"];
+
+                                        if (pagination == null)
+                                        {
+                                            if (Labname == null)
+                                            {
+                                                <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri?page=@i">@i</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page_item"><a class="page_link" href="@Request.Url.AbsoluteUri&page=@i">@i</a></li>
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            string link = Request.Url.AbsoluteUri;
+                                            string newLink = "";
+                                            for (int j = 0; j < link.Length - 1; j++)
+                                            {
+                                                newLink += link[j];
+                                            }
+                                            newLink += i.ToString();
+                                            <li class="page_item"><a class="page_link" href="@newLink">@i</a></li>
+                                        }
+
+                                    }
+
+                                }
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </main>
+
+
+            <aside class="left-section p-4 ms-lg-2 me-lg-2 col-lg-3 col-md-12">
+                <h2 class="side-title">التقييمات</h2>
+                <p class="side-title-description">42 من التقييمات</p>
+                <div class="rating mb-2" style="word-spacing: -10px;">
+                    <i class="fa fa-star" style="color: #F0D738"></i>
+                    <i class="fa fa-star" style="color: #F0D738"></i>
+                    <i class="fa fa-star" style="color: #F0D738"></i>
+                    <i class="fa fa-star" style="color: #F0D738"></i>
+                    <i class="fa fa-star" style="color: #F0D738"></i>
+                    <i class="fa fa-star" style="color: #F0D738"></i>
+                    <span>( 24 )</span>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+</div>
