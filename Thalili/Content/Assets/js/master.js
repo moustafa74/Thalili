@@ -279,5 +279,9 @@ function senduserIdofDelete(element) {
     const parent = element.parentElement.parentElement;
     const id = parent.querySelector(".UserID").textContent;
     document.querySelector("#DeleteUser").querySelector("input[type='hidden']").value = id;
-    console.log(id);
+}
+function sendAnalysisIdofDelete(element) {
+    const parent = element.parentElement.parentElement;
+    const id = parent.querySelector(".AnalysisID").textContent;
+    document.querySelector("#DeleteAnalsyis").querySelector("input[type='hidden']").value = id;
 }

@@ -1,7 +1,91 @@
 ﻿
 @{
-    ViewBag.Title = "Analysis";
+ ViewBag.Title = "Analysis";
+ Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Analysis</h2>
-
+<main>
+ <div class="labOwnerPage container-flud">
+  <div class="row m-0">
+   <div class="col-2"></div>
+   <div class="col-10 leftCont pt-3 pe-3">
+    <i class="fa-solid fa-flask leftsvg"></i>
+    <h3 class="h3 d-inline lefth3 ">التحاليل</h3>
+    <small class="d-block pb-3">التحاليل</small>
+    <div class="leftCont-all">
+     <div class="container pt-2 pb-5">
+      <div>
+       <p class="section-address">قائمة التحاليل</p>
+       <div class="row table-head align-items-center">
+        <div class="col-1">رقم المعرف</div>
+        <div class="col-2">اسم التحليل</div>
+        <div class="col-1">الصورة</div>
+        <div class="col-1">العينات</div>
+        <div class="col-5">الوصف</div>
+        <div class="col-2">
+         <button type="button" class="btn btn-primary">إضافة تحليل جديد</button>
+        </div>
+       </div>
+       <div class="row talabt-item" id="Admin-Lab-item-1">
+        <div class="col-1 AnalysisID">1</div>
+        <div class="col-2">كورونا</div>
+        <div class="col-1"><a href="#" target="_blank">a</a></div>
+        <div class="col-1">
+         <div class="row flex-column">
+          <div class="col">دم</div>
+          <div class="col">بول</div>
+         </div>
+        </div>
+        <div class="col-5">تحليل كورونا</div>
+        <div class="col-2 d-flex justify-content-center">
+         <button type="button" class="btn ms-md-2 ms-4" style="width: 2rem; height:2rem;"><img src="./Assets/imgs/Group 855.png" alt=""></button>
+         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteAnalsyis" onclick="sendAnalysisIdofDelete(this)" style="width: 2rem; height:2rem;"><img src="./Assets/imgs/Group 854.png" alt=""></button>
+        </div>
+       </div>
+       <div class="modal" id="DeleteAnalsyis">
+        <div class="modal-dialog">
+         <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+           <h4 class="modal-title">مسح التحليل</h4>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" style="position: absolute; left: 1rem;"></button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+           <div class="row align-items-center">
+            <img src="./Assets/imgs/Group 854.png" alt="" style="width: 3rem; height: 2rem;">
+            <p class="d-flex w-auto m-0"> هل انت متأكد انك تريد مسح التحليل</p>
+           </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+           <a class="btn btn-primary" data-bs-dismiss="modal">لا</a>
+           <form action="" method="get" id="YesDeleteUser">
+            <input type="hidden" name="" value="">
+            <button id="YesDeletebtn" type="submit" form="YesDeleteUser" class="btn btn-danger">امسح</button>
+           </form>
+          </div>
+         </div>
+        </div>
+       </div>
+       <nav class="paginat mt-4 mb-3">
+        <ul class="d-flex justify-content-center" style="list-style:none;">
+         <li class="page_item active" aria-current="page">
+          <span class="page_link">1</span>
+         </li>
+         <li class="page_item" aria-current="page">
+          <span class="page_link">2</span>
+         </li>
+         <li class="page_item" aria-current="page">
+          <span class="page_link">3</span>
+         </li>
+         <li class="page_item_arrow"><i class="fa-solid fa-angle-left"></i></li>
+        </ul>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</main>
