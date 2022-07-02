@@ -29,6 +29,8 @@ namespace Thalili.Controllers
             userr.pass = Crypto.Hash(user1.pass);
             userr.phone_number = user1.phone_number;
             context.SaveChanges();
+            Session["userName"] = userr.name;
+            TempData["SuccessMesssage"] = "تم تعديل البيانات بنجاح";
             return RedirectToAction("Index");
 
         }

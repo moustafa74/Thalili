@@ -50,6 +50,16 @@ namespace Thalili.Controllers
             AdminData labs_requst = new AdminData(labs, requst);
             return View(labs_requst);
         }
+        public ActionResult RefuseRequest(int id)
+        {
+            var request = Context.requests.Where(d => d.requst_ID == id).FirstOrDefault();
+            if(request != null)
+            {
+                Context.requests.Remove(request);
+                Context.SaveChanges();
+            }
+            return RedirectToAction("Labs");
+        }
         public ActionResult Analysis()
         {
             return View();

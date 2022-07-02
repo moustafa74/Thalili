@@ -80,7 +80,7 @@
                                 <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons align-items-center">
                                     <div class="row">
                                         <button name="" class="btn btn-primary px-2 w-auto" data-bs-toggle="modal" data-bs-target="#AcceptLabOrder">قبول الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
-                                        <button name="" class="btn btn-danger px-2 mt-2 w-auto" onclick="location.href = ">رفض الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                        <button name="" class="btn btn-danger px-2 mt-2 w-auto" data-bs-toggle="modal" data-bs-target="#RefuseLabOrder" >رفض الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -163,6 +163,31 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal" id="RefuseLabOrder">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">رفض المعمل</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="position: absolute; left: 1rem;"></button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <i class="fa-solid fa-circle-check d-flex" style="width:2rem; height:2rem;color: #43AF5C;"></i>
+                                                <p class="d-flex w-auto"> هل انت متأكد انك تريد رفض المعمل</p>
+                                            </div>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <a class="btn btn-primary" data-bs-dismiss="modal">لا</a>
+                                            <form action="/Admin/RefuseRequest/@Model.request[i].requst_ID" method="post" id="YesAccept">
+                                                <button id="YesAcceptbtn" type="submit" form="YesAccept" class="btn btn-primary">نعم</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <nav class="paginat mt-4 mb-3">
                                 <ul class="d-flex justify-content-center" style="list-style:none;">
                                     @for (int i = 1; i <= Math.Ceiling((Model.LabList.Count() * 1.0) / 4); i++)
@@ -175,8 +200,6 @@
                                                 <span class="page_link">@i</span>
                                             </li>
                                         }
-
-
                                         else
                                         {
                                             string pagination = Request.QueryString["page"];

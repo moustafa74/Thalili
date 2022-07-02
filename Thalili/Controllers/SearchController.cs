@@ -22,7 +22,7 @@ namespace Thalili.Controllers
             ViewData["page"] = page;
             return View("lab_analysis", anal_lab);
         }
-        public ActionResult filters(string searchField, int typeofsearch, int rating, int? page)
+        public ActionResult filters(string searchField, string typeofsearch, int rating, int? page)
         {
             search_view result = new search_view();
             if (page == null)
@@ -30,20 +30,20 @@ namespace Thalili.Controllers
             ViewData["searchField"] = searchField;
             ViewData["page"] = page;
             #region filters
-            if (typeofsearch == 1)
+            if (typeofsearch == "All")
             {
                 var labs = context.labs.ToList();
                 var anlysis = context.medical_analysis.ToList();
                 result.labList = labs;
                 result.analysisList = anlysis;
             }
-            else if (typeofsearch == 2)
+            else if (typeofsearch == "Labs")
             {
                 var labs = context.labs.ToList();
                 result.labList = context.labs.ToList();
 
             }
-            else if (typeofsearch == 3)
+            else if (typeofsearch == "Analysis")
             {
                 var anlysis = context.medical_analysis.ToList();
                 result.analysisList = context.medical_analysis.ToList();
