@@ -285,3 +285,10 @@ function sendAnalysisIdofDelete(element) {
     const id = parent.querySelector(".AnalysisID").textContent;
     document.querySelector("#DeleteAnalsyis").querySelector("input[type='hidden']").value = id;
 }
+function AcceptandRefuseOrder(element) {
+    const parent = element.parentElement.parentElement.parentElement;
+    console.log(parent.querySelector(".LabId"));
+    const id = parent.querySelector(".LabId").textContent;
+    document.querySelector("#AcceptLabOrder").querySelector("input[type='hidden']").value = id;
+    document.querySelector("#RefuseLabOrder").querySelector("input[type='hidden']").value = id;
+}

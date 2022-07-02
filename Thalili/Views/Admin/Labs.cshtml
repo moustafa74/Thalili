@@ -31,7 +31,7 @@
 
                             <div class="row talabt-item text-center" id="Admin-Lab-item-1">
 
-                                <div class="col" id="LabID">@Model.request[i].requst_ID</div>
+                                <div class="col LabId">@Model.request[i].requst_ID</div>
                                 <div class="col">@Model.request[i].name</div>
                                 <div class="col">@Model.request[i].owner_name</div>
                                 <div class="col">@Model.request[i].location</div>
@@ -39,9 +39,8 @@
                                 <div class="col">@Model.request[i].phone_number</div>
                                 <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons align-items-center">
                                     <div class="row">
-                                        <button name="" class="btn btn-primary px-2 w-auto" data-bs-toggle="modal" data-bs-target="#AcceptLabOrder">قبول الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
-                                        <input type="hidden" name="Request_id" value="@Model.request[i].requst_ID" />
-                                        <button name="" class="btn btn-danger px-2 mt-2 w-auto" data-bs-toggle="modal" data-bs-target="#RefuseLabOrder">رفض الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                        <button name="" class="btn btn-primary px-2 w-auto" data-bs-toggle="modal" data-bs-target="#AcceptLabOrder" onclick="AcceptandRefuseOrder(this)">قبول الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                        <button name="" class="btn btn-danger px-2 mt-2 w-auto" data-bs-toggle="modal" data-bs-target="#RefuseLabOrder" onclick="AcceptandRefuseOrder(this)">رفض الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +116,7 @@
                                         <div class="modal-footer">
                                             <a class="btn btn-primary" data-bs-dismiss="modal">لا</a>
                                             <form action="" method="post" id="YesAccept">
-                                                <input type="hidden" name="" value="" />
+                                                <input type="hidden" name="Request_id" value="" />
                                                 <button id="YesAcceptbtn" type="submit" form="YesAccept" class="btn btn-primary">نعم</button>
                                             </form>
                                         </div>
@@ -134,17 +133,17 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body">
-                                            <div class="row">
-                                                <i class="fa-solid fa-circle-check d-flex" style="width:2rem; height:2rem;color: #43AF5C;"></i>
-                                                <p class="d-flex w-auto"> هل انت متأكد انك تريد رفض المعمل</p>
-                                            </div>
+                                         <div class="row">
+                                          <i class="fa-solid fa-circle-xmark d-flex" style="width: 2rem; height: 2rem; color: #D43E3E;"></i>
+                                          <p class="d-flex w-auto"> هل انت متأكد انك تريد رفض المعمل</p>
+                                         </div>
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
                                             <a class="btn btn-primary" data-bs-dismiss="modal">لا</a>
-                                            <form action="/Admin/RefuseRequest" method="post" id="YesAccept">
-                                                <input type="hidden" />
-                                                <button id="YesAcceptbtn" type="submit" form="YesAccept" class="btn btn-primary">نعم</button>
+                                            <form action="/Admin/RefuseRequest" method="post" id="YesRefuse">
+                                                <input type="hidden" name="Request_id" value=""/>
+                                                <button id="YesRefusebtn" type="submit" form="YesRefuse" class="btn btn-danger">نعم</button>
                                             </form>
                                         </div>
                                     </div>
