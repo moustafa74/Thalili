@@ -18,7 +18,6 @@ namespace Thalili.Controllers
         }
         public ActionResult LoginConfirm(admin admin)
         {
-
             string crc = admin.pass;//Crypto.Hash(user.pass);
             var AdminDetail = Context.admins.Where(x => x.email == admin.email && x.pass == crc).FirstOrDefault();
             ViewData["ERoor"] = "";
@@ -42,6 +41,8 @@ namespace Thalili.Controllers
         }
         public ActionResult Labs(int ? page)
         {
+            //if (Session["AdminID"] == null)
+            //    return RedirectToAction("Login");
             if (page == null)
                 page = 1;
             ViewData["page"] = page;
@@ -50,9 +51,9 @@ namespace Thalili.Controllers
             AdminData labs_requst = new AdminData(labs, requst);
             return View(labs_requst);
         }
-        public ActionResult RefuseRequest(int id)
+        public ActionResult RefuseRequest(int Request_id)
         {
-            var request = Context.requests.Where(d => d.requst_ID == id).FirstOrDefault();
+            var request = Context.requests.Where(d => d.requst_ID == Request_id).FirstOrDefault();
             if(request != null)
             {
                 Context.requests.Remove(request);

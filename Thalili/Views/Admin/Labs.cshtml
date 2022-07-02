@@ -80,7 +80,8 @@
                                 <div class="col d-flex flex-column h-100 justify-content-around talabt-item-buttons align-items-center">
                                     <div class="row">
                                         <button name="" class="btn btn-primary px-2 w-auto" data-bs-toggle="modal" data-bs-target="#AcceptLabOrder">قبول الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
-                                        <button name="" class="btn btn-danger px-2 mt-2 w-auto" data-bs-toggle="modal" data-bs-target="#RefuseLabOrder" >رفض الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
+                                        <input type="hidden" name="Request_id" value="@Model.request[i].requst_ID" />
+                                        <button name="" class="btn btn-danger px-2 mt-2 w-auto" data-bs-toggle="modal" data-bs-target="#RefuseLabOrder">رفض الطلب&nbsp;<i class="fa-solid fa-angle-left"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +182,8 @@
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
                                             <a class="btn btn-primary" data-bs-dismiss="modal">لا</a>
-                                            <form action="/Admin/RefuseRequest/@Model.request[i].requst_ID" method="post" id="YesAccept">
+                                            <form action="/Admin/RefuseRequest" method="post" id="YesAccept">
+                                                <input type="hidden" />
                                                 <button id="YesAcceptbtn" type="submit" form="YesAccept" class="btn btn-primary">نعم</button>
                                             </form>
                                         </div>
