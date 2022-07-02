@@ -1621,6 +1621,44 @@ body {
         .related-thalil .more-details .price .total-price .currency {
             font-size: 20px;
         }
+
+.rating-lab span {
+    top: 320px;
+    left: 238px;
+    width: 37px;
+    height: 33px;
+    font: normal bold 18px Janna LT;
+    letter-spacing: 0.1rem;
+    text-align: right;
+    letter-spacing: 0px;
+    color: #9E9E9E;
+    opacity: 1;
+}
+
+.rates .rate {
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+    .rates .rate .header img {
+        max-width: 50px;
+        max-height: 50px;
+        margin-left: 5px;
+    }
+
+    .rates .rate .header h4 {
+        font: normal bold 14px Janna LT;
+        letter-spacing: 0px;
+        color: #9E9E9E;
+    }
+
+    .rates .rate .description {
+        font: normal bold 14px Janna LT;
+        text-align: right;
+        color: #707070;
+    }
+
 /* Start Cart Page  */
 .cartPage {
     min-height: 100vh;
