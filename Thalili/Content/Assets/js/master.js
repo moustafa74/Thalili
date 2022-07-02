@@ -274,3 +274,10 @@ function go_next_item(element) {
     parent.children[child_length - 2].insertAdjacentElement('afterend', parent.children[0]);
     parent.children[2].style.display = "block";
 }
+
+function senduserIdofDelete(element) {
+    const parent = element.parentElement.parentElement;
+    const id = parent.querySelector(".UserID").textContent;
+    document.querySelector("#DeleteUser").querySelector("input[type='hidden']").value = id;
+    console.log(id);
+}
