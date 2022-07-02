@@ -61,9 +61,23 @@ namespace Thalili.Controllers
             }
             return RedirectToAction("Labs");
         }
-        public ActionResult Analysis()
+        public ActionResult Analysis(int? page)
         {
-            return View();
+            if (page == null)
+                page = 1;
+            ViewData["page"] = page;
+            var analysis = Context.medical_analysis.ToList();
+            return View(analysis);
+        }
+        public ActionResult DeleteAnalysis(int Delete_id)
+        {
+            var analysiss = Context.medical_analysis.Where(d => d.medical_analysis_id == Delete_id).FirstOrDefault();
+            if (analysiss != null)
+            {
+                Context.medical_analysis.Remove(analysiss);
+                Context.SaveChanges();
+            }
+            return RedirectToAction("Analysis");
         }
         public ActionResult Users(int? page )
         {
