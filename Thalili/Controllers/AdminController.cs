@@ -65,9 +65,24 @@ namespace Thalili.Controllers
         {
             return View();
         }
-        public ActionResult Users()
+        public ActionResult Users(int? page )
         {
-            return View();
+            
+            if (page == null)
+                page = 1;
+            ViewData["page"] = page;
+            var user = Context.users.ToList();
+            return View(user);
+        }
+        public ActionResult DeleteUser(int user_id)
+        {
+             var deleteduser = Context.users.Where(d => d.user_id == user_id).FirstOrDefault();
+            if (deleteduser != null)
+            {
+                Context.users.Remove(deleteduser);
+                Context.SaveChanges();
+            }
+            return RedirectToAction("Users");
         }
         public ActionResult LogOut()
         {
