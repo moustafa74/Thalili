@@ -2031,3 +2031,15 @@ input:checked + .slider:before {
     .starrate > label:hover ~ input:checked ~ label {
         color: #c59b08;
     }
+.EditLabels .lab-label {
+    color: #BBBBBB;
+    font-family: "Janna LT";
+    font-size: 0.8rem;
+}
+
+.EditLabels input:not([type="submit"]) {
+    outline: none;
+    color: #6F7688;
+    font-family: "Janna LT";
+    font-size: 0.8rem;
+}

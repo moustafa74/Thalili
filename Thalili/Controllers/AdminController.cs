@@ -39,7 +39,10 @@ namespace Thalili.Controllers
         }
         public ActionResult Current_orders()
         {
-            return View();
+            
+            var AllOrder = Context.sub_order.ToList();
+            return View(AllOrder);
+            
         }
         public ActionResult Labs(int ? page)
         {
@@ -110,24 +113,25 @@ namespace Thalili.Controllers
             var smple = Context.samples.ToList();
             return View(smple);
         }
-      /*  public ActionResult Save_Analysis(AnalysisModel analysis)
-        {
-            medical_analysis ma = new medical_analysis();
-            ma.name = analysis.name;
-            ma.img = analysis.img;
-            ma.description = analysis.description;
-            var sample = Context.samples.Where(d => d.sample_name == analysis.sample).ToList();
-            ma.samples = sample;
-            
-            var fileExtenstion = Path.GetExtension(analysis.File.FileName);
-            var fileguid = Guid.NewGuid().ToString();
-            var filee = fileguid + fileExtenstion;
-            string filePath = Server.MapPath($"~/Content/Images/Analysis/{filee}");
-            analysis.File.SaveAs(filePath);
-            ma.img = filee;
-            Context.medical_analysis.Add(ma);
-            Context.SaveChanges();
-            return RedirectToAction("Analysis");
-        }*/
+        //public ActionResult Save_Analysis(AnalysisModel analysis)
+        //{
+        //    medical_analysis ma = new medical_analysis();
+        //    ma.name = analysis.name;
+        //    ma.img = analysis.img;
+        //    ma.description = analysis.description;
+        //    var sample = Context.samples.Where(d => d.sample_name == analysis.sample).ToList();
+        //    ma.samples = sample;
+
+        //    var fileExtenstion = Path.GetExtension(analysis.File.FileName);
+        //    var fileguid = Guid.NewGuid().ToString();
+        //    var filee = fileguid + fileExtenstion;
+        //    string filePath = Server.MapPath($"~/Content/Images/Analysis/{filee}");
+        //    analysis.File.SaveAs(filePath);
+        //    ma.img = filee;
+        //    Context.medical_analysis.Add(ma);
+        //    Context.SaveChanges();
+        //    return RedirectToAction("Analysis");
+        //}
+
     }
 }
