@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-5">@Model[i].description</div>
                                     <div class="col-2 d-flex justify-content-center">
-                                        <button type="button" class="btn ms-md-2 ms-4" style="width: 2rem; height:2rem;"><img src="~/Content/Assets/imgs/Group 855.png" alt=""></button>
+                                        <button type="button" class="btn ms-md-2 ms-4" style="width: 2rem; height:2rem;"><img src="~/Content/Assets/imgs/Group 855.png" alt="" onclick="window.location.href = '/Admin/EditAnalysis/@Model[i].medical_analysis_id'"></button>
                                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#DeleteAnalsyis" onclick="sendAnalysisIdofDelete(this)" style="width: 2rem; height:2rem;"><img src="~/Content/Assets/imgs/Group 854.png" alt=""></button>
                                     </div>
                                 </div>

@@ -74,6 +74,10 @@ namespace Thalili.Controllers
             var analysis = Context.medical_analysis.ToList();
             return View(analysis);
         }
+        public ActionResult EditAnalysis(int id)
+        {
+            return View();
+        }
         public ActionResult DeleteAnalysis(int Delete_id)
         {
             var analysiss = Context.medical_analysis.Where(d => d.medical_analysis_id == Delete_id).FirstOrDefault();
@@ -108,6 +112,24 @@ namespace Thalili.Controllers
             Session.Abandon();
             return RedirectToAction("Login", "Admin");
         }
+
+        public ActionResult Available_Analysis(int id, int? page)
+        {
+
+            //if (Session["AdminID"] == null)
+            //{
+            //    return RedirectToAction("Login", "Admin");
+            //}
+            if (page == null)
+                page = 1;
+            ViewData["page"] = page;
+
+            var analysis = Context.analysis_in_lab.Where(d => d.Labs_id == id).ToList();
+
+            return View(analysis);
+
+        }
+
         public ActionResult AddAnalysis()
         {
             var smple = Context.samples.ToList();
@@ -132,6 +154,7 @@ namespace Thalili.Controllers
         //    Context.SaveChanges();
         //    return RedirectToAction("Analysis");
         //}
+
 
     }
 }

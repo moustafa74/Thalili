@@ -25,6 +25,7 @@
                                         <div class="col">العدد</div>
                                     </div>
                                 </div>
+                                <div class="col"></div>
                             </div>
                             @{ int ordID = 0;}
                             @foreach (var ord in Model)
@@ -34,11 +35,11 @@
                                     continue;
                                 }
                                 <div class="row talabt-item" id="talabat-item-1">
-                                    <div class="col">@ord.order_id</div>
-                                    @*<div class="col">@ord.user.name</div>*@
+                                    <div class="col-1">@ord.order_id</div>
+                                   <div class="col">@*@ord.user.name*@</div>
 
                                     <div class="col">@ord.analysis_in_lab.lab.name</div>
-                                    <div class="col-5">
+                                    <div class="col-3">
                                         @foreach (var ords in Model)
                                         {
                                             if (ords.user_id == ord.user_id && ords.order_id == ord.order_id)
