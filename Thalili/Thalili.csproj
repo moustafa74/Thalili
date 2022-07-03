@@ -216,6 +216,7 @@
       <DependentUpon>ThaliliModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminData.cs" />
+    <Compile Include="Models\AnalysisModel.cs" />
     <Compile Include="Models\analysis_in_lab.cs">
       <DependentUpon>ThaliliModel.tt</DependentUpon>
     </Compile>
@@ -1974,7 +1975,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
+    <Folder Include="Content\Images\Analysis\" />
+    <Folder Include="Content\Images\Labs\" />
     <Folder Include="Content\Results\" />
   </ItemGroup>
   <ItemGroup>

@@ -86,7 +86,10 @@
        <div class="row">
         <input class="rounded-3" type="text" list="Analysis" name="ThalilName" id="thalilName" autocomplete="off" required>
         <datalist id="Analysis">
-         <option value="كورونا">
+            @foreach (medical_analysis item in ViewBag.analysis)
+            {
+         <option value="@item.name"/>
+            }
         </datalist>
        </div>
        <div class="row"><label for="">السعر</label></div>

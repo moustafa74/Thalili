@@ -29,11 +29,11 @@
                             </div>
                             @if (TempData["Image"] != null)
                             {
-                                <img class="img-fluid rounded-3" src="~/Content/Images/@TempData["Image"]" alt="صورة المعمل" style="width:11rem; height:11rem" />
+                                <img class="img-fluid rounded-3" src="~/Content/Images/Labs/@TempData["Image"]" alt="صورة المعمل" style="width:11rem; height:11rem" />
                             }
                             else
                             {
-                                <img class="img-fluid rounded-3" src="~/Content/Images/@Model.img" alt="صورة المعمل" style="width:11rem; height:11rem" />
+                                <img class="img-fluid rounded-3" src="~/Content/Images/Labs/@Model.img" alt="صورة المعمل" style="width:11rem; height:11rem" />
                             }
                         </div>
                         <div class="col d-flex flex-column justify-content-evenly">
@@ -75,6 +75,7 @@
                                 <div class="d-flex flex-row-reverse w-50">
                                     <input class="mb-3 btn" type="submit" name="" value="حفظ التعديلات" />
                                 </div>
+                                <p style="color:green"> @TempData["SuccessMesssage"]</p>
                             </div>
                         </div>
                     </div>

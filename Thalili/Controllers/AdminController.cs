@@ -118,7 +118,6 @@ namespace Thalili.Controllers
             ma.samples = sample;
             Context.medical_analysis.Add(ma);
             Context.SaveChanges();
-
             return RedirectToAction("Analysis");
         }
     }

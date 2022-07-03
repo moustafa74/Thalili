@@ -64,6 +64,8 @@ namespace Thalili.Controllers
                 page = 1;
             ViewData["page"] = page;
             var analysis_in_lab = context.analysis_in_lab.Where(d => d.Labs_id == lab_id).ToList();
+            var analysis = context.medical_analysis.ToList();
+            ViewBag.analysis = analysis;
             return View(analysis_in_lab);
         }
         public ActionResult EditThalil(string ThalilName, decimal price)
@@ -96,7 +98,7 @@ namespace Thalili.Controllers
             }
             catch(Exception e)
             {
-                TempData["msg"] = "<script>alert('Enter valid Analysis name');</script>";
+                TempData["msg"] = "<script>alert('this Medical analysis is already exsists');</script>";
                 return RedirectToAction("Analysis");
             }
         }
@@ -137,6 +139,7 @@ namespace Thalili.Controllers
             lab.lab_owner.pass = Crypto.Hash(edits.lab_owner.pass);
             lab.img = edits.img;
             context.SaveChanges();
+            TempData["SuccessMesssage"] = "تم تعديل البيانات بنجاح";
 
             return RedirectToAction("Settings");
         }
@@ -144,13 +147,24 @@ namespace Thalili.Controllers
         {
             if (Session["labID"] == null)
                 return RedirectToAction("Index", "Login");
+            if(file ==null)
+            {
+                return RedirectToAction("Settings");
+            }
             var fileExtenstion = Path.GetExtension(file.FileName);
             var fileguid = Guid.NewGuid().ToString();
             var filee = fileguid + fileExtenstion;
-            string filePath = Server.MapPath($"~/Content/Images/{filee}");
-            TempData["Image"] = file;
+            string filePath = Server.MapPath($"~/Content/Images/Labs/{filee}");
+            TempData["Image"] = filee;        
             file.SaveAs(filePath);
             return RedirectToAction("Settings");
+        }
+        public ActionResult Lab_Avaliable(bool is_avaliable)
+        {
+            int lab_id = (int)Session["labID"];
+            context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault().is_available = is_avaliable;
+            context.SaveChanges();
+            return RedirectToAction("Orders");
         }
         public ActionResult LogOut()
         {

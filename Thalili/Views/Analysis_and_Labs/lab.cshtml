@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-md-5 col-12">
                             <div class="lab-pic">
-                                <img src="https://source.unsplash.com/random/400x400" />
+                                <img src="~/Content/Images/Labs/@Model.FirstOrDefault().lab.img" />
                             </div>
                         </div>
                         <div class="col-md-7 col-12">
@@ -37,7 +37,6 @@
                                 @for (int i = 0; i < Model.FirstOrDefault().lab.lab_rating; i++)
                                 {
                                     <i class="fa fa-star"></i>
-
                                 }
                             </div>
                             <p class="search-description">
@@ -89,7 +88,7 @@
                                 <div class="col-md-3">
                                     <div class="item mb-3">
                                         <div class="pictue">
-                                            <img src="https://gcdnb.pbrd.co/images/VTGzZf5G5u1s.png" />
+                                            <img src="~/Content/Images/Analysis/@Model[i].medical_analysis.img" />
                                         </div>
                                         <h3 class="title mt-1 px-1">@Model[i].medical_analysis.name</h3>
                                         <div class="tags d-flex">
