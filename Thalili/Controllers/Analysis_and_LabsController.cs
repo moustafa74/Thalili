@@ -8,7 +8,7 @@ namespace Thalili.Controllers
     public class Analysis_and_LabsController : Controller
     {
         // GET: Analysis_and_Labs
-         ThaliliEntities context = new ThaliliEntities();
+        ThaliliEntities context = new ThaliliEntities();
         public ActionResult Index(int? page)
         {
             var labs = context.labs.ToList();
@@ -20,31 +20,9 @@ namespace Thalili.Controllers
             return View("lab_analysis", anlysis_labs);
         }
 
-        public ActionResult lab(int id ,int? page)
+        public ActionResult lab(int id)
         {
-            if (page == null)
-                page = 1;
-            ViewData["page"] = page;
-            var lab = context.analysis_in_lab.Where(d => d.lab.lab_id == id).ToList();
-            return View(lab);
-        }
-        public ActionResult SearchAnalysis(int LabID, string Analysis , int ? page)
-        {
-            if (page == null)
-                page = 1;
-            ViewData["page"] = page;
-
-            var analysis = context.analysis_in_lab.Where(d => d.Labs_id == LabID).ToList();
-            var analysis_in_lab = context.analysis_in_lab.Where(d => d.Labs_id == LabID && d.medical_analysis.name.Contains(Analysis)).ToList();
-            if (analysis_in_lab.Count == 0)
-            {
-                ViewBag.isEmpty = true;
-                ViewData["page"] = 1;
-            }
-            else
-                analysis = analysis_in_lab;
-            return View("lab", analysis);
-
+            return View();
         }
 
         public ActionResult analysis(int id, int? page)
@@ -53,7 +31,6 @@ namespace Thalili.Controllers
                 page = 1;
             ViewData["page"] = page;
             var labs = context.analysis_in_lab.Where(d => d.medical_analysis_id == id).ToList();
-
             return View(labs);
         }
 
@@ -67,7 +44,15 @@ namespace Thalili.Controllers
             cart.Lab_id = lab_id;
             cart.user_id = user_id;
             cart.count = 1;
-            context.carts.Add(cart);
+            var crt = context.carts.Where(x => x.Lab_id == lab_id && x.user_id == user_id && x.analysis_id == analysis_id).FirstOrDefault();
+            if (crt != null)
+            {
+                context.carts.Where(x => x.Lab_id == cart.Lab_id && x.user_id == user_id && x.analysis_id == cart.analysis_id).FirstOrDefault().count++;
+            }
+            else
+            {
+                context.carts.Add(cart);
+            }
             context.SaveChanges();
             return RedirectToAction("Index", "Cart");
         }

@@ -13,27 +13,27 @@ namespace Thalili.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            if(Session["UserID"]==null)
+            if (Session["UserID"] == null)
                 return RedirectToAction("Index", "Login");
-            int user_id =(int) Session["UserID"];
+            int user_id = (int)Session["UserID"];
             var cart = context.carts.Where(d => d.user_id == user_id).ToList();
             return View(cart);
         }
-        public ActionResult edit(int analysis_id, int Lab_id,int count)
+        public ActionResult edit(int analysis_id, int Lab_id, int count)
         {
             if (Session["UserID"] == null)
                 return RedirectToAction("Index", "Login");
             int user_id = (int)Session["UserID"];
-            context.carts.Where(d => d.analysis_id == analysis_id && d.Lab_id == Lab_id && d.user_id == user_id).FirstOrDefault().count=count;
+            context.carts.Where(d => d.analysis_id == analysis_id && d.Lab_id == Lab_id && d.user_id == user_id).FirstOrDefault().count += count;
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult deleteItem(int analysis_id,int Lab_id)
+        public ActionResult deleteItem(int analysis_id, int Lab_id)
         {
             if (Session["UserID"] == null)
                 return RedirectToAction("Index", "Login");
             int user_id = (int)Session["UserID"];
-            cart cart=context.carts.Where(d => d.analysis_id == analysis_id && d.Lab_id == Lab_id && d.user_id == user_id).FirstOrDefault();
+            cart cart = context.carts.Where(d => d.analysis_id == analysis_id && d.Lab_id == Lab_id && d.user_id == user_id).FirstOrDefault();
             context.carts.Remove(cart);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -57,9 +57,25 @@ namespace Thalili.Controllers
                 sub_order.medical_analysis_id = crt.analysis_id;
                 sub_order.lab_id = crt.Lab_id;
                 sub_order.count = crt.count;
-                order.sub_order.Add(sub_order);
+                var subord = context.sub_order.Where(x => x.lab_id == crt.Lab_id && x.user_id == user_id && x.medical_analysis_id == crt.analysis_id).FirstOrDefault();
+                if (subord != null)
+                {
+                    if (subord.is_finshed == true)
+                    {
+                        context.sub_order.Remove(subord);
+                        order.sub_order.Add(sub_order);
+                    }
+                    else
+                        context.sub_order.Where(x => x.lab_id == crt.Lab_id && x.user_id == user_id && x.medical_analysis_id == crt.analysis_id).FirstOrDefault().count = crt.count;
+                }
+                else
+                {
+                    order.sub_order.Add(sub_order);
+                }
                 context.carts.Remove(crt);
             }
+            if (order.sub_order.Count == 0)
+                context.orders.Remove(order);
             context.SaveChanges();
             return View();
         }
