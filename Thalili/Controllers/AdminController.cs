@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Thalili.Models;
 using System.Web.Mvc;
 
@@ -116,6 +118,13 @@ namespace Thalili.Controllers
             ma.description = analysis.description;
             var sample = Context.samples.Where(d => d.sample_name == analysis.sample).ToList();
             ma.samples = sample;
+            
+            var fileExtenstion = Path.GetExtension(analysis.File.FileName);
+            var fileguid = Guid.NewGuid().ToString();
+            var filee = fileguid + fileExtenstion;
+            string filePath = Server.MapPath($"~/Content/Images/Analysis/{filee}");
+            analysis.File.SaveAs(filePath);
+            ma.img = filee;
             Context.medical_analysis.Add(ma);
             Context.SaveChanges();
             return RedirectToAction("Analysis");
