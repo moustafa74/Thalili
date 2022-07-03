@@ -110,7 +110,7 @@ namespace Thalili.Controllers
             var smple = Context.samples.ToList();
             return View(smple);
         }
-        public ActionResult Save_Analysis(AnalysisModel analysis)
+      /*  public ActionResult Save_Analysis(AnalysisModel analysis)
         {
             medical_analysis ma = new medical_analysis();
             ma.name = analysis.name;
@@ -128,6 +128,6 @@ namespace Thalili.Controllers
             Context.medical_analysis.Add(ma);
             Context.SaveChanges();
             return RedirectToAction("Analysis");
-        }
+        }*/
     }
 }

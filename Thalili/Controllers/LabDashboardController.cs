@@ -12,14 +12,14 @@ namespace Thalili.Controllers
     public class LabDashboardController : Controller
     {
         ThaliliEntities context = new ThaliliEntities();
-        //int lab_id = 2;
-        //int user = 1;
-        //int medical = 1;
+
+
         public ActionResult Orders(int? page)
         {
             if (Session["labID"] == null)
                 return RedirectToAction("Index", "Login");
             int lab_id = (int)Session["labID"];
+            TempData["avaliable"] = context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault().is_available;
             List<List<sub_order>> allorders = new List<List<sub_order>>();
             if (page == null)
                 page = 1;
@@ -162,6 +162,7 @@ namespace Thalili.Controllers
         public ActionResult Lab_Avaliable(bool is_avaliable)
         {
             int lab_id = (int)Session["labID"];
+           
             context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault().is_available = is_avaliable;
             context.SaveChanges();
             return RedirectToAction("Orders");

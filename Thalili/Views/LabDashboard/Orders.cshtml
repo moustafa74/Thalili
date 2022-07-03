@@ -11,11 +11,13 @@
   <div class="col-10 leftCont pt-3 pe-3" id="Talbat">
    <i class="fa-solid fa-list-check leftsvg"></i>
    <h3 class="h3 d-inline lefth3">الطلبــــات</h3>
-   <button type="button" class="toggleArea" data-stat="available" onclick="LabAvailable(this)">
+     
+   <button type="button" class="toggleArea" data-stat="@TempData["avaliable"]"  onclick="LabAvailable(this)">
+
     <span class="toggleHandle"></span>
    </button>
    <form action="" method="get" id="AvaliableForm">
-    <input type="hidden" name="is_avaliable" value="0" />
+    <input type="hidden" name="is_avaliable" value="" />
    </form>
    <small class="d-block pb-3">مرحبا بك مجددا</small>
    <div class="leftCont-all">
