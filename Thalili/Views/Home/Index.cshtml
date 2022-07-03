@@ -1,4 +1,5 @@
 ﻿@using Thalili.Models
+@model List<lab>
 @{
     ViewBag.Title = "Index";
 }
@@ -93,83 +94,30 @@
                 <h2>المعامل الاعلى تقييما</h2>
             </div>
             <div class="row m-0 align-items-center justify-content-end">
-                @*<div class="col-6 m-0 d-flex align-items-center">
-                        <img src="~/Content/Assets/imgs/Exclusion 10.png" alt="">
-                        <p class="mb-0 me-1">مصر, القاهرة ,التجمع الخامس</p>
-                    </div>*@
                 <div class="w-auto dropdown dropstart">
-                    <a href="#" class="btn btn-outline-secondary dropdown-toggle">مشاهدة الكل</a>
+                    <a href="/Analysis_and_Labs" class="btn btn-outline-secondary dropdown-toggle">مشاهدة الكل</a>
                 </div>
             </div>
             <div class="row m-0 justify-content-between" id="cards">
+                @foreach (var lab in Model)
+                {
                 <div class="card">
-                    <img src="" alt="">
-                    <p>معمل الحياة</p>
+                    <img src="@lab.img" alt="">
+                    <p>@lab.name</p>
                     <div class="evaluate">
+                        @for(int i=0;i<lab.lab_rating;i++)
+                        {
                         <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <span>(24)</span>
+                        }
+                        <span>(@lab.reviews.Count)</span>
                     </div>
                     <div class="labLocation">
                         <img src="~/Content/Assets/imgs/Exclusion 10.png" alt="">
-                        <span>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد</span>
+                        <span>@lab.location</span>
                     </div>
-                    <button type="button" class="btn btn-primary my-4" onclick="">المزيد من التفاصيل</button>
+                    <button type="button" class="btn btn-primary my-4" onclick="window.location.href ='/Analysis_and_Labs/lab/@lab.lab_id'">المزيد من التفاصيل</button>
                 </div>
-                <div class="card">
-                    <img src="" alt="">
-                    <p>معمل الحياة</p>
-                    <div class="evaluate">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <span>(24)</span>
-                    </div>
-                    <div class="labLocation">
-                        <img src="~/Content/Assets/imgs/Exclusion 10.png" alt="">
-                        <span>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد</span>
-                    </div>
-                    <button type="button" class="btn btn-primary my-4" onclick="">المزيد من التفاصيل</button>
-                </div>
-                <div class="card">
-                    <img src="" alt="">
-                    <p>معمل الحياة</p>
-                    <div class="evaluate">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <span>(24)</span>
-                    </div>
-                    <div class="labLocation">
-                        <img src="~/Content/Assets/imgs/Exclusion 10.png" alt="">
-                        <span>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد</span>
-                    </div>
-                    <button type="button" class="btn btn-primary my-4" onclick="">المزيد من التفاصيل</button>
-                </div>
-                <div class="card">
-                    <img src="" alt="">
-                    <p>معمل الحياة</p>
-                    <div class="evaluate">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <span>(24)</span>
-                    </div>
-                    <div class="labLocation">
-                        <img src="~/Content/Assets/imgs/Exclusion 10.png" alt="">
-                        <span>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد</span>
-                    </div>
-                    <button type="button" class="btn btn-primary my-4" onclick="">المزيد من التفاصيل</button>
-                </div>
+                }
             </div>
         </div>
     </div>

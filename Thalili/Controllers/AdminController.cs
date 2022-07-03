@@ -105,7 +105,21 @@ namespace Thalili.Controllers
         }
         public ActionResult AddAnalysis()
         {
-            return View();
+            var smple = Context.samples.ToList();
+            return View(smple);
+        }
+        public ActionResult Save_Analysis(AnalysisModel analysis)
+        {
+            medical_analysis ma = new medical_analysis();
+            ma.name = analysis.name;
+            ma.img = analysis.img;
+            ma.description = analysis.description;
+            var sample = Context.samples.Where(d => d.sample_name == analysis.sample).ToList();
+            ma.samples = sample;
+            Context.medical_analysis.Add(ma);
+            Context.SaveChanges();
+
+            return RedirectToAction("Analysis");
         }
     }
 }

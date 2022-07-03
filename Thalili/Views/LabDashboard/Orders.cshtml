@@ -41,7 +41,7 @@
                             <div class="row talabt-item" id="talabat-item-1">
                                 <div class="col">@ord.order_id</div>
                                 <div class="col">@ord.user.name</div>
-                                <div class="col">@ord.order.date</div>
+                                <div class="col">@ord.order.date.Value.ToString("MM/dd/yyyy")</div>
                                 <div class="col-5">
                                     @foreach (var ords in Model.First())
                                     {
@@ -102,7 +102,7 @@
                                 <div class="row talabt-item" id="okOrder-item-1">
                                     <div class="col">@Model.Last()[i].order_id</div>
                                     <div class="col">@Model.Last()[i].user.name</div>
-                                    <div class="col">@Model.Last()[i].order.date</div>
+                                    <div class="col">@Model.Last()[i].order.date.Value.ToString("MM/dd/yyyy")</div>
                                     <div class="col-5">
                                         @foreach (var subord in Model.Last())
                                         {

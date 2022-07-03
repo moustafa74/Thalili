@@ -20,9 +20,13 @@ namespace Thalili.Controllers
             return View("lab_analysis", anlysis_labs);
         }
 
-        public ActionResult lab(int id)
+        public ActionResult lab(int id, int ?page)
         {
-            return View();
+            if (page == null)
+                page = 1;
+            ViewData["page"] = page;
+            var analysis = context.analysis_in_lab.Where(d => d.lab.lab_id == id).ToList();
+            return View(analysis);
         }
 
         public ActionResult analysis(int id, int? page)
@@ -73,7 +77,24 @@ namespace Thalili.Controllers
                 lab = analysis_in_lab;
             return View("analysis", lab);
         }
+        public ActionResult SearchAnalysis(int LabID, string Analysis, int? page)
+        {
+            if (page == null)
+                page = 1;
+            ViewData["page"] = page;
 
+            var analysis = context.analysis_in_lab.Where(d => d.Labs_id == LabID).ToList();
+            var analysis_in_lab = context.analysis_in_lab.Where(d => d.Labs_id == LabID && d.medical_analysis.name.Contains(Analysis)).ToList();
+            if (analysis_in_lab.Count == 0)
+            {
+                ViewBag.isEmpty = true;
+                ViewData["page"] = 1;
+            }
+            else
+                analysis = analysis_in_lab;
+            return View("lab", analysis);
+
+        }
         public ActionResult Labsfilter(int filterPrice, int filterRating, int? page, int analysis_id)
         {
             var lab = context.analysis_in_lab.Where(d => d.medical_analysis_id == analysis_id).ToList();

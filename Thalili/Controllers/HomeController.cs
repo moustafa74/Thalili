@@ -15,28 +15,8 @@ namespace Thalili.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var labs=Context.labs.OrderByDescending(d => d.lab_rating).Take(4).ToList();
+            return View(labs);
         }
-        //public ActionResult test(uploadFile upl)
-        //{
-        //    //result r = new result();
-        //    //r.Labs_id = 1;
-        //    //r.medical_analysis_id = 1;
-        //    //r.user_id = 1;
-        //    ////var s = Base64Encode(pd);
-        //    //r.pdf = pd;
-        //    result res = new result();
-        //    var fileExtenstion = Path.GetExtension(upl.file.FileName);
-        //    var fileguid = Guid.NewGuid().ToString();
-        //    res.medical_analysis_id = 1;
-        //    res.Labs_id = 1;
-        //    res.user_id = 1;
-        //    res.pdf = fileguid + fileExtenstion;
-        //    string filePath = Server.MapPath($"~/Content/assets/imgs/{res.pdf}");
-        //    Context.results.Add(res);
-        //    Context.SaveChanges();
-        //    upl.file.SaveAs(filePath);
-        //    return RedirectToAction("Index");
-        //}//
     }
 }

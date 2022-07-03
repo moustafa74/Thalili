@@ -72,7 +72,7 @@
                                             <i class="fa fa-star"></i>
                                         }
 
-                                        <span>@Model[i].lab.reviews.Count()</span>
+                                        <span>(@Model[i].lab.reviews.Count())</span>
                                     </div>
                                     <div class="waiting-time mb-2"><i class="fa-solid fa-stopwatch"></i>استجابة الطلبات خلال <span>20 دقيقة</span></div>
                                     <div class="description mb-2"><i class="fa fa-location-dot"></i>@Model[i].lab.location </div>
@@ -89,7 +89,8 @@
                                         </div>
                                         <div class="price p-2 bd-highlight">
                                             <span class="currency">EGP</span>
-                                            <p class="total-price">@Model[i].price</p>
+                                            @{ int price = (int)Model[i].price;}
+                                            <p class="total-price">@price</p>
                                             <span class="phase">التكلفة الكلية</span>
                                         </div>
                                     </div>
@@ -99,7 +100,6 @@
                     </section>
                     <nav class="paginat mt-4 mb-3">
                         <ul class="d-flex justify-content-center" style="list-style:none;">
-                            <li class="page_item_arrow"><i class="fa-solid fa-angle-right"></i></li>
                             @for (int i = 1; i <= Math.Ceiling((Model.Count() * 1.0) / 4); i++)
                             {
                                 if (i == curent)
@@ -140,8 +140,6 @@
                                 }
 
                             }
-
-                            <li class="page_item_arrow"><i class="fa-solid fa-angle-left"></i></li>
                         </ul>
                     </nav>
                 }

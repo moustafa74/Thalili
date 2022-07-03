@@ -626,6 +626,7 @@ footer {
 
 .aLoginPageForUser {
     background-image: url(../imgs/man-using-digital-tablet.png);
+    background-size: cover;
 }
 
 .aLoginPageForLabOwner {

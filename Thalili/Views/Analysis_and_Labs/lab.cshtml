@@ -40,9 +40,6 @@
 
                                 }
                             </div>
-
-
-
                             <p class="search-description">
                                 @Model.FirstOrDefault().lab.description
                             </p>
@@ -108,16 +105,16 @@
                                         <div class="more-details">
                                             <div class="price p-2 bd-highlight">
                                                 <span class="phase">التكلفة </span>
-
-                                                <p class="total-price">@Model[i].price<span class="currency">EGP</span></p>
+                                                @{ int price = (int)Model[i].price;}
+                                                <p class="total-price">@price<span class="currency">EGP</span></p>
 
 
                                             </div>
                                             <div class="add-cart p-2 bd-highlight">
                                                 <form action="/Analysis_and_Labs/AddToCart" method="post" id="">
                                                     <input class="btn btn-primary add-to-cart" type="submit" name="" value="إضافة الي القائمة">
-                                                    <input type="hidden" name="analysis_id" value="1">
-                                                    <input type="hidden" name="lab_id" value="1">
+                                                    <input type="hidden" name="analysis_id" value="@Model[i].medical_analysis_id">
+                                                    <input type="hidden" name="lab_id" value="@Model[i].Labs_id">
                                                 </form>
                                             </div>
                                         </div>
@@ -195,7 +192,7 @@
                     <i class="fa fa-star" style="color: #F0D738"></i>
                     <i class="fa fa-star" style="color: #F0D738"></i>
                     <i class="fa fa-star" style="color: #F0D738"></i>
-                    <span>24</span>
+                    <span>(24)</span>
                 </div>
                 <div class="rates">
                     <div class="rate mb-3">
