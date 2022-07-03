@@ -52,9 +52,9 @@
                                 <div class="available mb-2" style="color:red"><i class="fa-solid fa-circle"></i> غير متاح لاستقبال طلبات </div>
                             }
 
-                            @*<div class="waiting-time mb-2">
-                                    <i class="fa-solid fa-stopwatch"></i> استجابة الطلبات خلال <span>20 دقيقة</span>
-                                </div>*@
+                            <div class="waiting-time mb-2">
+                                    <i class="fa-solid fa-stopwatch"></i> استجابة الطلبات خلال <span>30 دقيقة</span>
+                            </div>
                             <div class="location mb-2"><i class="fa fa-location-dot"></i> @Model.FirstOrDefault().lab.location</div>
 
 
@@ -111,7 +111,12 @@
                                             </div>
                                             <div class="add-cart p-2 bd-highlight">
                                                 <form action="/Analysis_and_Labs/AddToCart" method="post" id="">
-                                                    <input class="btn btn-primary add-to-cart" type="submit" name="" value="إضافة الي القائمة">
+                                                 @if (Model.FirstOrDefault().lab.is_available) {
+                                                 <input class="btn btn-primary add-to-cart" type="submit" name="" value="إضافة الي القائمة">
+                                                  }
+                                                  else{
+                                                <input class="btn btn-primary add-to-cart" type="submit" name="" value="إضافة الي القائمة" disabled>
+                                                  }
                                                     <input type="hidden" name="analysis_id" value="@Model[i].medical_analysis_id">
                                                     <input type="hidden" name="lab_id" value="@Model[i].Labs_id">
                                                 </form>

@@ -309,20 +309,47 @@ function RefuseOrderfun(element) {
 function LabAvailable(element) {
     const state = element.getAttribute("data-stat");
     const child = element.querySelector(".toggleHandle");
-    if (state == "available") {
+    if (state == "True") {
         element.style.backgroundColor = "#D43E3E";
         child.style.removeProperty("left");
         child.style.right = "4px";
-        element.setAttribute("data-stat", "unavailable");
-        document.querySelector("#AvaliableForm").querySelector("input").value = 0;
+        //element.setAttribute("data-stat", "False");
+        document.querySelector("#AvaliableForm").querySelector("input[type='hidden']").value = "False";
+        console.log(document.forms[0]);
         document.forms[0].submit();
     }
     else {
         element.style.backgroundColor = "#43AF5C";
         child.style.removeProperty("right");
         child.style.left = "4px";
-        element.setAttribute("data-stat", "available");
-        document.querySelector("#AvaliableForm").querySelector("input").value = 1;
+        //element.setAttribute("data-stat", "True");
+        document.querySelector("#AvaliableForm").querySelector("input").value = "True";
+        console.log(document.forms[0]);
         document.forms[0].submit();
     }
 }
+function LabAvailablewithout(element) {
+    const state = element.getAttribute("data-stat");
+    const child = element.querySelector(".toggleHandle");
+    if (state == "False") {
+        element.style.backgroundColor = "#D43E3E";
+        child.style.removeProperty("left");
+        child.style.right = "4px";
+    }
+    else {
+        element.style.backgroundColor = "#43AF5C";
+        child.style.removeProperty("right");
+        child.style.left = "4px";
+    }
+}
+window.addEventListener('DOMContentLoaded', function () {
+    const element = document.getElementById('ToggleBtn');
+    if (element != null) {
+        LabAvailablewithout(element);
+    }
+});
+/*function LabAvailableForm(element) {
+    element.preventDefault();
+    const btn = element.parentElement.querySelector("button");
+    LabAvailable(btn);
+}*/

@@ -29,6 +29,7 @@ namespace Thalili.Models
         public string img { get; set; }
         public string phone_number { get; set; }
         public bool is_available { get; set; }
+        public Nullable<int> lab_owner_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analysis_in_lab> analysis_in_lab { get; set; }

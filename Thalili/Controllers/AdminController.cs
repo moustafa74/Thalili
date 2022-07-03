@@ -5,7 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Thalili.Models;
-using System.Web.Mvc;
+using System.Net.Mail;
+using System.Net;
+using System.Web.Security;
 
 namespace Thalili.Controllers
 {
@@ -56,6 +58,51 @@ namespace Thalili.Controllers
             AdminData labs_requst = new AdminData(labs, requst);
             return View(labs_requst);
         }
+        public ActionResult AcceptRequest(int Request_id)
+        {
+            var request = Context.requests.Where(d => d.requst_ID == Request_id).FirstOrDefault();
+            lab_owner lbowner = new lab_owner();
+            lbowner.email = request.email;
+            lbowner.name = request.owner_name;
+            lbowner.pass = Membership.GeneratePassword(8, 2);
+            Context.lab_owner.Add(lbowner);
+            lab lab1 = new lab();
+            lab1.name = request.name;
+            lab1.location = request.location;
+            lab1.phone_number = request.phone_number;
+            lab1.is_available = false;
+            lab1.lab_owner_id = lbowner.lab_owner_id;
+            Context.labs.Add(lab1);
+            Context.requests.Remove(request);
+            Context.SaveChanges();
+            SendAcceptEmail(lbowner.email, lbowner.pass);
+            return RedirectToAction("Labs");
+        }
+        public void SendAcceptEmail(string email, string pass)
+        {
+            var fromEmail = new MailAddress("tthalyly@gmail.com", "Thalili");
+            var toEmail = new MailAddress(email);
+            var fromEmailPassword = "mama2468"; // Replace with actual password
+            string subject = "Your account is successfully created!";
+
+            string body = "تهانينا!<br/>نود اخباركم انه تم قبول طلبكم للانضمام الي قائمة شركاء النجاح لدينا ونحن سعيدين ولا نستطيع الانتظار لكي نري ما يمكننا ان نحققه سويا.<br/>هذه هي بيانات الدخول الخاصة بكم - يمكنكم البدء في الحال بالدخول الي لوحة التحكم واضافة وتعديل كل ما يقدمه معملكم للجمهور<br/>البريد الالكترونى : " + email + "<br/>كلمة السر :" + pass + "<br/>نود تذكيركم ايضا انه يمكنم التواصل مع الدعم الفني لدينا في اي وقت علي الارقام وقنوات التواصل التالية في حال كان لديكم اي استفسار او اي شئ غير مفهوم في النظام البرمجي للموقع.<br/><br/>سعداء بوجودكم بعائلة تحاليلي ونتطلع للعمل سويا في اقرب وقت.";
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.office365.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+        }
         public ActionResult RefuseRequest(int Request_id)
         {
             var request = Context.requests.Where(d => d.requst_ID == Request_id).FirstOrDefault();
@@ -63,8 +110,34 @@ namespace Thalili.Controllers
             {
                 Context.requests.Remove(request);
                 Context.SaveChanges();
+                SendRefuseEmail(request.email);
             }
             return RedirectToAction("Labs");
+        }
+        public void SendRefuseEmail(string email)
+        {
+            var fromEmail = new MailAddress("tthalyly@gmail.com", "Thalili");
+            var toEmail = new MailAddress(email);
+            var fromEmailPassword = "mama2468"; // Replace with actual password
+            string subject = "Your account is successfully created!";
+
+            string body = "";
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.office365.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
         }
         public ActionResult Analysis(int? page)
         {

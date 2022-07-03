@@ -14,11 +14,18 @@ namespace Thalili.Models
     
     public partial class lab_owner
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public lab_owner()
+        {
+            this.labs = new HashSet<lab>();
+        }
+    
         public int lab_owner_id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
         public string pass { get; set; }
     
-        public virtual lab lab { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<lab> labs { get; set; }
     }
 }

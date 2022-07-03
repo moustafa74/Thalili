@@ -31,9 +31,19 @@ namespace Thalili.Controllers
             }
             else
             {
-                Session["UserID"] = userDetail.user_id;
-                Session["userName"] = userDetail.name;
-                return RedirectToAction("Index", "Home");
+                if (userDetail.Email_confirmed != true)
+                {
+                    ViewData["ERoor"] = "يجب تاكيد حسابك اولا , يرجى التحقق من بريدك الالكترونى";
+                    ViewData["Email"] = user.email;
+                    ViewData["Password"] = user.pass;
+                    return View("index");
+                }
+                else
+                {
+                    Session["UserID"] = userDetail.user_id;
+                    Session["userName"] = userDetail.name;
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
         }
@@ -51,8 +61,8 @@ namespace Thalili.Controllers
             }
             else
             {
-                Session["labName"] = labownerD.lab.name;
-                Session["labID"] = labownerD.lab.lab_id;
+                Session["labName"] = labownerD.labs.FirstOrDefault().name;
+                Session["labID"] = labownerD.labs.FirstOrDefault().name;
                 return RedirectToAction("Orders", "LabDashboard");
             }
         }

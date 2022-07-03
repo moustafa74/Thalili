@@ -43,15 +43,12 @@ namespace Thalili.Controllers
             user1.pass = Crypto.Hash(newuser.pass);
             Context.users.Add(user1);
             Context.SaveChanges();
-            Session["UserID"] = user1.user_id;
-            Session["userName"] = user1.name;
             SendVerificationLinkEmail(user1.email, user1.activation_code);
             return View();
         }
         [HttpGet]
         public ActionResult VerifyAccount(string id)
         {
-            //int x =(int) Session["UserID"];
 
             var v = Context.users.Where(a => a.activation_code==id).FirstOrDefault();
             if(v == null)
@@ -75,13 +72,11 @@ namespace Thalili.Controllers
             var fromEmailPassword = "mama2468"; // Replace with actual password
             string subject = "Your account is successfully created!";
 
-            string body = "<br/><br/>We are excited to tell you that your Thalili account is" +
-                " successfully created. Please click on the below link to verify your account" +
-                " <br/><br/><a href='" + link + "'>" + link + "</a> ";
+            string body = "مرحبا بك في تحاليلي ^_^<br/> لقد تم انشاء حسابكم بنجاح وانت علي خطوة واحدة من الانطلاق لاستخدام حسابكم الخاص بكم علي منصتنا .. فقط قم بالضغط علي رابط التفعيل بالاسفل لاتمام تسجيل حسابكم لدينا<br/>< a href='" + link + "'>" + link + "</a> ";
 
             var smtp = new SmtpClient
             {
-                Host = "smtp.gmail.com",
+                Host = "smtp.office365.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,

@@ -65,17 +65,24 @@
                                     <img src="~/Content/Images/Labs/@Model[i].lab.img" height="200" width="200" alt="analysis picture">
                                 </div>
                                 <div class="content col-lg-6 col-md-12">
-                                    <h3 class="title">@Model[i].lab.name</h3>
-                                    <div class="rating mb-2" style="word-spacing: -10px;">
-                                        @for (int j = 0; j < Model[i].lab.lab_rating; j++)
-                                        {
-                                            <i class="fa fa-star"></i>
-                                        }
+                                 <h3 class="title">@Model[i].lab.name</h3>
+                                 <div class="rating mb-2" style="word-spacing: -10px;">
+                                  @for (int j = 0; j < Model[i].lab.lab_rating; j++)
+                                  {
+                                   <i class="fa fa-star"></i>
+                                  }
 
-                                        <span>(@Model[i].lab.reviews.Count())</span>
-                                    </div>
-                                    @*<div class="waiting-time mb-2"><i class="fa-solid fa-stopwatch"></i>استجابة الطلبات خلال <span>20 دقيقة</span></div>*@
-                                    <div class="description mb-2"><i class="fa fa-location-dot"></i>@Model[i].lab.location </div>
+                                  <span>(@Model[i].lab.reviews.Count())</span>
+                                 </div>
+                                 @if (@Model[i].lab.is_available)
+                                 {
+                                  <small class="m-2 m-md-0 d-inline-block w-auto" style="color: #43AF5C;"><i class="fa-solid fa-circle" style="color: #43AF5C;"></i>&nbsp;<span>متاح لاستقبال طلبات</span></small>
+                                 }
+                                 else { 
+                                <small class="m-2 m-md-0 d-inline-block w-auto" style="color: #D43E3E;"><i class="fa-solid fa-circle" style="color: #D43E3E;"></i>&nbsp;<span>غير متاح لاستقبال طلبات</span></small>
+                                 }
+                                 <div class="waiting-time mb-2"><i class="fa-solid fa-stopwatch"></i>استجابة الطلبات خلال <span>30 دقيقة</span></div>
+                                 <div class="description mb-2"><i class="fa fa-location-dot"></i>@Model[i].lab.location </div>
                                 </div>
 
                                 <div class="mb-3 col-lg-3 col-md-12">
