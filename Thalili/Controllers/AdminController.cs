@@ -103,5 +103,9 @@ namespace Thalili.Controllers
             Session.Abandon();
             return RedirectToAction("Login", "Admin");
         }
+        public ActionResult AddAnalysis()
+        {
+            return View();
+        }
     }
 }

@@ -1940,3 +1940,19 @@ input:checked + .slider:before {
         font-size: 1rem;
     }
 /* End Admin Login Page*/
+/* Start Admin Add Thalil */
+.adminAddThalilPage form input:not([type="submit"]):not([type="file"]),
+.adminAddThalilPage form textarea {
+    font-family: "Janna LT";
+    font-size: 1rem;
+    border: none;
+    box-shadow: 0px 0px 6px 0px #00000029;
+    padding: 5px 10px 5px 0;
+    position: relative;
+    border-radius: 10px;
+}
+
+.adminAddThalilPage form input:not([type="submit"]):not([type="file"]) {
+    height: 2rem;
+}
+/* End Admin Add Thalil */

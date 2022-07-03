@@ -292,3 +292,13 @@ function AcceptandRefuseOrder(element) {
     document.querySelector("#AcceptLabOrder").querySelector("input[type='hidden']").value = id;
     document.querySelector("#RefuseLabOrder").querySelector("input[type='hidden']").value = id;
 }
+function clearChangeImage(element) {
+    const btn = element.parentElement.querySelector("button");
+    if (element.value != null) {
+        btn.classList.remove("d-none");
+    }
+}
+function removeImage(element) {
+    element.parentElement.querySelector("input[type='file']").value = null;
+    element.parentElement.querySelector("button").classList.add("d-none");
+}
