@@ -287,7 +287,6 @@ function sendAnalysisIdofDelete(element) {
 }
 function AcceptandRefuseOrder(element) {
     const parent = element.parentElement.parentElement.parentElement;
-    console.log(parent.querySelector(".LabId"));
     const id = parent.querySelector(".LabId").textContent;
     document.querySelector("#AcceptLabOrder").querySelector("input[type='hidden']").value = id;
     document.querySelector("#RefuseLabOrder").querySelector("input[type='hidden']").value = id;
@@ -301,4 +300,29 @@ function clearChangeImage(element) {
 function removeImage(element) {
     element.parentElement.querySelector("input[type='file']").value = null;
     element.parentElement.querySelector("button").classList.add("d-none");
+}
+function RefuseOrderfun(element) {
+    const parent = element.parentElement.parentElement.parentElement;
+    const id = parent.children[0].textContent;
+    document.querySelector("#RefuseOrder").querySelector("input[type='hidden']").value = id;
+}
+function LabAvailable(element) {
+    const state = element.getAttribute("data-stat");
+    const child = element.querySelector(".toggleHandle");
+    if (state == "available") {
+        element.style.backgroundColor = "#D43E3E";
+        child.style.removeProperty("left");
+        child.style.right = "4px";
+        element.setAttribute("data-stat", "unavailable");
+        document.querySelector("#AvaliableForm").querySelector("input").value = 0;
+        document.forms[0].submit();
+    }
+    else {
+        element.style.backgroundColor = "#43AF5C";
+        child.style.removeProperty("right");
+        child.style.left = "4px";
+        element.setAttribute("data-stat", "available");
+        document.querySelector("#AvaliableForm").querySelector("input").value = 1;
+        document.forms[0].submit();
+    }
 }

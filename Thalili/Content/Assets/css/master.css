@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
     font-family: "Janna LT";
     src: url(../fonts/Janna-LT-Bold.ttf);
 }
@@ -626,7 +626,6 @@ footer {
 
 .aLoginPageForUser {
     background-image: url(../imgs/man-using-digital-tablet.png);
-    background-size: cover;
 }
 
 .aLoginPageForLabOwner {
@@ -1003,6 +1002,30 @@ footer {
 
 
 /* Start Lab Owner Page */
+.toggleArea {
+    width: 4rem;
+    height: 2rem;
+    background-color: #43AF5C;
+    border-radius: 20px;
+    display: block;
+    float: left;
+    margin-left: 3rem;
+    position: relative;
+    border: none;
+}
+
+.toggleHandle {
+    background-color: white;
+    width: 1.5rem;
+    height: 75%;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
 .labOwnerPage .rightCont {
     height: 100vh;
     background-color: #313C55;
@@ -1660,6 +1683,16 @@ body {
         color: #707070;
     }
 
+#CommentText {
+    font-family: "Janna LT";
+    font-size: 1rem;
+    border: none;
+    box-shadow: 0px 0px 6px 0px #00000029;
+    padding: 5px 10px 5px 0;
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+}
 /* Start Cart Page  */
 .cartPage {
     min-height: 100vh;
@@ -1957,3 +1990,44 @@ input:checked + .slider:before {
     height: 2rem;
 }
 /* End Admin Add Thalil */
+.starrate {
+    float: right;
+    height: 46px;
+    padding: 0 10px;
+}
+
+    .starrate:not(:checked) > input {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .starrate:not(:checked) > label {
+        float: left;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+    }
+
+        .starrate:not(:checked) > label:before {
+            content: '★ ';
+        }
+
+    .starrate > input:checked ~ label {
+        color: #ffc700;
+    }
+
+    .starrate:not(:checked) > label:hover,
+    .starrate:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
+
+    .starrate > input:checked + label:hover,
+    .starrate > input:checked + label:hover ~ label,
+    .starrate > input:checked ~ label:hover,
+    .starrate > input:checked ~ label:hover ~ label,
+    .starrate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
