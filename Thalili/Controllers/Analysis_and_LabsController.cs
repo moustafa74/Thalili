@@ -76,7 +76,8 @@ namespace Thalili.Controllers
                 ViewData["page"] = 1;
             }
             else
-                lab = analysis_in_lab;
+              lab = analysis_in_lab;
+
             return View("analysis", lab);
         }
         public ActionResult SearchAnalysis(int LabID, string Analysis, int? page)
@@ -94,6 +95,9 @@ namespace Thalili.Controllers
             }
             else
                 analysis = analysis_in_lab;
+
+            var rev = context.reviews.Where(d => d.Labs_id == LabID).ToList();
+            ViewBag.rev = rev;
             return View("lab", analysis);
 
         }
