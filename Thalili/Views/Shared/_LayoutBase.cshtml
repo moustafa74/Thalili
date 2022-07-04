@@ -100,6 +100,38 @@
                             <span>انضم كشريك</span>
                         </a>
                     </li>
+                    <li class="nav-item d-block d-md-none">
+                        @if (Session["userName"] != null)
+                        {
+                            <a href="/MyResults" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_test_passed.jpg" />نتائج التحاليل</a>
+                        }
+                    </li>
+                    <li class="nav-item d-block d-md-none">
+                        @if (Session["userName"] != null)
+                        {
+                            <a href="/Profile" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_settings_1.jpg" />تعديل معلومات الحساب</a>
+                        }
+                    </li>
+                    <li class="nav-item d-block d-md-none">
+                        @if (Session["userName"] != null)
+                        {
+                        <a href="/MyOrders" class="list-group-item list-group-item-action"><img class="img-fluid ms-3" src="~/Content/Assets/imgs/icons8_order_history.jpg" />طلباتي</a>
+                        }
+                    </li>
+                    <li class="nav-item d-block d-md-none">
+                        @if (Session["userName"] != null)
+                        {
+                            <a class="nav-link" href="/Logout">
+                                <span>تسجيل خروج</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="/Login">
+                                <span>تسجيل دخول</span>
+                            </a>
+                        }
+                    </li>
                 </ul>
             </div>
         </div>

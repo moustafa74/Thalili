@@ -38,6 +38,14 @@ namespace Thalili.Controllers
             context.SaveChanges();
             return RedirectToAction("Orders");
         }
+        public ActionResult Reject_order(int id)
+        {
+            if (Session["labID"] == null)
+                return RedirectToAction("Index", "Login");
+            context.orders.Where(d => d.order_id == id).FirstOrDefault().is_accept = false;
+            context.SaveChanges();
+            return RedirectToAction("Orders");
+        }
         public ActionResult UploadPdf(HttpPostedFileBase file,int analysis_id, int user_id)
         {
             if (Session["labID"] == null)
