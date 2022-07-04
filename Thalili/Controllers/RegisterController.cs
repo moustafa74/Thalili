@@ -34,11 +34,13 @@ namespace Thalili.Controllers
                 ViewData["Name"] = newuser.name;
                 ViewData["Email"] = newuser.email;
                 ViewData["Password"] = newuser.pass;
+                ViewData["Phone"] = newuser.phone_number;
                 return View("Index");
             }
             user user1 = new user();
             user1.email = newuser.email;
             user1.name = newuser.name;
+            user1.phone_number = newuser.phone_number;
             user1.activation_code = Guid.NewGuid().ToString();
             user1.pass = Crypto.Hash(newuser.pass);
             Context.users.Add(user1);

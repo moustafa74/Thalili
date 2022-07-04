@@ -32,6 +32,14 @@
 
 
                         <div class="row m-0" style="position: relative;">
+                            <input class="col m-auto mt-4 rounded-2" type="text" name="phone_number" id="phone_filed" placeholder="رقم الهاتف" value="@ViewData["Phone"]" required>
+                            <small>Error Message</small>
+                            <label for="phone_filed"><img src="~/Content/Assets/imgs/icons8_email_sign_2.svg" alt="" style="position: absolute; top: 50%;transform: translate(0, -50% );"></label>
+                        </div>
+
+
+
+                        <div class="row m-0" style="position: relative;">
                             <input class="col m-auto mt-4 rounded-2" type="password" name="pass" id="passwordField" placeholder="الرقم السري" required>
                             <small>Error Message</small>
                             <label for="passwordField"><img src="~/Content/Assets/imgs/icons8_key.png" alt="" style="position: absolute; top: 50%;transform: translate(0, -50% );"></label>
@@ -40,9 +48,9 @@
                             <input class="col m-auto mt-4 rounded-2" type="password" name="confirmPass" id="confirmpasswordField" placeholder="تأكيد الرقم السري" required>
                             <small>Error Message</small>
                             <label for="passwordField"><img src="~/Content/Assets/imgs/icons8_key.png" alt="" style="position: absolute; top: 50%;transform: translate(0, -50% );"></label>
-                        </div>                      
+                        </div>
                         @*<div class="h-captcha" data-sitekey="b1ff7069-2c12-4204-a1d0-aff00d26f9b5">
-                        </div>*@
+        </div>*@
                         <div class="row m-0 mt-5">
                             <input class="col-md-5 m-auto mt-3 rounded-2 px-0" type="submit" value="تسجيل حساب" name="" id="submitBtn">
                             <a href="/Login" id="createAccountbtn" class="col-md-5 m-auto mt-3 rounded-2 px-0">تسجيل دخول</a>

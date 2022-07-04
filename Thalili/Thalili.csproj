@@ -1951,6 +1951,24 @@
     <Content Include="Content\Assets\webfonts\fa-brands-400.svg" />
     <Content Include="Content\Assets\webfonts\fa-regular-400.svg" />
     <Content Include="Content\Assets\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Images\Analysis\1cc61ceb-6d10-41a5-b67e-a658f63b1fa0.jpg" />
+    <Content Include="Content\Images\Analysis\21ceeb32-c696-4a1d-8d2d-eba34f32f511.jpg" />
+    <Content Include="Content\Images\Analysis\2d903a33-fee8-4831-9636-9301a39d3ee7.jpg" />
+    <Content Include="Content\Images\Analysis\4684ceea-d28b-49df-be23-8485fca4dbd9.jpg" />
+    <Content Include="Content\Images\Analysis\531a39e7-b892-4ce2-9cb7-a313496d3b29.jpg" />
+    <Content Include="Content\Images\Analysis\76ba9653-38a2-4cec-be65-92262305510f.jpg" />
+    <Content Include="Content\Images\Analysis\7828279c-3e5b-4bd0-95b9-0f4b6a9f33b4.jpg" />
+    <Content Include="Content\Images\Analysis\9169d2ab-211a-44d5-b406-6f1b1b0398b6.jpg" />
+    <Content Include="Content\Images\Analysis\b511f020-f730-451b-895c-e79ce12434fc.jpg" />
+    <Content Include="Content\Images\Analysis\bb25c07e-282a-4d72-b702-e6588155ce46.jpg" />
+    <Content Include="Content\Images\Analysis\d20bceeb-6a49-4471-9d31-1080418ef6f2.jpg" />
+    <Content Include="Content\Images\Analysis\f6271558-c9c7-4d3a-bc75-adb4f27b007c.jpg" />
+    <Content Include="Content\Images\Labs\2525ff83-2d17-40b3-ad11-75156c188c01.jpg" />
+    <Content Include="Content\Images\Labs\341dab1b-b9d6-42d0-bdc0-b22ae9330dc7.jpeg" />
+    <Content Include="Content\Images\Labs\4532a152-7aa3-46ec-8081-379234c8ac7e.png" />
+    <Content Include="Content\Images\Labs\55b52f32-7cf0-4e3d-a093-9483b85f492d.jpg" />
+    <Content Include="Content\Images\Labs\afc3071b-82a1-4b9a-84d9-95f828ee4d1e.png" />
+    <Content Include="Content\Images\Labs\b5ba4bc4-45ed-406f-bc8d-1c9208844e69.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\ThaliliModel.Context.tt">
@@ -1976,8 +1994,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\Analysis\" />
-    <Folder Include="Content\Images\Labs\" />
     <Folder Include="Content\Results\" />
   </ItemGroup>
   <ItemGroup>

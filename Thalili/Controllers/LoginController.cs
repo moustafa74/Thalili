@@ -109,13 +109,11 @@ namespace Thalili.Controllers
             var fromEmailPassword = "mama2468"; // Replace with actual password
             string subject = "Reset Password!";
 
-            string body = "<br/><br/>We are excited to tell you that your Dotnet Awesome account is" +
-            " successfully created. Please click on the below link to verify your account" +
-            " <br/><br/><a href='" + link + "'>" + link + "</a> ";
+            string body = "مرحبا بك في تحاليلي ^_^<br/> اضغط هنا لاعاده تعيين الرقم السرى الخاص بك<br/>< a href='" + link + "'>" + link + "</a> ";
 
             var smtp = new SmtpClient
             {
-                Host = "smtp.gmail.com",
+                Host = "smtp.office365.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
