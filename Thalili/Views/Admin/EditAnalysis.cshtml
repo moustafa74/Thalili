@@ -19,27 +19,30 @@
                             <div class="container pt-2 pb-5 rounded-3 mb-5">
                                 <div>
                                     <p class="section-address">تعديل بيانات التحليل</p>
-                                    <form action="" method="get" class="EditLabels">
-                                        <input type="hidden" name="id" value="">
+                                    <form action="/Admin/Save_Analysis" method="post" class="EditLabels" enctype="multipart/form-data">
+                                        <input type="hidden" name="id" value="@Model.medical_analysis_id">
                                         <div class="row mb-3 align-items-center pt-4">
                                             <label class="col-4 lab-label" for="Ad_EditAnalysisname">اسم التحليل</label>
-                                            <input class="col-7" type="text" name="name" value="" id="Ad_EditAnalysisname" required>
+                                            <input class="col-7" type="text" name="name" value="@Model.name" id="Ad_EditAnalysisname" required>
                                         </div>
                                         <div class="row mb-3 align-items-center">
                                             <label class="col-4 lab-label" for="Ad_EditAnalysisimage">الصورة</label>
-                                            <input class="col-6" type="file" name="image" value="" id="Ad_EditAnalysisimage" onchange="clearChangeImage(this)" accept="image/png, image/gif, image/jpeg" required>
+                                            <input class="col-6" type="file" name="file" value="~/Content/Images/Analysis/@Model.img" id="Ad_EditAnalysisimage" onchange="clearChangeImage(this)" accept="image/png, image/gif, image/jpeg" required>
                                             <button type="button" class="col-1 btn btn-close d-none" onclick="removeImage(this)"></button>
                                         </div>
                                         <div class="row mb-3 align-items-center">
                                             <label class="col-4 lab-label" for="Ad_EditAnalysissample">العينة</label>
-                                            <input class="col-7" list="samples" name="" value="" id="Ad_EditAnalysissample" autocomplete="off" required>
+                                            <input class="col-7" list="samples" name="sample" value="@Model.samples.FirstOrDefault().sample_name" id="Ad_EditAnalysissample" autocomplete="off" required>
                                             <datalist id="samples">
-                                                <option value="Edge">
+                                                @foreach (sample item in ViewBag.smple)
+                                                {
+                                                <option value="@item.sample_name"/>
+                                                }
                                             </datalist>
                                         </div>
                                         <div class="row mb-3 align-items-center">
                                             <label class="col-4 lab-label" for="Ad_EditAnalysisdes">الوصف</label>
-                                            <textarea class="col-7" name="description" value="@Model.description" id="Ad_EditAnalysisdes" cols="30" rows="5"></textarea>
+                                            <textarea class="col-7" name="description" id="Ad_EditAnalysisdes" cols="30" rows="5">@Model.description</textarea>
                                         </div>
                                         <div class="row justify-content-evenly align-items-center pt-4">
                                             <button type="button" class="col-4 btn btn-outline-primary" onclick="window.location.href=''">تجاهل التغيرات</button>

@@ -34,7 +34,7 @@
                                 <div class="row talabt-item" id="Admin-Lab-item-1">
                                     <div class="col-1 AnalysisID">@Model[i].medical_analysis_id</div>
                                     <div class="col-2">@Model[i].name</div>
-                                    <div class="col-1"><a href="~/Content/Images/Analysis/@Model[i].img" target="_blank">a</a></div>
+                                    <div class="col-1"><a href="~/Content/Images/Analysis/@Model[i].img" target="_blank">@Model[i].name</a></div>
                                     <div class="col-1">
                                         <div class="row flex-column">
                                             @foreach (var smpl in Model[i].samples)
@@ -42,7 +42,6 @@
                                                 <div class="col">@smpl.sample_name</div>
 
                                             }
-
 
                                         </div>
                                     </div>

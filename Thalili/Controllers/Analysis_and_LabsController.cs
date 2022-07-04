@@ -26,6 +26,8 @@ namespace Thalili.Controllers
                 page = 1;
             ViewData["page"] = page;
             var analysis = context.analysis_in_lab.Where(d => d.lab.lab_id == id).ToList();
+            var rev = context.reviews.Where(d => d.Labs_id == id).ToList();
+            ViewBag.rev = rev;
             return View(analysis);
         }
 
@@ -163,5 +165,29 @@ namespace Thalili.Controllers
             else ViewBag.isEmpty = true;
             return View("analysis", lab);
         }
+        public ActionResult Make_Review(review rev,int lab_id)
+        {
+            if (Session["UserID"] == null)
+                return RedirectToAction("Index", "Login");
+            int user_id = (int)Session["UserID"];
+            var is_exist = context.reviews.Where(d => d.Labs_id == lab_id && d.user_id == user_id).FirstOrDefault();
+            if(is_exist!=null)
+            {
+                TempData["review_error"] = "انت بالفعل قمت بعمل تقييم";
+                return RedirectToAction("lab/"+lab_id);
+            }
+            review rev1 = new review();
+            rev1.comment = rev.comment;
+            rev1.rating = rev.rating;
+            rev1.user_id = user_id;
+            rev1.Labs_id = lab_id;
+            int all_rate =(int)context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault().lab_rating;
+            int number_of_ratings= context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault().reviews.Count()+1;
+            context.labs.Where(d => d.lab_id == lab_id).FirstOrDefault().lab_rating = (all_rate + rev.rating) / number_of_ratings;
+            context.reviews.Add(rev1);
+            context.SaveChanges();
+            return RedirectToAction("lab/"+lab_id);
+        }
+
     }
 }

@@ -49,7 +49,7 @@ namespace Thalili.Controllers
         }
         public ActionResult LabLogin(lab_owner lbowner)
         {
-            string crc = lbowner.pass;//Crypto.Hash(lbowner.pass);
+            string crc = Crypto.Hash(lbowner.pass);
             var labownerD = Context.lab_owner.Where(x => x.email == lbowner.email && x.pass == crc).FirstOrDefault();
             if (labownerD == null)
             {
@@ -62,7 +62,7 @@ namespace Thalili.Controllers
             else
             {
                 Session["labName"] = labownerD.labs.FirstOrDefault().name;
-                Session["labID"] = labownerD.labs.FirstOrDefault().name;
+                Session["labID"] = labownerD.labs.FirstOrDefault().lab_id;
                 return RedirectToAction("Orders", "LabDashboard");
             }
         }

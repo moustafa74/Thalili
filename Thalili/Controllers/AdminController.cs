@@ -8,6 +8,7 @@ using Thalili.Models;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Security;
+using Thalili.Helpers;
 
 namespace Thalili.Controllers
 {
@@ -22,7 +23,7 @@ namespace Thalili.Controllers
         }
         public ActionResult LoginConfirm(admin admin)
         {
-            string crc = admin.pass;//Crypto.Hash(user.pass);
+            string crc = Crypto.Hash(admin.pass);
             var AdminDetail = Context.admins.Where(x => x.email == admin.email && x.pass == crc).FirstOrDefault();
             ViewData["ERoor"] = "";
             if (AdminDetail == null)
@@ -48,8 +49,8 @@ namespace Thalili.Controllers
         }
         public ActionResult Labs(int ? page)
         {
-            //if (Session["AdminID"] == null)
-            //    return RedirectToAction("Login");
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
             if (page == null)
                 page = 1;
             ViewData["page"] = page;
@@ -60,11 +61,14 @@ namespace Thalili.Controllers
         }
         public ActionResult AcceptRequest(int Request_id)
         {
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
             var request = Context.requests.Where(d => d.requst_ID == Request_id).FirstOrDefault();
             lab_owner lbowner = new lab_owner();
             lbowner.email = request.email;
             lbowner.name = request.owner_name;
-            lbowner.pass = Membership.GeneratePassword(8, 2);
+            string pass = Membership.GeneratePassword(8, 2);
+            lbowner.pass = Crypto.Hash(pass);
             Context.lab_owner.Add(lbowner);
             lab lab1 = new lab();
             lab1.name = request.name;
@@ -75,7 +79,7 @@ namespace Thalili.Controllers
             Context.labs.Add(lab1);
             Context.requests.Remove(request);
             Context.SaveChanges();
-            SendAcceptEmail(lbowner.email, lbowner.pass);
+            SendAcceptEmail(lbowner.email, pass);
             return RedirectToAction("Labs");
         }
         public void SendAcceptEmail(string email, string pass)
@@ -105,6 +109,8 @@ namespace Thalili.Controllers
         }
         public ActionResult RefuseRequest(int Request_id)
         {
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
             var request = Context.requests.Where(d => d.requst_ID == Request_id).FirstOrDefault();
             if(request != null)
             {
@@ -141,6 +147,8 @@ namespace Thalili.Controllers
         }
         public ActionResult Analysis(int? page)
         {
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
             if (page == null)
                 page = 1;
             ViewData["page"] = page;
@@ -149,10 +157,17 @@ namespace Thalili.Controllers
         }
         public ActionResult EditAnalysis(int id)
         {
-            return View();
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
+            var smple = Context.samples.ToList();
+            var med_analysis = Context.medical_analysis.Where(d => d.medical_analysis_id == id).FirstOrDefault();
+            ViewBag.smple = smple;
+            return View(med_analysis);
         }
         public ActionResult DeleteAnalysis(int Delete_id)
         {
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
             var analysiss = Context.medical_analysis.Where(d => d.medical_analysis_id == Delete_id).FirstOrDefault();
             if (analysiss != null)
             {
@@ -163,7 +178,8 @@ namespace Thalili.Controllers
         }
         public ActionResult Users(int? page )
         {
-            
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
             if (page == null)
                 page = 1;
             ViewData["page"] = page;
@@ -180,19 +196,14 @@ namespace Thalili.Controllers
             }
             return RedirectToAction("Users");
         }
-        public ActionResult LogOut()
-        {
-            Session.Abandon();
-            return RedirectToAction("Login", "Admin");
-        }
 
         public ActionResult Available_Analysis(int id, int? page)
         {
 
-            //if (Session["AdminID"] == null)
-            //{
-            //    return RedirectToAction("Login", "Admin");
-            //}
+            if (Session["AdminID"] == null)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             if (page == null)
                 page = 1;
             ViewData["page"] = page;
@@ -205,29 +216,52 @@ namespace Thalili.Controllers
 
         public ActionResult AddAnalysis()
         {
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
             var smple = Context.samples.ToList();
             return View(smple);
         }
-        //public ActionResult Save_Analysis(AnalysisModel analysis)
-        //{
-        //    medical_analysis ma = new medical_analysis();
-        //    ma.name = analysis.name;
-        //    ma.img = analysis.img;
-        //    ma.description = analysis.description;
-        //    var sample = Context.samples.Where(d => d.sample_name == analysis.sample).ToList();
-        //    ma.samples = sample;
+        public ActionResult Save_Analysis(AnalysisModel analysis)
+        {
+            if (Session["AdminID"] == null)
+                return RedirectToAction("Login");
+            medical_analysis ma = new medical_analysis();
+            ma.name = analysis.name;
+            ma.img = analysis.img;
+            ma.description = analysis.description;
+            var sample = Context.samples.Where(d => d.sample_name == analysis.sample).ToList();
+            ma.samples = sample;
 
-        //    var fileExtenstion = Path.GetExtension(analysis.File.FileName);
-        //    var fileguid = Guid.NewGuid().ToString();
-        //    var filee = fileguid + fileExtenstion;
-        //    string filePath = Server.MapPath($"~/Content/Images/Analysis/{filee}");
-        //    analysis.File.SaveAs(filePath);
-        //    ma.img = filee;
-        //    Context.medical_analysis.Add(ma);
-        //    Context.SaveChanges();
-        //    return RedirectToAction("Analysis");
-        //}
+            var fileExtenstion = Path.GetExtension(analysis.file.FileName);
+            var fileguid = Guid.NewGuid().ToString();
+            var filee = fileguid + fileExtenstion;
+            string filePath = Server.MapPath($"~/Content/Images/Analysis/{filee}");
+            analysis.file.SaveAs(filePath);
+            ma.img = filee;
+            var med_analysis = Context.medical_analysis.Where(d => d.medical_analysis_id == analysis.id).FirstOrDefault();
+            if (med_analysis != null)
+            {
+                Context.medical_analysis.Where(d => d.medical_analysis_id == analysis.id).FirstOrDefault().img = filee;
+                Context.medical_analysis.Where(d => d.medical_analysis_id == analysis.id).FirstOrDefault().name = analysis.name;
+                if (analysis.sample != Context.medical_analysis.Where(d => d.medical_analysis_id == analysis.id).FirstOrDefault().samples.FirstOrDefault().sample_name)
+                {
+                    Context.medical_analysis.Where(d => d.medical_analysis_id == analysis.id).FirstOrDefault().samples = sample;
+                }
+                Context.medical_analysis.Where(d => d.medical_analysis_id == analysis.id).FirstOrDefault().description = analysis.description;
+            }
+            else
+            {
+                Context.medical_analysis.Add(ma);
+            }
+            Context.SaveChanges();
+            return RedirectToAction("Analysis");
+        }
 
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Admin");
+        }
 
     }
 }
