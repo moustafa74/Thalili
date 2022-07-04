@@ -87,9 +87,9 @@ namespace Thalili.Controllers
             var fromEmail = new MailAddress("tthalyly@gmail.com", "Thalili");
             var toEmail = new MailAddress(email);
             var fromEmailPassword = "mama2468"; // Replace with actual password
-            string subject = "Your account is successfully created!";
+            string subject = "طلب الانضمام الى تحاليلى.";
 
-            string body = "تهانينا!<br/>نود اخباركم انه تم قبول طلبكم للانضمام الي قائمة شركاء النجاح لدينا ونحن سعيدين ولا نستطيع الانتظار لكي نري ما يمكننا ان نحققه سويا.<br/>هذه هي بيانات الدخول الخاصة بكم - يمكنكم البدء في الحال بالدخول الي لوحة التحكم واضافة وتعديل كل ما يقدمه معملكم للجمهور<br/>البريد الالكترونى : " + email + "<br/>كلمة السر :" + pass + "<br/>نود تذكيركم ايضا انه يمكنم التواصل مع الدعم الفني لدينا في اي وقت علي الارقام وقنوات التواصل التالية في حال كان لديكم اي استفسار او اي شئ غير مفهوم في النظام البرمجي للموقع.<br/><br/>سعداء بوجودكم بعائلة تحاليلي ونتطلع للعمل سويا في اقرب وقت.";
+            string body = "تهانينا!<br/>نود اخباركم انه تم قبول طلبكم للانضمام الي قائمة شركاء النجاح لدينا ونحن سعداء ولا نستطيع الانتظار لكي نري ما يمكننا ان نحققه سويا.<br/>هذه هي بيانات الدخول الخاصة بكم - يمكنكم البدء في الحال بالدخول الي لوحة التحكم واضافة وتعديل كل ما يقدمه معملكم للجمهور<br/>البريد الالكترونى : " + email + "<br/>كلمة السر :" + pass + "<br/>نود تذكيركم ايضا انه يمكنم التواصل مع الدعم الفني لدينا في اي وقت علي الارقام وقنوات التواصل التالية في حال كان لديكم اي استفسار او اي شئ غير مفهوم في النظام البرمجي للموقع.<br/><br/>سعداء بوجودكم بعائلة تحاليلي ونتطلع للعمل سويا في اقرب وقت.";
             var smtp = new SmtpClient
             {
                 Host = "smtp.office365.com",
@@ -125,9 +125,10 @@ namespace Thalili.Controllers
             var fromEmail = new MailAddress("tthalyly@gmail.com", "Thalili");
             var toEmail = new MailAddress(email);
             var fromEmailPassword = "mama2468"; // Replace with actual password
-            string subject = "Your account is successfully created!";
+            string subject = "طلب الانضمام الى تحاليلى.";
 
-            string body = "";
+            string body = "تهانينا!<br/>شكرا لاستخدامكم لموقع تحليلي للاشتراك بالمعمل الخاص بكم ولكن لا يمكننا قبول الطلب وذلك لان المعمل الخاص بكم لا يوافق معايير الاستخدام الخاصة بنا نرجو تحسين المعمل الخاص بكم ومراجعة شروط الاستخدام وشروط القبول الخاصة بنا.";
+
             var smtp = new SmtpClient
             {
                 Host = "smtp.office365.com",
