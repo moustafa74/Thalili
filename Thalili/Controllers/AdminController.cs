@@ -42,12 +42,12 @@ namespace Thalili.Controllers
         }
         public ActionResult Current_orders()
         {
-            
+
             var AllOrder = Context.sub_order.ToList();
             return View(AllOrder);
-            
+
         }
-        public ActionResult Labs(int ? page)
+        public ActionResult Labs(int? page)
         {
             if (Session["AdminID"] == null)
                 return RedirectToAction("Login");
@@ -112,7 +112,7 @@ namespace Thalili.Controllers
             if (Session["AdminID"] == null)
                 return RedirectToAction("Login");
             var request = Context.requests.Where(d => d.requst_ID == Request_id).FirstOrDefault();
-            if(request != null)
+            if (request != null)
             {
                 Context.requests.Remove(request);
                 Context.SaveChanges();
@@ -177,7 +177,7 @@ namespace Thalili.Controllers
             }
             return RedirectToAction("Analysis");
         }
-        public ActionResult Users(int? page )
+        public ActionResult Users(int? page)
         {
             if (Session["AdminID"] == null)
                 return RedirectToAction("Login");
@@ -189,7 +189,7 @@ namespace Thalili.Controllers
         }
         public ActionResult DeleteUser(int user_id)
         {
-             var deleteduser = Context.users.Where(d => d.user_id == user_id).FirstOrDefault();
+            var deleteduser = Context.users.Where(d => d.user_id == user_id).FirstOrDefault();
             if (deleteduser != null)
             {
                 Context.users.Remove(deleteduser);
